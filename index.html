@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-  
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,12 +7,12 @@
   <meta name="description" content="Data scientist focused on ML for business impact: NLP, analytics engineering, and decision optimization." />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-  
-<body class="bg-gray-50 text-gray-900">
 
-  <main class="max-w-4xl mx-auto px-6 py-12">
-    <!-- Header -->
-    <header class="mb-10 flex items-center space-x-5">
+<body class="text-gray-900">
+
+  <!-- Header -->
+  <header class="bg-white">
+    <div class="max-w-4xl mx-auto px-6 py-12 flex items-center space-x-5">
       <img src="headshot.jpeg" alt="Surya Venkatraman" class="w-20 h-20 rounded-full object-cover shadow" />
       <div>
         <h1 class="text-3xl md:text-4xl font-bold">Surya Venkatraman</h1>
@@ -25,11 +24,11 @@
           <a class="underline" href="https://github.com/surya-venkatraman">GitHub</a>
         </div>
       </div>
-    </header>
-  </main>
+    </div>
+  </header>
 
-  <!-- 1️⃣ Value Prop -->
-  <section class="bg-white py-10">
+  <!-- Value Prop -->
+  <section class="bg-gray-100 py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">What do I do?</h2>
       <p class="mt-3 leading-relaxed">
@@ -44,43 +43,154 @@
     </div>
   </section>
 
-  <!-- 2️⃣ Featured Projects -->
-  <section class="bg-gray-100 py-10">
+  <!-- Featured Projects -->
+  <section class="bg-white py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">Featured Projects</h2>
       <div class="grid md:grid-cols-2 gap-6 mt-4">
-        ...
+        <!-- Project 1 -->
+        <article class="p-5 bg-gray-50 rounded-2xl shadow">
+          <h3 class="font-semibold">COMPAS Recidivism Fairness Analysis</h3>
+          <p class="mt-2 text-sm leading-relaxed">
+            Fine-tuned classifier + RLHF to route insurance emails; cut SLA processing time by 40%.
+          </p>
+          <p class="mt-2 text-xs">Python · scikit-learn · AWS Lambda · OpenAI API</p>
+          <div class="mt-3 space-x-3">
+            <a class="text-sm underline" href="projects/rlhf-triage.html">Case study</a>
+            <a class="text-sm underline" href="https://github.com/your-username/rlhf-triage">Code</a>
+          </div>
+        </article>
+        <!-- Project 2 -->
+        <article class="p-5 bg-gray-50 rounded-2xl shadow">
+          <h3 class="font-semibold">Congressional Campaign Contribution Impact</h3>
+          <p class="mt-2 text-sm">
+            Enterprise search bot; reduced document lookup time by 52% for 1K+ employees.
+          </p>
+          <p class="mt-2 text-xs">Azure AI Search · RBAC · Eval harness</p>
+          <div class="mt-3 space-x-3">
+            <a class="text-sm underline" href="projects/sharepoint-rag.html">Case study</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- 3️⃣ Skills -->
-  <section class="bg-white py-10">
+  <!-- Skills -->
+  <section class="bg-gray-100 py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">Skills</h2>
       <div class="mt-3 grid md:grid-cols-3 gap-4 text-sm">
-        ...
+        <div><h4 class="font-semibold">Modeling</h4><p>Tree-based, linear/GLM, time series, NLP, uplift/causal basics</p></div>
+        <div><h4 class="font-semibold">Data</h4><p>SQL, dbt basics, Pandas/PySpark, data quality</p></div>
+        <div><h4 class="font-semibold">Ops</h4><p>AWS/Azure, CI/CD, container-friendly code</p></div>
       </div>
     </div>
   </section>
 
-  <!-- 4️⃣ About -->
-  <section class="bg-gray-100 py-10">
+  <!-- About -->
+  <section class="bg-white py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">About</h2>
       <p class="mt-3 text-sm leading-relaxed">
-        M.S. Analytics (Georgia Tech, ’25). B.A. Applied Statistics (UVA, ’24).
+        M.S. Analytics (Georgia Tech, ’25). B.A. Applied Statistics (UVA, ’24).  
         Seeking DS/ML roles where prototypes become durable products yes.
       </p>
     </div>
   </section>
 
-  <footer class="text-center text-xs text-gray-500 py-6">
+  <!-- Contact -->
+  <section id="contact" class="bg-gray-100 py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-8">Contact Me</h2>
+
+      <!-- Contact Info -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="p-6 bg-white rounded-2xl shadow">
+          <div class="text-2xl">✉️</div>
+          <div class="mt-3 text-sm text-gray-600">surven02@gmail.com</div>
+        </div>
+        <div class="p-6 bg-white rounded-2xl shadow">
+          <div class="text-2xl">📍</div>
+          <div class="mt-3 text-sm text-gray-600">Arlington, VA</div>
+        </div>
+        <div class="p-6 bg-white rounded-2xl shadow">
+          <div class="text-2xl">💼</div>
+          <div class="mt-3 text-sm text-gray-600">LinkedIn DM preferred</div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <form
+        id="contact-form"
+        action="https://formspree.io/f/yourFormID"
+        method="POST"
+        class="bg-white rounded-2xl shadow p-6"
+      >
+        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" name="name" placeholder="Name" required
+            class="w-full px-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"/>
+          <input type="email" name="email" placeholder="Email" required
+            class="w-full px-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"/>
+        </div>
+        <textarea name="message" placeholder="Message..." rows="6" required
+          class="w-full mt-4 px-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"></textarea>
+
+        <p id="form-success" class="hidden mt-4 text-green-700 text-sm">Thanks! Your message was sent.</p>
+        <p id="form-error" class="hidden mt-4 text-red-700 text-sm">
+          Sorry—something went wrong. Email me directly at
+          <a class="underline" href="mailto:surven02@gmail.com">surven02@gmail.com</a>.
+        </p>
+
+        <div class="mt-6 flex justify-center">
+          <button type="submit"
+            class="px-6 py-3 bg-gray-900 text-white rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400">
+            Send Message
+          </button>
+        </div>
+
+        <input type="hidden" name="_subject" value="Portfolio Contact — Surya Venkatraman" />
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white text-center text-xs text-gray-500 py-6">
     © <span id="y"></span> Surya Venkatraman
   </footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Contact form handling
+    (function () {
+      const form = document.getElementById('contact-form');
+      const ok = document.getElementById('form-success');
+      const err = document.getElementById('form-error');
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        ok.classList.add('hidden');
+        err.classList.add('hidden');
+        const data = new FormData(form);
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: data
+          });
+          if (res.ok) {
+            form.reset();
+            ok.classList.remove('hidden');
+          } else {
+            err.classList.remove('hidden');
+          }
+        } catch {
+          err.classList.remove('hidden');
+        }
+      });
+    })();
   </script>
 
 </body>
+</html>
