@@ -7,18 +7,22 @@
   <meta name="description" content="Data scientist focused on ML for business impact: NLP, analytics engineering, and decision optimization." />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    /* Prevent anchor jump from hiding under sticky header */
     :root { scroll-behavior: smooth; }
-    section { scroll-margin-top: 84px; } /* matches sticky header height */
+    section { scroll-margin-top: 90px; }
+    body { padding-top: 90px; }
+    .active-link {
+      background-color: #111827;
+      color: white !important;
+    }
   </style>
 </head>
 
 <body class="text-gray-900">
 
-  <!-- Sticky Banner / Nav -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
+  <!-- Sticky, solid white banner -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white border-b shadow">
     <div class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
-      <!-- Left: Identity -->
+      <!-- Left -->
       <div class="flex items-center space-x-3">
         <img src="headshot.jpeg" alt="Surya Venkatraman" class="w-10 h-10 rounded-full object-cover shadow" />
         <div class="leading-tight">
@@ -27,17 +31,17 @@
         </div>
       </div>
 
-      <!-- Right: Nav links -->
+      <!-- Right -->
       <nav class="hidden md:flex items-center gap-4 text-sm">
-        <a href="#aboutme"     class="nav-link px-2 py-1 rounded hover:bg-gray-100">About</a>
-        <a href="#value"       class="nav-link px-2 py-1 rounded hover:bg-gray-100">What I Do</a>
-        <a href="#projects"    class="nav-link px-2 py-1 rounded hover:bg-gray-100">Projects</a>
-        <a href="#skills"      class="nav-link px-2 py-1 rounded hover:bg-gray-100">Skills</a>
-        <a href="#contact"     class="nav-link px-2 py-1 rounded hover:bg-gray-100">Contact</a>
+        <a href="#aboutme"  class="nav-link px-2 py-1 rounded hover:bg-gray-100">About</a>
+        <a href="#value"    class="nav-link px-2 py-1 rounded hover:bg-gray-100">What I Do</a>
+        <a href="#projects" class="nav-link px-2 py-1 rounded hover:bg-gray-100">Projects</a>
+        <a href="#skills"   class="nav-link px-2 py-1 rounded hover:bg-gray-100">Skills</a>
+        <a href="#contact"  class="nav-link px-2 py-1 rounded hover:bg-gray-100">Contact</a>
         <a href="surya_resume.pdf" class="px-3 py-1 rounded bg-gray-900 text-white hover:bg-gray-800">Resume</a>
       </nav>
 
-      <!-- Mobile: simple menu (anchors still work) -->
+      <!-- Mobile dropdown -->
       <div class="md:hidden">
         <select id="mobile-nav" class="text-sm border rounded px-2 py-1 bg-white">
           <option value="#aboutme">About</option>
@@ -50,7 +54,7 @@
     </div>
   </header>
 
-  <!-- 1) Intro / Hero block (kept white) -->
+  <!-- About -->
   <section id="aboutme" class="bg-white py-10">
     <div class="max-w-4xl mx-auto px-6">
       <div class="flex items-center space-x-5">
@@ -69,7 +73,7 @@
     </div>
   </section>
 
-  <!-- 2) Value Prop -->
+  <!-- Value Prop -->
   <section id="value" class="bg-gray-100 py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">What do I do?</h2>
@@ -85,12 +89,11 @@
     </div>
   </section>
 
-  <!-- 3) Featured Projects -->
+  <!-- Featured Projects -->
   <section id="projects" class="bg-white py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">Featured Projects</h2>
       <div class="grid md:grid-cols-2 gap-6 mt-4">
-        <!-- Project 1 -->
         <article class="p-5 bg-gray-50 rounded-2xl shadow">
           <h3 class="font-semibold">COMPAS Recidivism Fairness Analysis</h3>
           <p class="mt-2 text-sm leading-relaxed">
@@ -102,7 +105,6 @@
             <a class="text-sm underline" href="https://github.com/your-username/rlhf-triage">Code</a>
           </div>
         </article>
-        <!-- Project 2 -->
         <article class="p-5 bg-gray-50 rounded-2xl shadow">
           <h3 class="font-semibold">Congressional Campaign Contribution Impact</h3>
           <p class="mt-2 text-sm">
@@ -117,7 +119,7 @@
     </div>
   </section>
 
-  <!-- 4) Skills -->
+  <!-- Skills -->
   <section id="skills" class="bg-gray-100 py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">Skills</h2>
@@ -129,7 +131,7 @@
     </div>
   </section>
 
-  <!-- 5) About / Education -->
+  <!-- About -->
   <section id="about" class="bg-white py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">About</h2>
@@ -140,7 +142,7 @@
     </div>
   </section>
 
-  <!-- 6) Contact -->
+  <!-- Contact -->
   <section id="contact" class="bg-gray-100 py-16">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-3xl font-bold mb-8">Contact Me</h2>
@@ -198,57 +200,35 @@
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Mobile dropdown -> jump
+    // Mobile nav
     document.getElementById('mobile-nav')?.addEventListener('change', (e) => {
       const href = e.target.value;
       if (href) location.hash = href;
     });
 
-    // Smooth scroll (native via CSS). Highlight active link on scroll:
-    const sections = [
-      { id: 'aboutme'  },
-      { id: 'value'    },
-      { id: 'projects' },
-      { id: 'skills'   },
-      { id: 'about'    },
-      { id: 'contact'  },
-    ];
+    // Highlight nav link based on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-    const linkMap = {};
-    document.querySelectorAll('.nav-link').forEach(a => {
-      const id = a.getAttribute('href')?.replace('#','');
-      if (id) linkMap[id] = a;
-    });
+    function activateLink(id) {
+      navLinks.forEach(link => {
+        link.classList.remove('active-link');
+        if (link.getAttribute('href') === '#' + id) {
+          link.classList.add('active-link');
+        }
+      });
+    }
 
-    const active = (id) => {
-      // Clear all
-      Object.values(linkMap).forEach(a => a.classList.remove('bg-gray-900','text-white'));
-      Object.values(linkMap).forEach(a => a.classList.remove('bg-gray-200'));
-      // Highlight current (dark) and lightly mark others on hover
-      if (linkMap[id]) {
-        linkMap[id].classList.add('bg-gray-900','text-white');
-      }
-    };
-
-    // IntersectionObserver to detect which section is in view
     const observer = new IntersectionObserver((entries) => {
-      // pick the entry with largest intersection ratio that's intersecting
       const visible = entries
         .filter(e => e.isIntersecting)
-        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) active(visible.target.id);
-    }, {
-      root: null,
-      rootMargin: "0px 0px -60% 0px", // trigger a bit before center
-      threshold: [0.25, 0.5, 0.75]
-    });
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) activateLink(visible.target.id);
+    }, { root: null, rootMargin: '0px 0px -60% 0px', threshold: [0.25, 0.5, 0.75] });
 
-    sections.forEach(s => {
-      const el = document.getElementById(s.id);
-      if (el) observer.observe(el);
-    });
+    sections.forEach(section => observer.observe(section));
 
-    // Contact form AJAX (Formspree)
+    // Contact form
     (function () {
       const form = document.getElementById('contact-form');
       const ok = document.getElementById('form-success');
