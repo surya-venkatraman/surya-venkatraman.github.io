@@ -6,29 +6,71 @@
   <title>Meet Surya!</title>
   <meta name="description" content="Data scientist focused on ML for business impact: NLP, analytics engineering, and decision optimization." />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Prevent anchor jump from hiding under sticky header */
+    :root { scroll-behavior: smooth; }
+    section { scroll-margin-top: 84px; } /* matches sticky header height */
+  </style>
 </head>
 
 <body class="text-gray-900">
 
-  <!-- Header -->
-  <header class="bg-white">
-    <div class="max-w-4xl mx-auto px-6 py-12 flex items-center space-x-5">
-      <img src="headshot.jpeg" alt="Surya Venkatraman" class="w-20 h-20 rounded-full object-cover shadow" />
-      <div>
-        <h1 class="text-3xl md:text-4xl font-bold">Surya Venkatraman</h1>
-        <p class="mt-1 text-lg">AI/ML · Data Science · Analytics</p>
-        <div class="mt-2 space-x-4">
-          <a class="underline" href="surya_resume.pdf">Resume</a>
-          <a class="underline" href="mailto:surven02@gmail.com">Email</a>
-          <a class="underline" href="https://www.linkedin.com/in/surya-venkatraman">LinkedIn</a>
-          <a class="underline" href="https://github.com/surya-venkatraman">GitHub</a>
+  <!-- Sticky Banner / Nav -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
+    <div class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+      <!-- Left: Identity -->
+      <div class="flex items-center space-x-3">
+        <img src="headshot.jpeg" alt="Surya Venkatraman" class="w-10 h-10 rounded-full object-cover shadow" />
+        <div class="leading-tight">
+          <div class="font-semibold">Surya Venkatraman</div>
+          <div class="text-xs text-gray-600">AI/ML · Data Science · Analytics</div>
         </div>
+      </div>
+
+      <!-- Right: Nav links -->
+      <nav class="hidden md:flex items-center gap-4 text-sm">
+        <a href="#aboutme"     class="nav-link px-2 py-1 rounded hover:bg-gray-100">About</a>
+        <a href="#value"       class="nav-link px-2 py-1 rounded hover:bg-gray-100">What I Do</a>
+        <a href="#projects"    class="nav-link px-2 py-1 rounded hover:bg-gray-100">Projects</a>
+        <a href="#skills"      class="nav-link px-2 py-1 rounded hover:bg-gray-100">Skills</a>
+        <a href="#contact"     class="nav-link px-2 py-1 rounded hover:bg-gray-100">Contact</a>
+        <a href="surya_resume.pdf" class="px-3 py-1 rounded bg-gray-900 text-white hover:bg-gray-800">Resume</a>
+      </nav>
+
+      <!-- Mobile: simple menu (anchors still work) -->
+      <div class="md:hidden">
+        <select id="mobile-nav" class="text-sm border rounded px-2 py-1 bg-white">
+          <option value="#aboutme">About</option>
+          <option value="#value">What I Do</option>
+          <option value="#projects">Projects</option>
+          <option value="#skills">Skills</option>
+          <option value="#contact">Contact</option>
+        </select>
       </div>
     </div>
   </header>
 
-  <!-- Value Prop -->
-  <section class="bg-gray-100 py-10">
+  <!-- 1) Intro / Hero block (kept white) -->
+  <section id="aboutme" class="bg-white py-10">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="flex items-center space-x-5">
+        <img src="headshot.jpeg" alt="Surya Venkatraman" class="w-20 h-20 rounded-full object-cover shadow" />
+        <div>
+          <h1 class="text-3xl md:text-4xl font-bold">Surya Venkatraman</h1>
+          <p class="mt-1 text-lg">AI/ML · Data Science · Analytics</p>
+          <div class="mt-2 space-x-4">
+            <a class="underline" href="surya_resume.pdf">Resume</a>
+            <a class="underline" href="mailto:surven02@gmail.com">Email</a>
+            <a class="underline" href="https://www.linkedin.com/in/surya-venkatraman">LinkedIn</a>
+            <a class="underline" href="https://github.com/surya-venkatraman">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) Value Prop -->
+  <section id="value" class="bg-gray-100 py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">What do I do?</h2>
       <p class="mt-3 leading-relaxed">
@@ -43,8 +85,8 @@
     </div>
   </section>
 
-  <!-- Featured Projects -->
-  <section class="bg-white py-10">
+  <!-- 3) Featured Projects -->
+  <section id="projects" class="bg-white py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">Featured Projects</h2>
       <div class="grid md:grid-cols-2 gap-6 mt-4">
@@ -75,8 +117,8 @@
     </div>
   </section>
 
-  <!-- Skills -->
-  <section class="bg-gray-100 py-10">
+  <!-- 4) Skills -->
+  <section id="skills" class="bg-gray-100 py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">Skills</h2>
       <div class="mt-3 grid md:grid-cols-3 gap-4 text-sm">
@@ -87,8 +129,8 @@
     </div>
   </section>
 
-  <!-- About -->
-  <section class="bg-white py-10">
+  <!-- 5) About / Education -->
+  <section id="about" class="bg-white py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">About</h2>
       <p class="mt-3 text-sm leading-relaxed">
@@ -98,12 +140,11 @@
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- 6) Contact -->
   <section id="contact" class="bg-gray-100 py-16">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-3xl font-bold mb-8">Contact Me</h2>
 
-      <!-- Contact Info -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div class="p-6 bg-white rounded-2xl shadow">
           <div class="text-2xl">✉️</div>
@@ -119,22 +160,16 @@
         </div>
       </div>
 
-      <!-- Contact Form -->
-      <form
-        id="contact-form"
-        action="https://formspree.io/f/yourFormID"
-        method="POST"
-        class="bg-white rounded-2xl shadow p-6"
-      >
+      <form id="contact-form" action="https://formspree.io/f/yourFormID" method="POST" class="bg-white rounded-2xl shadow p-6">
         <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input type="text" name="name" placeholder="Name" required
-            class="w-full px-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"/>
+                 class="w-full px-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"/>
           <input type="email" name="email" placeholder="Email" required
-            class="w-full px-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"/>
+                 class="w-full px-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"/>
         </div>
         <textarea name="message" placeholder="Message..." rows="6" required
-          class="w-full mt-4 px-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"></textarea>
+                  class="w-full mt-4 px-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"></textarea>
 
         <p id="form-success" class="hidden mt-4 text-green-700 text-sm">Thanks! Your message was sent.</p>
         <p id="form-error" class="hidden mt-4 text-red-700 text-sm">
@@ -144,7 +179,7 @@
 
         <div class="mt-6 flex justify-center">
           <button type="submit"
-            class="px-6 py-3 bg-gray-900 text-white rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                  class="px-6 py-3 bg-gray-900 text-white rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400">
             Send Message
           </button>
         </div>
@@ -160,14 +195,64 @@
   </footer>
 
   <script>
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Contact form handling
+    // Mobile dropdown -> jump
+    document.getElementById('mobile-nav')?.addEventListener('change', (e) => {
+      const href = e.target.value;
+      if (href) location.hash = href;
+    });
+
+    // Smooth scroll (native via CSS). Highlight active link on scroll:
+    const sections = [
+      { id: 'aboutme'  },
+      { id: 'value'    },
+      { id: 'projects' },
+      { id: 'skills'   },
+      { id: 'about'    },
+      { id: 'contact'  },
+    ];
+
+    const linkMap = {};
+    document.querySelectorAll('.nav-link').forEach(a => {
+      const id = a.getAttribute('href')?.replace('#','');
+      if (id) linkMap[id] = a;
+    });
+
+    const active = (id) => {
+      // Clear all
+      Object.values(linkMap).forEach(a => a.classList.remove('bg-gray-900','text-white'));
+      Object.values(linkMap).forEach(a => a.classList.remove('bg-gray-200'));
+      // Highlight current (dark) and lightly mark others on hover
+      if (linkMap[id]) {
+        linkMap[id].classList.add('bg-gray-900','text-white');
+      }
+    };
+
+    // IntersectionObserver to detect which section is in view
+    const observer = new IntersectionObserver((entries) => {
+      // pick the entry with largest intersection ratio that's intersecting
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) active(visible.target.id);
+    }, {
+      root: null,
+      rootMargin: "0px 0px -60% 0px", // trigger a bit before center
+      threshold: [0.25, 0.5, 0.75]
+    });
+
+    sections.forEach(s => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+
+    // Contact form AJAX (Formspree)
     (function () {
       const form = document.getElementById('contact-form');
       const ok = document.getElementById('form-success');
       const err = document.getElementById('form-error');
-
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
         ok.classList.add('hidden');
@@ -179,15 +264,9 @@
             headers: { 'Accept': 'application/json' },
             body: data
           });
-          if (res.ok) {
-            form.reset();
-            ok.classList.remove('hidden');
-          } else {
-            err.classList.remove('hidden');
-          }
-        } catch {
-          err.classList.remove('hidden');
-        }
+          if (res.ok) { form.reset(); ok.classList.remove('hidden'); }
+          else { err.classList.remove('hidden'); }
+        } catch { err.classList.remove('hidden'); }
       });
     })();
   </script>
