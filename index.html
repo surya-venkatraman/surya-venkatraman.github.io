@@ -1,336 +1,635 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meet Surya!</title>
-  <meta name="description" content="Data scientist focused on ML for business impact: NLP, analytics engineering, and decision optimization." />
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name | Portfolio</title>
+  <meta name="description" content="Portfolio website for Your Name." />
 
   <style>
-    :root { scroll-behavior: smooth; }
-    section { scroll-margin-top: 90px; }
-    body { padding-top: 90px; }
+    :root{
+      --bg:#0b0f1a;
+      --panel:#0f1629;
+      --panel2:#0c1222;
+      --text:#e8eefc;
+      --muted:#a9b6d6;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
 
-    .active-link {
-      background-color: #111827;
-      color: white !important;
+      --accent:#7c5cff;
+      --accent2:#22c55e;
+      --max:1100px;
+
+      --navH:74px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 10% 10%, rgba(124,92,255,.25), transparent 60%),
+                  radial-gradient(900px 500px at 90% 20%, rgba(34,197,94,.20), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,26,.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner{
+      height: var(--navH);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 18px rgba(124,92,255,.45);
+    }
+
+    .nav-links{
+      display:flex; align-items:center; gap: 8px;
+    }
+    .nav-links a{
+      padding:10px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight:600;
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: .15s ease;
+    }
+    .nav-links a:hover{
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.08);
+    }
+    .nav-links a.active{
+      color: var(--text);
+      background: rgba(124,92,255,.18);
+      border-color: rgba(124,92,255,.35);
+    }
+    .resume{
+      margin-left: 6px;
+      padding:10px 14px !important;
+      color: var(--text) !important;
+      background: linear-gradient(135deg, rgba(124,92,255,.85), rgba(34,197,94,.75));
+      border: 1px solid rgba(255,255,255,.15) !important;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+    .resume:hover{filter: brightness(1.05)}
+    .menu-btn{
+      display:none;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      border-radius: 12px;
+      padding:10px 12px;
+      cursor:pointer;
+    }
+
+    /* MOBILE MENU */
+    .mobile{
+      display:none;
+      padding: 10px 0 16px;
+    }
+    .mobile a{
+      display:block;
+      padding: 12px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+    .mobile a:hover{background: rgba(255,255,255,.06); color: var(--text)}
+    .mobile a.active{
+      color: var(--text);
+      background: rgba(124,92,255,.18);
+      border-color: rgba(124,92,255,.35);
+    }
+    .mobile .resume{margin-top:8px; text-align:center}
+
+    /* HERO */
+    header.hero{
+      padding: 62px 0 10px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-left{padding: 28px}
+    .hero-kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+    }
+    .hero h1{
+      margin: 14px 0 10px;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height:1.08;
+      letter-spacing:-.8px;
+    }
+    .hero p{
+      margin:0;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 60ch;
+    }
+    .hero-actions{
+      display:flex;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 700;
+      transition: .15s ease;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08)}
+    .btn.primary{
+      border-color: rgba(124,92,255,.35);
+      background: rgba(124,92,255,.18);
+    }
+
+    .hero-right{
+      padding: 22px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .stat{
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .stat .label{color: var(--muted); font-weight:700; font-size:12px; letter-spacing:.4px; text-transform:uppercase}
+    .stat .value{font-size: 22px; font-weight: 800; margin-top:6px}
+    .stat .sub{color: var(--muted); font-size: 13px; margin-top:6px}
+
+    /* SECTIONS */
+    section{
+      scroll-margin-top: calc(var(--navH) + 12px);
+      padding: 50px 0;
+    }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    h2{
+      margin:0;
+      font-size: 24px;
+      letter-spacing:-.3px;
+    }
+    .section-head p{
+      margin:0;
+      color: var(--muted);
+      max-width: 60ch;
+      font-size: 14px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .tile{
+      padding: 18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .tile h3{margin:0 0 6px; font-size: 16px}
+    .tile p{margin:0; color: var(--muted); font-size: 14px}
+
+    .project{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .project .meta{
+      display:flex; gap:8px; flex-wrap:wrap;
+    }
+    .pill{
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .project a{
+      color: var(--text);
+      font-weight: 800;
+      display:inline-flex;
+      gap: 8px;
+      align-items:center;
+    }
+    .project a:hover{opacity:.92}
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+    .skill{
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* FOOTER */
+    footer{
+      padding: 36px 0 60px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.12);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns: 1fr}
+      .grid-3{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns: 1fr}
+    }
+    @media (max-width: 760px){
+      .nav-links{display:none}
+      .menu-btn{display:block}
+      .mobile{display:block}
     }
   </style>
 </head>
 
-<body class="text-gray-900">
+<body>
+  <!-- NAV -->
+  <nav class="nav" aria-label="Primary">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a class="brand" href="#top" data-link="top">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Your Name</span>
+        </a>
 
-  <!-- Sticky, solid white banner -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-white border-b shadow">
-    <div class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
-      <!-- Left -->
-      <div class="flex items-center space-x-3">
-        <img src="headshot.jpeg" alt="Surya Venkatraman" class="w-10 h-10 rounded-full object-cover shadow" />
-        <div class="leading-tight">
-          <div class="font-semibold">Surya Venkatraman</div>
-          <div class="text-xs text-gray-600">AI/ML · Data Science · Analytics</div>
+        <div class="nav-links" id="desktopLinks">
+          <a href="#what-i-do" data-link="what-i-do">What I Do</a>
+          <a href="#projects" data-link="projects">Projects</a>
+          <a href="#skills" data-link="skills">Skills</a>
+          <a href="#about" data-link="about">About</a>
+          <a href="#contact" data-link="contact">Contact</a>
+          <a class="resume" href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noopener">Resume</a>
         </div>
+
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">
+          Menu ☰
+        </button>
       </div>
 
-      <!-- Right (Desktop) -->
-      <nav class="hidden md:flex items-center gap-4 text-sm">
-        <a href="#value"    class="nav-link px-2 py-1 rounded hover:bg-gray-100">What I Do</a>
-        <a href="#projects" class="nav-link px-2 py-1 rounded hover:bg-gray-100">Projects</a>
-        <a href="#skills"   class="nav-link px-2 py-1 rounded hover:bg-gray-100">Skills</a>
-        <a href="#about"    class="nav-link px-2 py-1 rounded hover:bg-gray-100">About</a>
-        <a href="#contact"  class="nav-link px-2 py-1 rounded hover:bg-gray-100">Contact</a>
-        <a href="surya_resume.pdf" class="px-3 py-1 rounded bg-gray-900 text-white hover:bg-gray-800">Resume</a>
-      </nav>
+      <!-- Mobile -->
+      <div class="mobile" id="mobileMenu" hidden>
+        <a href="#what-i-do" data-link="what-i-do">What I Do</a>
+        <a href="#projects" data-link="projects">Projects</a>
+        <a href="#skills" data-link="skills">Skills</a>
+        <a href="#about" data-link="about">About</a>
+        <a href="#contact" data-link="contact">Contact</a>
+        <a class="resume" href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </nav>
 
-      <!-- Mobile dropdown -->
-      <div class="md:hidden">
-        <select id="mobile-nav" class="text-sm border rounded px-2 py-1 bg-white">
-          <option value="#value">What I Do</option>
-          <option value="#projects">Projects</option>
-          <option value="#skills">Skills</option>
-          <option value="#about">About</option>
-          <option value="#contact">Contact</option>
-        </select>
+  <!-- TOP ANCHOR -->
+  <div id="top"></div>
+
+  <!-- HERO / ABOUT ME (top content, not in nav) -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="card hero-left">
+          <div class="hero-kicker">Data / Software • Portfolio</div>
+          <h1>Your Name<br/>Building useful things with data + code.</h1>
+          <p>
+            Replace this with a 1–2 sentence summary: what you do, what you’re good at, and what you’re looking for.
+            Example: “MS Analytics student building ML + data products. Interested in data engineering, analytics, and applied AI.”
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">View Projects →</a>
+            <a class="btn" href="mailto:youremail@example.com">Email Me</a>
+            <a class="btn" href="https://www.linkedin.com/in/YOURHANDLE" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://github.com/YOURHANDLE" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <div class="card hero-right">
+          <div class="stat">
+            <div class="label">Focus</div>
+            <div class="value">Analytics + ML</div>
+            <div class="sub">Dashboards, pipelines, models, and automation.</div>
+          </div>
+          <div class="stat">
+            <div class="label">Stack</div>
+            <div class="value">Python • SQL</div>
+            <div class="sub">Add your real tools: Azure, AWS, Power BI, etc.</div>
+          </div>
+          <div class="stat">
+            <div class="label">Open to</div>
+            <div class="value">New roles</div>
+            <div class="sub">Data scientist / analyst / engineer (edit this).</div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- Hero / Top intro (NOT in nav tracking) -->
-  <section id="hero" class="bg-white py-10">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="flex items-center space-x-5">
-        <img src="headshot.jpeg" alt="Surya Venkatraman" class="w-20 h-20 rounded-full object-cover shadow" />
+  <!-- WHAT I DO -->
+  <section id="what-i-do" data-section>
+    <div class="wrap">
+      <div class="section-head">
         <div>
-          <h1 class="text-3xl md:text-4xl font-bold">Surya Venkatraman</h1>
-          <p class="mt-1 text-lg">AI/ML · Data Science · Analytics</p>
-          <div class="mt-2 space-x-4">
-            <a class="underline" href="surya_resume.pdf">Resume</a>
-            <a class="underline" href="mailto:surven02@gmail.com">Email</a>
-            <a class="underline" href="https://www.linkedin.com/in/surya-venkatraman">LinkedIn</a>
-            <a class="underline" href="https://github.com/surya-venkatraman">GitHub</a>
+          <h2>What I Do</h2>
+          <p>3–6 bullets of your strongest value. Keep it outcomes-first.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="tile">
+          <h3>Data Products</h3>
+          <p>Build dashboards & tools that make decisions easier and faster.</p>
+        </div>
+        <div class="tile">
+          <h3>Automation</h3>
+          <p>Write scripts/pipelines that cut repetitive work and reduce errors.</p>
+        </div>
+        <div class="tile">
+          <h3>Applied ML</h3>
+          <p>Prototype models, evaluate impact, and ship practical solutions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" data-section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Featured Projects</h2>
+          <p>Pick 3–5. Each: what it is, what tech, what impact, links.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="tile project">
+          <div class="meta">
+            <span class="pill">Python</span>
+            <span class="pill">SQL</span>
+            <span class="pill">ETL</span>
+          </div>
+          <h3>Project Title #1</h3>
+          <p>One sentence: what it does + why it matters. Add a measurable result if you can.</p>
+          <div>
+            <a href="https://github.com/YOURHANDLE/REPO" target="_blank" rel="noopener">GitHub Repo →</a>
+          </div>
+        </div>
+
+        <div class="tile project">
+          <div class="meta">
+            <span class="pill">Power BI</span>
+            <span class="pill">Analytics</span>
+          </div>
+          <h3>Project Title #2</h3>
+          <p>One sentence: what it does + why it matters. Mention dataset / audience.</p>
+          <div>
+            <a href="https://your-demo-link.com" target="_blank" rel="noopener">Live Demo →</a>
+          </div>
+        </div>
+
+        <div class="tile project">
+          <div class="meta">
+            <span class="pill">ML</span>
+            <span class="pill">NLP</span>
+          </div>
+          <h3>Project Title #3</h3>
+          <p>One sentence: problem → approach → result. Keep it crisp.</p>
+          <div>
+            <a href="https://github.com/YOURHANDLE/REPO" target="_blank" rel="noopener">Read More →</a>
+          </div>
+        </div>
+
+        <div class="tile project">
+          <div class="meta">
+            <span class="pill">Azure</span>
+            <span class="pill">RAG</span>
+          </div>
+          <h3>Project Title #4</h3>
+          <p>One sentence: what you built + what improved (speed, accuracy, cost, time saved).</p>
+          <div>
+            <a href="https://github.com/YOURHANDLE/REPO" target="_blank" rel="noopener">GitHub Repo →</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Value Prop -->
-  <section id="value" class="bg-gray-100 py-10">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-2xl font-semibold">What do I do?</h2>
-      <p class="mt-3 leading-relaxed">
-        I build ML and analytics products that ship: NLP for document search, forecasting for planning,
-        and decision support dashboards. I care about clarity, reliability, and measurable lift.
-      </p>
-      <ul class="list-disc ml-6 mt-3 space-y-1">
-        <li>Search/chat over enterprise content (RAG, embeddings, evals)</li>
-        <li>Productionized pipelines (Python, SQL, cloud)</li>
-        <li>Stakeholder-first storytelling (Power BI/Tableau, notebooks)</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Featured Projects -->
-  <section id="projects" class="bg-white py-10">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-2xl font-semibold">Featured Projects</h2>
-      <div class="grid md:grid-cols-2 gap-6 mt-4">
-        <article class="p-5 bg-gray-50 rounded-2xl shadow">
-          <h3 class="font-semibold">COMPAS Recidivism Fairness Analysis</h3>
-          <p class="mt-2 text-sm leading-relaxed">
-            Fine-tuned classifier + RLHF to route insurance emails; cut SLA processing time by 40%.
-          </p>
-          <p class="mt-2 text-xs">Python · scikit-learn · AWS Lambda · OpenAI API</p>
-          <div class="mt-3 space-x-3">
-            <a class="text-sm underline" href="projects/rlhf-triage.html">Case study</a>
-            <a class="text-sm underline" href="https://github.com/your-username/rlhf-triage">Code</a>
-          </div>
-        </article>
-
-        <article class="p-5 bg-gray-50 rounded-2xl shadow">
-          <h3 class="font-semibold">Congressional Campaign Contribution Impact</h3>
-          <p class="mt-2 text-sm">
-            Enterprise search bot; reduced document lookup time by 52% for 1K+ employees.
-          </p>
-          <p class="mt-2 text-xs">Azure AI Search · RBAC · Eval harness</p>
-          <div class="mt-3 space-x-3">
-            <a class="text-sm underline" href="projects/sharepoint-rag.html">Case study</a>
-          </div>
-        </article>
+  <!-- SKILLS -->
+  <section id="skills" data-section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Skills</h2>
+          <p>Keep it believable. No laundry list — show what you actually use.</p>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Skills -->
-  <section id="skills" class="bg-gray-100 py-10">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-2xl font-semibold">Skills</h2>
-      <div class="mt-3 grid md:grid-cols-3 gap-4 text-sm">
-        <div>
-          <h4 class="font-semibold">Modeling</h4>
-          <p>Tree-based, linear/GLM, time series, NLP, uplift/causal basics</p>
-        </div>
-        <div>
-          <h4 class="font-semibold">Data</h4>
-          <p>SQL, dbt basics, Pandas/PySpark, data quality</p>
-        </div>
-        <div>
-          <h4 class="font-semibold">Ops</h4>
-          <p>AWS/Azure, CI/CD, container-friendly code</p>
+      <div class="tile">
+        <div class="skills">
+          <span class="skill">Python</span>
+          <span class="skill">SQL</span>
+          <span class="skill">R</span>
+          <span class="skill">Power BI</span>
+          <span class="skill">Pandas</span>
+          <span class="skill">scikit-learn</span>
+          <span class="skill">Azure</span>
+          <span class="skill">Git</span>
+          <span class="skill">Docker</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About (THIS is the one in nav) -->
-  <section id="about" class="bg-white py-10">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-2xl font-semibold">About</h2>
-      <p class="mt-3 text-sm leading-relaxed">
-        M.S. Analytics (Georgia Tech, ’25). B.A. Applied Statistics (UVA, ’24).
-        Seeking DS/ML roles where prototypes become durable products.
-      </p>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="bg-gray-100 py-16">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-8">Contact Me</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="p-6 bg-white rounded-2xl shadow">
-          <div class="text-2xl">✉️</div>
-          <div class="mt-3 text-sm text-gray-600">surven02@gmail.com</div>
-        </div>
-        <div class="p-6 bg-white rounded-2xl shadow">
-          <div class="text-2xl">📍</div>
-          <div class="mt-3 text-sm text-gray-600">Arlington, VA</div>
-        </div>
-        <div class="p-6 bg-white rounded-2xl shadow">
-          <div class="text-2xl">💼</div>
-          <div class="mt-3 text-sm text-gray-600">LinkedIn DM preferred</div>
+  <!-- ABOUT -->
+  <section id="about" data-section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>About</h2>
+          <p>Short story + credibility. 6–10 lines max.</p>
         </div>
       </div>
 
-      <form id="contact-form" action="https://formspree.io/f/yourFormID" method="POST" class="bg-white rounded-2xl shadow p-6">
-        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" name="name" placeholder="Name" required
-                 class="w-full px-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"/>
-          <input type="email" name="email" placeholder="Email" required
-                 class="w-full px-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"/>
-        </div>
-        <textarea name="message" placeholder="Message..." rows="6" required
-                  class="w-full mt-4 px-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"></textarea>
-
-        <p id="form-success" class="hidden mt-4 text-green-700 text-sm">Thanks! Your message was sent.</p>
-        <p id="form-error" class="hidden mt-4 text-red-700 text-sm">
-          Sorry—something went wrong. Email me directly at
-          <a class="underline" href="mailto:surven02@gmail.com">surven02@gmail.com</a>.
+      <div class="tile">
+        <p style="margin:0; color: var(--muted); font-size: 15px;">
+          Write 1–2 paragraphs: what you’re studying/doing, what you enjoy building, and what roles you want.
+          Add 1–2 concrete highlights (internship, big project, impact, etc.). Keep it simple and human.
         </p>
-
-        <div class="mt-6 flex justify-center">
-          <button type="submit"
-                  class="px-6 py-3 bg-gray-900 text-white rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400">
-            Send Message
-          </button>
-        </div>
-
-        <input type="hidden" name="_subject" value="Portfolio Contact — Surya Venkatraman" />
-      </form>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-white text-center text-xs text-gray-500 py-6">
-    © <span id="y"></span> Surya Venkatraman
+  <!-- CONTACT -->
+  <section id="contact" data-section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p>Make it easy for someone to reach you in 10 seconds.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="tile">
+          <h3 style="margin-top:0">Email</h3>
+          <p style="color:var(--muted); margin-top:0">Fastest way to reach me.</p>
+          <a class="btn primary" href="mailto:youremail@example.com">youremail@example.com</a>
+        </div>
+
+        <div class="tile">
+          <h3 style="margin-top:0">Links</h3>
+          <p style="color:var(--muted); margin-top:0">GitHub, LinkedIn, and resume.</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <a class="btn" href="https://github.com/YOURHANDLE" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/YOURHANDLE" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn primary" href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noopener">Resume</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+        <div>© <span id="year"></span> Your Name</div>
+        <div>Built with plain HTML/CSS/JS • Hosted on GitHub Pages</div>
+      </div>
+    </div>
   </footer>
 
-<script>
-  // Footer year
-  document.getElementById('y').textContent = new Date().getFullYear();
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Mobile nav
-  document.getElementById('mobile-nav')?.addEventListener('change', (e) => {
-    const href = e.target.value;
-    if (href) location.hash = href;
-  });
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-  const header = document.querySelector('header');
-  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
-
-  // IDs to track in the SAME order as your nav
-  const trackedIds = navLinks
-    .map(a => a.getAttribute('href'))
-    .filter(h => h && h.startsWith('#'))
-    .map(h => h.slice(1));
-
-  const sections = trackedIds
-    .map(id => document.getElementById(id))
-    .filter(Boolean);
-
-  const defaultId = trackedIds[0] || null;        // "What I Do"
-  const lastId = trackedIds[trackedIds.length-1]; // "Contact"
-
-  let currentActiveId = null;
-  let ticking = false;
-
-  function headerHeight() {
-    return Math.ceil(header?.getBoundingClientRect().height || 90);
-  }
-
-  function setActive(id) {
-    if (!id || id === currentActiveId) return;
-    currentActiveId = id;
-    navLinks.forEach(a => {
-      a.classList.toggle('active-link', a.getAttribute('href') === `#${id}`);
+    menuBtn.addEventListener("click", () => {
+      const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
+      menuBtn.setAttribute("aria-expanded", String(!isOpen));
+      mobileMenu.hidden = isOpen;
     });
-  }
 
-  function computeActive() {
-    const marker = headerHeight() + 12; // marker line under header (px from top)
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        menuBtn.setAttribute("aria-expanded", "false");
+        mobileMenu.hidden = true;
+      });
+    });
 
-    // If we're basically at the bottom, force last section (prevents weird end-of-page states)
-    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
-    if (nearBottom) {
-      setActive(lastId);
-      return;
+    // Active link highlighting (stable, non-glitchy)
+    const sections = [...document.querySelectorAll("[data-section]")];
+
+    const allNavLinks = [
+      ...document.querySelectorAll("#desktopLinks a[data-link]"),
+      ...document.querySelectorAll("#mobileMenu a[data-link]")
+    ];
+
+    function setActive(id){
+      allNavLinks.forEach(a => {
+        a.classList.toggle("active", a.getAttribute("data-link") === id);
+      });
     }
 
-    // Find the section whose rect contains the marker line:
-    // rect.top <= marker < rect.bottom
-    for (const s of sections) {
-      const r = s.getBoundingClientRect();
-      if (r.top <= marker && r.bottom > marker) {
-        setActive(s.id);
-        return;
+    // Choose a window inside the viewport where a section counts as "active".
+    // Using a middle band prevents the "jumping backward" effect.
+    const observer = new IntersectionObserver((entries) => {
+      // Find entries that are intersecting; pick the one with greatest intersection ratio
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio);
+
+      if (visible.length > 0) {
+        setActive(visible[0].target.id);
       }
-    }
-
-    // If marker isn't inside any tracked section:
-    // - Above the first tracked section -> default
-    // - Between sections (rare) -> choose the closest NEXT section by top
-    const firstRect = sections[0]?.getBoundingClientRect();
-    if (firstRect && firstRect.top > marker) {
-      setActive(defaultId);
-      return;
-    }
-
-    // Otherwise pick the last section whose top is above the marker (safe fallback)
-    let fallback = defaultId;
-    for (const s of sections) {
-      const r = s.getBoundingClientRect();
-      if (r.top <= marker) fallback = s.id;
-      else break;
-    }
-    setActive(fallback);
-  }
-
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      computeActive();
-      ticking = false;
+    }, {
+      root: null,
+      threshold: [0.15, 0.25, 0.35, 0.5, 0.65],
+      rootMargin: "-35% 0px -55% 0px"
+      // rootMargin creates a "band" centered in the viewport:
+      // active changes only when a section's content enters that band.
     });
-  }
 
-  // Init + listeners
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  window.addEventListener('load', onScroll);
-  onScroll();
+    sections.forEach(sec => observer.observe(sec));
 
-  // Contact form (your original)
-  (function () {
-    const form = document.getElementById('contact-form');
-    const ok = document.getElementById('form-success');
-    const err = document.getElementById('form-error');
-    if (!form) return;
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      ok.classList.add('hidden');
-      err.classList.add('hidden');
-
-      const data = new FormData(form);
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: data
-        });
-        if (res.ok) { form.reset(); ok.classList.remove('hidden'); }
-        else { err.classList.remove('hidden'); }
-      } catch {
-        err.classList.remove('hidden');
-      }
-    });
-  })();
-</script>
-
-
+    // On load, default active to first section (What I Do)
+    window.addEventListener("load", () => setActive("what-i-do"));
+  </script>
 </body>
 </html>
