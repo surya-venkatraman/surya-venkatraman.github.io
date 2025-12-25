@@ -65,6 +65,7 @@
     }
     .navlinks::-webkit-scrollbar{ height:8px; }
     .navlinks::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.18); border-radius:999px; }
+
     .btn{
       display:inline-flex;
       align-items:center;
@@ -79,6 +80,7 @@
       font-size: 14px;
       transition: transform .08s ease, background .2s ease, border-color .2s ease;
       user-select:none;
+      cursor:pointer;
     }
     .btn:hover{
       background: rgba(31, 41, 55, 0.9);
@@ -150,6 +152,14 @@
       border: 1px solid rgba(255,255,255,0.10);
       padding: 6px 10px;
       border-radius: 999px;
+    }
+
+    /* ✅ Card actions row (keeps grid intact; no layout hacks) */
+    .card .actions{
+      margin-top: 12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
     /* Skills list */
@@ -226,7 +236,6 @@
     <section id="projects">
       <h2>Projects</h2>
 
-    <!-------------->
       <div class="grid">
         <div class="card">
           <h3>COMPAS Recidivism Model</h3>
@@ -239,8 +248,13 @@
             <span class="chip">SQL</span>
             <span class="chip">Power BI</span>
           </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/yourusername/compas-recidivism" target="_blank" rel="noopener">
+              GitHub Repo
+            </a>
+          </div>
         </div>
-    <!-------------->
+
         <div class="card">
           <h3>Impact of Congressional Campaign Contributions</h3>
           <p class="muted">
@@ -251,6 +265,11 @@
             <span class="chip">Machine Learning</span>
             <span class="chip">Pandas</span>
             <span class="chip">APIs</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/yourusername/campaign-contributions" target="_blank" rel="noopener">
+              GitHub Repo
+            </a>
           </div>
         </div>
 
@@ -265,6 +284,11 @@
             <span class="chip">SQL</span>
             <span class="chip">Power BI</span>
           </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/yourusername/enterprise-chatbot" target="_blank" rel="noopener">
+              GitHub Repo
+            </a>
+          </div>
         </div>
 
         <div class="card">
@@ -278,8 +302,12 @@
             <span class="chip">SQL</span>
             <span class="chip">Power BI</span>
           </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/yourusername/syllabi-roadmap" target="_blank" rel="noopener">
+              GitHub Repo
+            </a>
+          </div>
         </div>
-        
       </div>
     </section>
 
