@@ -8,13 +8,9 @@
     :root{
       --bg:#0b0f19;
       --panel:#111827;
-      --panel2:#0f172a;
       --text:#e5e7eb;
       --muted:#94a3b8;
       --border:rgba(255,255,255,0.10);
-      --link:#e5e7eb;
-      --linkHover:#ffffff;
-      --chip:#1f2937;
       --shadow: 0 10px 30px rgba(0,0,0,0.35);
       --radius: 16px;
     }
@@ -22,7 +18,7 @@
     html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background: radial-gradient(1200px 600px at 20% 0%, rgba(59,130,246,0.18), transparent 60%),
                   radial-gradient(900px 500px at 90% 20%, rgba(236,72,153,0.14), transparent 55%),
                   var(--bg);
@@ -65,6 +61,7 @@
     }
     .navlinks::-webkit-scrollbar{ height:8px; }
     .navlinks::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.18); border-radius:999px; }
+
     .btn{
       display:inline-flex;
       align-items:center;
@@ -72,7 +69,7 @@
       padding:10px 12px;
       border:1px solid var(--border);
       background: rgba(17, 24, 39, 0.7);
-      color: var(--link);
+      color: #e5e7eb;
       text-decoration:none;
       border-radius: 999px;
       white-space:nowrap;
@@ -83,7 +80,6 @@
     .btn:hover{
       background: rgba(31, 41, 55, 0.9);
       border-color: rgba(255,255,255,0.18);
-      color: var(--linkHover);
     }
     .btn:active{ transform: translateY(1px); }
 
@@ -95,9 +91,11 @@
       background: rgba(59,130,246,0.26);
       border-color: rgba(59,130,246,0.55);
     }
+
+    /* ✅ Active nav button (highlight) */
     .btn.active{
       background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.35);
+      border-color: rgba(255,255,255,0.40);
       box-shadow: 0 0 0 4px rgba(255,255,255,0.08);
     }
 
@@ -114,19 +112,13 @@
       padding: 22px;
       box-shadow: var(--shadow);
       margin: 18px 0;
+      scroll-margin-top: 86px; /* prevents header covering anchors */
     }
 
-    /* Prevent the sticky header from covering anchor targets */
-    section{ scroll-margin-top: 86px; }
-
-    h2{
-      margin: 0 0 10px 0;
-      font-size: 20px;
-    }
-    p{ margin: 10px 0; color: var(--text); }
+    h2{ margin: 0 0 10px 0; font-size: 20px; }
+    p{ margin: 10px 0; }
     .muted{ color: var(--muted); }
 
-    /* Project cards */
     .grid{
       display:grid;
       grid-template-columns: 1fr;
@@ -135,6 +127,7 @@
     @media (min-width: 780px){
       .grid{ grid-template-columns: 1fr 1fr; }
     }
+
     .card{
       background: rgba(15, 23, 42, 0.65);
       border: 1px solid var(--border);
@@ -142,6 +135,7 @@
       padding: 16px;
     }
     .card h3{ margin: 0 0 8px 0; font-size: 16px; }
+
     .chips{
       display:flex;
       flex-wrap:wrap;
@@ -150,21 +144,18 @@
     }
     .chip{
       font-size: 12px;
-      color: var(--text);
       background: rgba(31, 41, 55, 0.8);
       border: 1px solid rgba(255,255,255,0.10);
       padding: 6px 10px;
       border-radius: 999px;
     }
 
-    /* Skills list */
     .skills{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
     }
 
-    /* Contact form */
     form{
       display:grid;
       gap: 10px;
@@ -196,7 +187,6 @@
 </head>
 
 <body>
-  <!-- Top banner -->
   <header>
     <div class="nav">
       <div class="brand">Surya Venkatraman</div>
@@ -206,28 +196,21 @@
         <a class="btn" href="#projects">Projects</a>
         <a class="btn" href="#skills">Skills</a>
         <a class="btn" href="#contact">Contact</a>
-
-        <!-- Put resume.pdf in the same folder as this HTML file -->
         <a class="btn primary" href="resume.pdf" download>Resume</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- About -->
     <section id="about">
       <h2>About</h2>
       <p>
-        Mock text: I’m Surya Venkatraman. I build data-driven products and analytics solutions, turning messy
-        data into clear decisions. I like shipping practical tools, automating workflows, and presenting results
-        in a way that makes sense to real people.
+        Mock text: I’m Surya Venkatraman. I build data-driven products and analytics solutions, turning messy data into
+        clear decisions.
       </p>
-      <p class="muted">
-        Replace this with your real bio later. Keep it 3–5 lines max.
-      </p>
+      <p class="muted">Replace this with your real bio later. Keep it 3–5 lines max.</p>
     </section>
 
-    <!-- Projects -->
     <section id="projects">
       <h2>Projects</h2>
       <div class="grid">
@@ -235,7 +218,7 @@
           <h3>Project One</h3>
           <p class="muted">
             Mock description: Built a dashboard that reduced reporting time from days to minutes by automating data
-            cleaning, modeling, and visualization.
+            cleaning and visualization.
           </p>
           <div class="chips">
             <span class="chip">Python</span>
@@ -247,8 +230,7 @@
         <div class="card">
           <h3>Project Two</h3>
           <p class="muted">
-            Mock description: Created an ML prototype that classifies customer issues and routes them to the right team,
-            improving triage speed and consistency.
+            Mock description: Created an ML prototype that classifies customer issues and routes them to the right team.
           </p>
           <div class="chips">
             <span class="chip">Machine Learning</span>
@@ -259,7 +241,6 @@
       </div>
     </section>
 
-    <!-- Skills -->
     <section id="skills">
       <h2>Skills</h2>
       <div class="skills">
@@ -271,15 +252,11 @@
         <span class="chip">ETL / Data Pipelines</span>
         <span class="chip">Machine Learning</span>
       </div>
-      <p class="muted" style="margin-top:12px;">
-        Keep this short and scannable.
-      </p>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
       <h2>Contact</h2>
-      <p class="muted">Mock form (this won’t send anywhere yet without a backend).</p>
+      <p class="muted">Mock form (won’t send anywhere yet without a backend).</p>
 
       <form>
         <div>
@@ -297,7 +274,8 @@
           <textarea id="message" name="message" placeholder="Write your message..."></textarea>
         </div>
 
-        <button class="btn primary" type="button" onclick="alert('Hook this up later (Formspree / Netlify Forms / backend).')">
+        <button class="btn primary" type="button"
+          onclick="alert('Hook this up later (Formspree / Netlify Forms / backend).')">
           Send
         </button>
       </form>
@@ -309,70 +287,101 @@
   </footer>
 
   <script>
-    // tiny, non-glitchy script just for the footer year
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-  <script>
-  const header = document.querySelector("header");
-  const navLinks = Array.from(document.querySelectorAll('.navlinks a[href^="#"]'));
-  const sections = navLinks
-    .map(a => document.querySelector(a.getAttribute("href")))
-    .filter(Boolean);
 
-  let activeId = null;
+    // ✅ Scrollspy highlight (stable + non-glitchy)
+    document.addEventListener("DOMContentLoaded", () => {
+      const header = document.querySelector("header");
+      const navLinks = Array.from(document.querySelectorAll('.navlinks a[href^="#"]'))
+        .filter(a => a.getAttribute("href") !== "#");
 
-  function setActive(id) {
-    if (activeId === id) return;
-    activeId = id;
-    navLinks.forEach(a => {
-      const isActive = a.getAttribute("href") === `#${id}`;
-      a.classList.toggle("active", isActive);
-      a.setAttribute("aria-current", isActive ? "true" : "false");
-    });
-  }
-
-  function headerHeight() {
-    return header.getBoundingClientRect().height;
-  }
-
-  function buildObserver() {
-    const obs = new IntersectionObserver((entries) => {
-      const visible = entries.filter(e => e.isIntersecting);
-      if (!visible.length) return;
-
-      const topLine = headerHeight() + 8;
-
-      const scored = visible.map(e => {
-        const rect = e.target.getBoundingClientRect();
-        return {
-          id: e.target.id,
-          ratio: e.intersectionRatio,
-          dist: Math.abs(rect.top - topLine)
-        };
+      const linkById = new Map();
+      navLinks.forEach(a => {
+        const id = a.getAttribute("href").slice(1);
+        linkById.set(id, a);
       });
 
-      scored.sort((a,b) => (b.ratio - a.ratio) || (a.dist - b.dist));
+      const sections = Array.from(linkById.keys())
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
 
-      if (scored[0]) setActive(scored[0].id);
-    }, {
-      root: null,
-      rootMargin: `-${headerHeight() + 8}px 0px -55% 0px`,
-      threshold: [0, 0.1, 0.25, 0.5, 0.75]
+      if (!sections.length) return;
+
+      let activeId = null;
+
+      function setActive(id) {
+        if (!id || id === activeId) return;
+        activeId = id;
+
+        navLinks.forEach(a => {
+          const aId = a.getAttribute("href").slice(1);
+          const on = aId === id;
+          a.classList.toggle("active", on);
+          a.setAttribute("aria-current", on ? "true" : "false");
+        });
+      }
+
+      function getHeaderHeight() {
+        return header ? Math.ceil(header.getBoundingClientRect().height) : 0;
+      }
+
+      // Build observer with correct rootMargin based on header height
+      let observer = null;
+
+      function buildObserver() {
+        if (observer) observer.disconnect();
+
+        const topOffset = getHeaderHeight() + 8;  // line just under header
+        const bottomCut = Math.round(window.innerHeight * 0.55); // shrink viewport from bottom
+
+        observer = new IntersectionObserver((entries) => {
+          const visible = entries.filter(e => e.isIntersecting);
+          if (!visible.length) return;
+
+          const topLine = topOffset;
+
+          // Pick the section that best "owns" the top area
+          const scored = visible.map(e => {
+            const rect = e.target.getBoundingClientRect();
+            return {
+              id: e.target.id,
+              ratio: e.intersectionRatio,
+              dist: Math.abs(rect.top - topLine)
+            };
+          });
+
+          scored.sort((a, b) => (b.ratio - a.ratio) || (a.dist - b.dist));
+          setActive(scored[0].id);
+        }, {
+          root: null,
+          rootMargin: `-${topOffset}px 0px -${bottomCut}px 0px`,
+          threshold: [0, 0.1, 0.25, 0.5, 0.75]
+        });
+
+        sections.forEach(s => observer.observe(s));
+
+        // Initialize active immediately based on current scroll position:
+        // choose the first section whose top is below the header line, else last.
+        const topLine = topOffset;
+        let current = sections[0].id;
+        for (const s of sections) {
+          if (s.getBoundingClientRect().top - topLine <= 1) current = s.id;
+        }
+        setActive(current);
+      }
+
+      buildObserver();
+      window.addEventListener("resize", buildObserver);
+
+      // Also set active on click (instant feedback)
+      navLinks.forEach(a => {
+        a.addEventListener("click", () => {
+          const id = a.getAttribute("href").slice(1);
+          setActive(id);
+        });
+      });
     });
-
-    sections.forEach(s => obs.observe(s));
-    return obs;
-  }
-
-  let observer = buildObserver();
-  window.addEventListener("resize", () => {
-    observer.disconnect();
-    observer = buildObserver();
-  });
-
-  // Set initial active state
-  setActive(sections[0]?.id);
-</script>
-
+  </script>
 </body>
 </html>
