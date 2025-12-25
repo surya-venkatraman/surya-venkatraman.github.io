@@ -208,7 +208,7 @@
     © <span id="y"></span> Surya Venkatraman
   </footer>
 
-  <script>
+<script>
   // Footer year
   document.getElementById('y').textContent = new Date().getFullYear();
 
@@ -221,10 +221,7 @@
   const header = document.querySelector('header');
   const navLinks = Array.from(document.querySelectorAll('.nav-link'));
 
-  // Default active link when you're above all tracked sections
-  const defaultId = navLinks[0]?.getAttribute('href')?.slice(1) || null;
-
-  // Only track sections that exist in the nav
+  // IDs to track in the SAME order as your nav
   const trackedIds = navLinks
     .map(a => a.getAttribute('href'))
     .filter(h => h && h.startsWith('#'))
@@ -234,8 +231,10 @@
     .map(id => document.getElementById(id))
     .filter(Boolean);
 
+  const defaultId = trackedIds[0] || null;        // "What I Do"
+  const lastId = trackedIds[trackedIds.length-1]; // "Contact"
+
   let currentActiveId = null;
-  let cachedTops = [];
   let ticking = false;
 
   function headerHeight() {
@@ -250,53 +249,59 @@
     });
   }
 
-  function recacheSectionTops() {
-    // Cache absolute page Y positions of each section top
-    cachedTops = sections.map(s => ({
-      id: s.id,
-      top: s.getBoundingClientRect().top + window.scrollY
-    }));
-    // Ensure increasing order
-    cachedTops.sort((a, b) => a.top - b.top);
-  }
+  function computeActive() {
+    const marker = headerHeight() + 12; // marker line under header (px from top)
 
-  function computeActiveFromScroll() {
-    const line = window.scrollY + headerHeight() + 12; // the "decision line"
+    // If we're basically at the bottom, force last section (prevents weird end-of-page states)
+    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
+    if (nearBottom) {
+      setActive(lastId);
+      return;
+    }
 
-    // Find the last section whose top is above the line
-    let active = defaultId;
-    for (let i = 0; i < cachedTops.length; i++) {
-      if (cachedTops[i].top <= line) active = cachedTops[i].id;
+    // Find the section whose rect contains the marker line:
+    // rect.top <= marker < rect.bottom
+    for (const s of sections) {
+      const r = s.getBoundingClientRect();
+      if (r.top <= marker && r.bottom > marker) {
+        setActive(s.id);
+        return;
+      }
+    }
+
+    // If marker isn't inside any tracked section:
+    // - Above the first tracked section -> default
+    // - Between sections (rare) -> choose the closest NEXT section by top
+    const firstRect = sections[0]?.getBoundingClientRect();
+    if (firstRect && firstRect.top > marker) {
+      setActive(defaultId);
+      return;
+    }
+
+    // Otherwise pick the last section whose top is above the marker (safe fallback)
+    let fallback = defaultId;
+    for (const s of sections) {
+      const r = s.getBoundingClientRect();
+      if (r.top <= marker) fallback = s.id;
       else break;
     }
-    setActive(active);
+    setActive(fallback);
   }
 
   function onScroll() {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      computeActiveFromScroll();
+      computeActive();
       ticking = false;
     });
   }
 
-  // Init
-  recacheSectionTops();
-  computeActiveFromScroll();
+  // Init + listeners
   window.addEventListener('scroll', onScroll, { passive: true });
-
-  // Recompute on resize / font load changes
-  window.addEventListener('resize', () => {
-    recacheSectionTops();
-    computeActiveFromScroll();
-  });
-
-  // If images load late and shift layout, recache after load too
-  window.addEventListener('load', () => {
-    recacheSectionTops();
-    computeActiveFromScroll();
-  });
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('load', onScroll);
+  onScroll();
 
   // Contact form (your original)
   (function () {
