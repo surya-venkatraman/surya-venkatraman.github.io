@@ -4,365 +4,275 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Surya Venkatraman</title>
+
   <style>
     :root{
       --bg:#0b0f19;
-      --panel:#111827;
-      --panel2:#0f172a;
       --text:#e5e7eb;
       --muted:#94a3b8;
       --border:rgba(255,255,255,0.10);
-      --link:#e5e7eb;
-      --linkHover:#ffffff;
-      --chip:#1f2937;
-      --shadow: 0 10px 30px rgba(0,0,0,0.35);
-      --radius: 16px;
-    }
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(59,130,246,0.18), transparent 60%),
-                  radial-gradient(900px 500px at 90% 20%, rgba(236,72,153,0.14), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-      line-height:1.5;
+      --shadow:0 10px 30px rgba(0,0,0,0.35);
+      --radius:16px;
     }
 
-    /* Sticky top banner */
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: var(--bg);
+      color:var(--text);
+    }
+
+    /* ===== Header ===== */
     header{
       position:sticky;
       top:0;
       z-index:1000;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(10px);
+      background: rgba(15,23,42,0.9);
       border-bottom:1px solid var(--border);
+      backdrop-filter: blur(10px);
     }
+
     .nav{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 12px 16px;
+      max-width:980px;
+      margin:0 auto;
+      padding:12px 16px;
       display:flex;
       align-items:center;
       gap:12px;
     }
+
     .brand{
       font-weight:700;
-      letter-spacing:0.2px;
       white-space:nowrap;
     }
 
-    /* Scrollable nav buttons */
     .navlinks{
       margin-left:auto;
       display:flex;
       gap:10px;
       overflow-x:auto;
-      -webkit-overflow-scrolling: touch;
-      padding: 4px 2px;
-      scrollbar-width: thin;
     }
-    .navlinks::-webkit-scrollbar{ height:8px; }
-    .navlinks::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.18); border-radius:999px; }
 
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 12px;
+      padding:10px 14px;
+      border-radius:999px;
       border:1px solid var(--border);
-      background: rgba(17, 24, 39, 0.7);
-      color: var(--link);
+      background:#111827;
+      color:var(--text);
       text-decoration:none;
-      border-radius: 999px;
+      font-size:14px;
       white-space:nowrap;
-      font-size: 14px;
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
-      user-select:none;
-      cursor:pointer;
     }
-    .btn:hover{
-      background: rgba(31, 41, 55, 0.9);
-      border-color: rgba(255,255,255,0.18);
-      color: var(--linkHover);
-    }
-    .btn:active{ transform: translateY(1px); }
 
     .btn.primary{
-      background: rgba(59,130,246,0.18);
-      border-color: rgba(59,130,246,0.35);
-    }
-    .btn.primary:hover{
-      background: rgba(59,130,246,0.26);
-      border-color: rgba(59,130,246,0.55);
+      background:rgba(59,130,246,0.25);
+      border-color:rgba(59,130,246,0.45);
     }
 
+    /* ===== Layout ===== */
     main{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 28px 16px 80px;
+      max-width:980px;
+      margin:0 auto;
+      padding:28px 16px 80px;
     }
 
     section{
-      background: rgba(17, 24, 39, 0.55);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-      margin: 18px 0;
+      background:#111827;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:22px;
+      margin:18px 0;
+      box-shadow:var(--shadow);
+      scroll-margin-top:90px;
     }
 
-    /* Prevent the sticky header from covering anchor targets */
-    section{ scroll-margin-top: 86px; }
+    h2{ margin:0 0 10px; }
+    p{ margin:10px 0; }
+    .muted{ color:var(--muted); }
 
-    h2{
-      margin: 0 0 10px 0;
-      font-size: 20px;
-    }
-    p{ margin: 10px 0; color: var(--text); }
-    .muted{ color: var(--muted); }
-
-    /* Project cards */
+    /* ===== Projects Grid ===== */
     .grid{
       display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
+      grid-template-columns:1fr;
+      gap:14px;
     }
-    @media (min-width: 780px){
-      .grid{ grid-template-columns: 1fr 1fr; }
+
+    @media (min-width:780px){
+      .grid{ grid-template-columns:1fr 1fr; }
     }
+
     .card{
-      background: rgba(15, 23, 42, 0.65);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
+      background:#0f172a;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:16px;
     }
-    .card h3{ margin: 0 0 8px 0; font-size: 16px; }
+
+    .card h3{ margin:0 0 8px; }
+
     .chips{
       display:flex;
       flex-wrap:wrap;
       gap:8px;
-      margin-top: 10px;
-    }
-    .chip{
-      font-size: 12px;
-      color: var(--text);
-      background: rgba(31, 41, 55, 0.8);
-      border: 1px solid rgba(255,255,255,0.10);
-      padding: 6px 10px;
-      border-radius: 999px;
+      margin-top:10px;
     }
 
-    /* ✅ Card actions row (keeps grid intact; no layout hacks) */
-    .card .actions{
-      margin-top: 12px;
+    .chip{
+      font-size:12px;
+      background:#1f2937;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+    }
+
+    /* ===== Actions Row ===== */
+    .actions{
+      margin-top:14px;
       display:flex;
-      gap:10px;
+      align-items:center;
+      gap:12px;
       flex-wrap:wrap;
     }
 
-    /* Skills list */
+    .learn-more{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* ===== Skills ===== */
     .skills{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
     }
 
-    /* Contact form */
-    form{
-      display:grid;
-      gap: 10px;
-      max-width: 620px;
-    }
-    label{ font-size: 13px; color: var(--muted); }
-    input, textarea{
-      width:100%;
-      padding: 11px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(2, 6, 23, 0.45);
-      color: var(--text);
-      outline:none;
-    }
-    textarea{ min-height: 120px; resize: vertical; }
-    input:focus, textarea:focus{
-      border-color: rgba(59,130,246,0.55);
-      box-shadow: 0 0 0 4px rgba(59,130,246,0.15);
-    }
-
+    /* ===== Footer ===== */
     footer{
       text-align:center;
-      padding: 20px 16px 40px;
-      color: var(--muted);
-      font-size: 13px;
+      color:var(--muted);
+      font-size:13px;
+      padding:30px 16px;
     }
   </style>
 </head>
 
 <body>
-  <!-- Top banner -->
-  <header>
-    <div class="nav">
-      <div class="brand">Surya Venkatraman</div>
 
-      <nav class="navlinks" aria-label="Primary navigation">
-        <a class="btn" href="#about">About</a>
-        <a class="btn" href="#projects">Projects</a>
-        <a class="btn" href="#skills">Skills</a>
-        <a class="btn" href="#contact">Contact</a>
+<header>
+  <div class="nav">
+    <div class="brand">Surya Venkatraman</div>
+    <nav class="navlinks">
+      <a class="btn" href="#about">About</a>
+      <a class="btn" href="#projects">Projects</a>
+      <a class="btn" href="#skills">Skills</a>
+      <a class="btn" href="#contact">Contact</a>
+      <a class="btn primary" href="resume.pdf" download>Resume</a>
+    </nav>
+  </div>
+</header>
 
-        <!-- Put resume.pdf in the same folder as this HTML file -->
-        <a class="btn primary" href="resume.pdf" download>Resume</a>
-      </nav>
-    </div>
-  </header>
+<main>
 
-  <main>
-    <!-- About -->
-    <section id="about">
-      <h2>About</h2>
-      <p>
-        Mock text: I’m Surya Venkatraman. I build data-driven products and analytics solutions, turning messy
-        data into clear decisions. I like shipping practical tools, automating workflows, and presenting results
-        in a way that makes sense to real people.
-      </p>
-      <p class="muted">
-        Replace this with your real bio later. Keep it 3–5 lines max.
-      </p>
-    </section>
+<section id="about">
+  <h2>About</h2>
+  <p>
+    I build data-driven products and analytics solutions, turning messy data into
+    clear decisions.
+  </p>
+</section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Projects</h2>
+<section id="projects">
+  <h2>Projects</h2>
 
-      <div class="grid">
-        <div class="card">
-          <h3>COMPAS Recidivism Model</h3>
-          <p class="muted">
-            Mock description: Built a dashboard that reduced reporting time from days to minutes by automating data
-            cleaning, modeling, and visualization.
-          </p>
-          <div class="chips">
-            <span class="chip">Python</span>
-            <span class="chip">SQL</span>
-            <span class="chip">Power BI</span>
-          </div>
-          <div class="actions">
-            <a class="btn" href="https://github.com/yourusername/compas-recidivism" target="_blank" rel="noopener">
-              GitHub Repo
-            </a>
-          </div>
-        </div>
+  <div class="grid">
 
-        <div class="card">
-          <h3>Impact of Congressional Campaign Contributions</h3>
-          <p class="muted">
-            Mock description: Created an ML prototype that classifies customer issues and routes them to the right team,
-            improving triage speed and consistency.
-          </p>
-          <div class="chips">
-            <span class="chip">Machine Learning</span>
-            <span class="chip">Pandas</span>
-            <span class="chip">APIs</span>
-          </div>
-          <div class="actions">
-            <a class="btn" href="https://github.com/yourusername/campaign-contributions" target="_blank" rel="noopener">
-              GitHub Repo
-            </a>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Enterprise ChatBot</h3>
-          <p class="muted">
-            Mock description: Built a dashboard that reduced reporting time from days to minutes by automating data
-            cleaning, modeling, and visualization.
-          </p>
-          <div class="chips">
-            <span class="chip">Python</span>
-            <span class="chip">SQL</span>
-            <span class="chip">Power BI</span>
-          </div>
-          <div class="actions">
-            <a class="btn" href="https://github.com/yourusername/enterprise-chatbot" target="_blank" rel="noopener">
-              GitHub Repo
-            </a>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>AI-Powered Syllabi Roadmap</h3>
-          <p class="muted">
-            Mock description: Built a dashboard that reduced reporting time from days to minutes by automating data
-            cleaning, modeling, and visualization.
-          </p>
-          <div class="chips">
-            <span class="chip">Python</span>
-            <span class="chip">SQL</span>
-            <span class="chip">Power BI</span>
-          </div>
-          <div class="actions">
-            <a class="btn" href="https://github.com/yourusername/syllabi-roadmap" target="_blank" rel="noopener">
-              GitHub Repo
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="skills">
+    <div class="card">
+      <h3>COMPAS Recidivism Model</h3>
+      <p class="muted">Analyzed fairness and predictive tradeoffs in recidivism risk models.</p>
+      <div class="chips">
         <span class="chip">Python</span>
-        <span class="chip">SQL</span>
-        <span class="chip">Power BI</span>
-        <span class="chip">Excel</span>
-        <span class="chip">Data Modeling</span>
-        <span class="chip">ETL / Data Pipelines</span>
-        <span class="chip">Machine Learning</span>
+        <span class="chip">ML</span>
+        <span class="chip">Fairness</span>
       </div>
-      <p class="muted" style="margin-top:12px;">
-        Keep this short and scannable.
-      </p>
-    </section>
+      <div class="actions">
+        <a class="btn" href="https://github.com/yourusername/compas" target="_blank">GitHub Repo</a>
+        <span class="learn-more">Click here to learn more about the project</span>
+      </div>
+    </div>
 
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p class="muted">Mock form (this won’t send anywhere yet without a backend).</p>
+    <div class="card">
+      <h3>Campaign Contributions Analysis</h3>
+      <p class="muted">Explored relationships between donations and congressional outcomes.</p>
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">Pandas</span>
+        <span class="chip">Stats</span>
+      </div>
+      <div class="actions">
+        <a class="btn" href="https://github.com/yourusername/campaigns" target="_blank">GitHub Repo</a>
+        <span class="learn-more">Click here to learn more about the project</span>
+      </div>
+    </div>
 
-      <form>
-        <div>
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" />
-        </div>
+    <div class="card">
+      <h3>Enterprise Chatbot</h3>
+      <p class="muted">Built an internal RAG chatbot for enterprise documentation.</p>
+      <div class="chips">
+        <span class="chip">LLMs</span>
+        <span class="chip">Python</span>
+        <span class="chip">RAG</span>
+      </div>
+      <div class="actions">
+        <a class="btn" href="https://github.com/yourusername/chatbot" target="_blank">GitHub Repo</a>
+        <span class="learn-more">Click here to learn more about the project</span>
+      </div>
+    </div>
 
-        <div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" />
-        </div>
+    <div class="card">
+      <h3>AI Syllabi Roadmap</h3>
+      <p class="muted">Generated structured learning plans from course syllabi using AI.</p>
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">NLP</span>
+        <span class="chip">AI</span>
+      </div>
+      <div class="actions">
+        <a class="btn" href="https://github.com/yourusername/syllabi" target="_blank">GitHub Repo</a>
+        <span class="learn-more">Click here to learn more about the project</span>
+      </div>
+    </div>
 
-        <div>
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Write your message..."></textarea>
-        </div>
+  </div>
+</section>
 
-        <button class="btn primary" type="button" onclick="alert('Hook this up later (Formspree / Netlify Forms / backend).')">
-          Send
-        </button>
-      </form>
-    </section>
-  </main>
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <span class="chip">Python</span>
+    <span class="chip">SQL</span>
+    <span class="chip">Power BI</span>
+    <span class="chip">Machine Learning</span>
+    <span class="chip">ETL</span>
+  </div>
+</section>
 
-  <footer>
-    © <span id="year"></span> Surya Venkatraman
-  </footer>
+<section id="contact">
+  <h2>Contact</h2>
+  <p class="muted">Add backend later.</p>
+</section>
 
-  <script>
-    // tiny, non-glitchy script just for the footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+</main>
+
+<footer>
+  © <span id="year"></span> Surya Venkatraman
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
