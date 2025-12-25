@@ -1,635 +1,311 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name | Portfolio</title>
-  <meta name="description" content="Portfolio website for Your Name." />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Surya Venkatraman</title>
   <style>
     :root{
-      --bg:#0b0f1a;
-      --panel:#0f1629;
-      --panel2:#0c1222;
-      --text:#e8eefc;
-      --muted:#a9b6d6;
-      --border:rgba(255,255,255,.10);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius:18px;
-
-      --accent:#7c5cff;
-      --accent2:#22c55e;
-      --max:1100px;
-
-      --navH:74px;
+      --bg:#0b0f19;
+      --panel:#111827;
+      --panel2:#0f172a;
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --border:rgba(255,255,255,0.10);
+      --link:#e5e7eb;
+      --linkHover:#ffffff;
+      --chip:#1f2937;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 16px;
     }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 700px at 10% 10%, rgba(124,92,255,.25), transparent 60%),
-                  radial-gradient(900px 500px at 90% 20%, rgba(34,197,94,.20), transparent 55%),
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(59,130,246,0.18), transparent 60%),
+                  radial-gradient(900px 500px at 90% 20%, rgba(236,72,153,0.14), transparent 55%),
                   var(--bg);
       color:var(--text);
-      line-height:1.55;
+      line-height:1.5;
     }
 
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
-
-    /* NAV */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
+    /* Sticky top banner */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background: rgba(15, 23, 42, 0.85);
       backdrop-filter: blur(10px);
-      background: rgba(11,15,26,.72);
-      border-bottom: 1px solid var(--border);
+      border-bottom:1px solid var(--border);
     }
-    .nav-inner{
-      height: var(--navH);
+    .nav{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 12px 16px;
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap: 12px;
+      gap:12px;
     }
     .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:700; letter-spacing:.2px;
+      font-weight:700;
+      letter-spacing:0.2px;
       white-space:nowrap;
     }
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 18px rgba(124,92,255,.45);
-    }
 
-    .nav-links{
-      display:flex; align-items:center; gap: 8px;
-    }
-    .nav-links a{
-      padding:10px 12px;
-      border-radius: 999px;
-      color: var(--muted);
-      font-weight:600;
-      font-size: 14px;
-      border: 1px solid transparent;
-      transition: .15s ease;
-    }
-    .nav-links a:hover{
-      color: var(--text);
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.08);
-    }
-    .nav-links a.active{
-      color: var(--text);
-      background: rgba(124,92,255,.18);
-      border-color: rgba(124,92,255,.35);
-    }
-    .resume{
-      margin-left: 6px;
-      padding:10px 14px !important;
-      color: var(--text) !important;
-      background: linear-gradient(135deg, rgba(124,92,255,.85), rgba(34,197,94,.75));
-      border: 1px solid rgba(255,255,255,.15) !important;
-      box-shadow: 0 10px 24px rgba(0,0,0,.25);
-    }
-    .resume:hover{filter: brightness(1.05)}
-    .menu-btn{
-      display:none;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      border-radius: 12px;
-      padding:10px 12px;
-      cursor:pointer;
-    }
-
-    /* MOBILE MENU */
-    .mobile{
-      display:none;
-      padding: 10px 0 16px;
-    }
-    .mobile a{
-      display:block;
-      padding: 12px 12px;
-      border-radius: 12px;
-      color: var(--muted);
-      font-weight: 600;
-      border: 1px solid transparent;
-    }
-    .mobile a:hover{background: rgba(255,255,255,.06); color: var(--text)}
-    .mobile a.active{
-      color: var(--text);
-      background: rgba(124,92,255,.18);
-      border-color: rgba(124,92,255,.35);
-    }
-    .mobile .resume{margin-top:8px; text-align:center}
-
-    /* HERO */
-    header.hero{
-      padding: 62px 0 10px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .hero-left{padding: 28px}
-    .hero-kicker{
-      display:inline-flex; gap:10px; align-items:center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: .6px;
-      text-transform: uppercase;
-    }
-    .hero h1{
-      margin: 14px 0 10px;
-      font-size: clamp(32px, 4vw, 48px);
-      line-height:1.08;
-      letter-spacing:-.8px;
-    }
-    .hero p{
-      margin:0;
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 60ch;
-    }
-    .hero-actions{
+    /* Scrollable nav buttons */
+    .navlinks{
+      margin-left:auto;
       display:flex;
-      gap: 10px;
-      margin-top: 18px;
-      flex-wrap:wrap;
+      gap:10px;
+      overflow-x:auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 2px;
+      scrollbar-width: thin;
     }
+    .navlinks::-webkit-scrollbar{ height:8px; }
+    .navlinks::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.18); border-radius:999px; }
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap: 8px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      font-weight: 700;
-      transition: .15s ease;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08)}
-    .btn.primary{
-      border-color: rgba(124,92,255,.35);
-      background: rgba(124,92,255,.18);
-    }
-
-    .hero-right{
-      padding: 22px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap: 12px;
-    }
-    .stat{
-      padding: 16px;
-      border-radius: 16px;
-      background: rgba(0,0,0,.18);
-      border:1px solid rgba(255,255,255,.08);
-    }
-    .stat .label{color: var(--muted); font-weight:700; font-size:12px; letter-spacing:.4px; text-transform:uppercase}
-    .stat .value{font-size: 22px; font-weight: 800; margin-top:6px}
-    .stat .sub{color: var(--muted); font-size: 13px; margin-top:6px}
-
-    /* SECTIONS */
-    section{
-      scroll-margin-top: calc(var(--navH) + 12px);
-      padding: 50px 0;
-    }
-    .section-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    h2{
-      margin:0;
-      font-size: 24px;
-      letter-spacing:-.3px;
-    }
-    .section-head p{
-      margin:0;
-      color: var(--muted);
-      max-width: 60ch;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      background: rgba(17, 24, 39, 0.7);
+      color: var(--link);
+      text-decoration:none;
+      border-radius: 999px;
+      white-space:nowrap;
       font-size: 14px;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
+    }
+    .btn:hover{
+      background: rgba(31, 41, 55, 0.9);
+      border-color: rgba(255,255,255,0.18);
+      color: var(--linkHover);
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn.primary{
+      background: rgba(59,130,246,0.18);
+      border-color: rgba(59,130,246,0.35);
+    }
+    .btn.primary:hover{
+      background: rgba(59,130,246,0.26);
+      border-color: rgba(59,130,246,0.55);
     }
 
-    .grid-3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+    main{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
     }
-    .grid-2{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-    .tile{
-      padding: 18px;
+
+    section{
+      background: rgba(17, 24, 39, 0.55);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      margin: 18px 0;
     }
-    .tile h3{margin:0 0 6px; font-size: 16px}
-    .tile p{margin:0; color: var(--muted); font-size: 14px}
 
-    .project{
+    /* Prevent the sticky header from covering anchor targets */
+    section{ scroll-margin-top: 86px; }
+
+    h2{
+      margin: 0 0 10px 0;
+      font-size: 20px;
+    }
+    p{ margin: 10px 0; color: var(--text); }
+    .muted{ color: var(--muted); }
+
+    /* Project cards */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 780px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+    }
+    .card{
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .card h3{ margin: 0 0 8px 0; font-size: 16px; }
+    .chips{
       display:flex;
-      flex-direction:column;
-      gap: 10px;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top: 10px;
     }
-    .project .meta{
-      display:flex; gap:8px; flex-wrap:wrap;
-    }
-    .pill{
+    .chip{
+      font-size: 12px;
+      color: var(--text);
+      background: rgba(31, 41, 55, 0.8);
+      border: 1px solid rgba(255,255,255,0.10);
       padding: 6px 10px;
       border-radius: 999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
     }
-    .project a{
-      color: var(--text);
-      font-weight: 800;
-      display:inline-flex;
-      gap: 8px;
-      align-items:center;
-    }
-    .project a:hover{opacity:.92}
 
+    /* Skills list */
     .skills{
       display:flex;
       flex-wrap:wrap;
+      gap:10px;
+    }
+
+    /* Contact form */
+    form{
+      display:grid;
       gap: 10px;
+      max-width: 620px;
     }
-    .skill{
-      padding: 10px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+    label{ font-size: 13px; color: var(--muted); }
+    input, textarea{
+      width:100%;
+      padding: 11px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(2, 6, 23, 0.45);
       color: var(--text);
-      font-weight: 700;
-      font-size: 13px;
+      outline:none;
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+    input:focus, textarea:focus{
+      border-color: rgba(59,130,246,0.55);
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.15);
     }
 
-    /* FOOTER */
     footer{
-      padding: 36px 0 60px;
+      text-align:center;
+      padding: 20px 16px 40px;
       color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,.08);
-      background: rgba(0,0,0,.12);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px){
-      .hero-grid{grid-template-columns: 1fr}
-      .grid-3{grid-template-columns: 1fr}
-      .grid-2{grid-template-columns: 1fr}
-    }
-    @media (max-width: 760px){
-      .nav-links{display:none}
-      .menu-btn{display:block}
-      .mobile{display:block}
+      font-size: 13px;
     }
   </style>
 </head>
 
 <body>
-  <!-- NAV -->
-  <nav class="nav" aria-label="Primary">
-    <div class="wrap">
-      <div class="nav-inner">
-        <a class="brand" href="#top" data-link="top">
-          <span class="dot" aria-hidden="true"></span>
-          <span>Your Name</span>
-        </a>
+  <!-- Top banner -->
+  <header>
+    <div class="nav">
+      <div class="brand">Surya Venkatraman</div>
 
-        <div class="nav-links" id="desktopLinks">
-          <a href="#what-i-do" data-link="what-i-do">What I Do</a>
-          <a href="#projects" data-link="projects">Projects</a>
-          <a href="#skills" data-link="skills">Skills</a>
-          <a href="#about" data-link="about">About</a>
-          <a href="#contact" data-link="contact">Contact</a>
-          <a class="resume" href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noopener">Resume</a>
-        </div>
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a class="btn" href="#about">About</a>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#skills">Skills</a>
+        <a class="btn" href="#contact">Contact</a>
 
-        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">
-          Menu ☰
-        </button>
-      </div>
-
-      <!-- Mobile -->
-      <div class="mobile" id="mobileMenu" hidden>
-        <a href="#what-i-do" data-link="what-i-do">What I Do</a>
-        <a href="#projects" data-link="projects">Projects</a>
-        <a href="#skills" data-link="skills">Skills</a>
-        <a href="#about" data-link="about">About</a>
-        <a href="#contact" data-link="contact">Contact</a>
-        <a class="resume" href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noopener">Resume</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- TOP ANCHOR -->
-  <div id="top"></div>
-
-  <!-- HERO / ABOUT ME (top content, not in nav) -->
-  <header class="hero">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="card hero-left">
-          <div class="hero-kicker">Data / Software • Portfolio</div>
-          <h1>Your Name<br/>Building useful things with data + code.</h1>
-          <p>
-            Replace this with a 1–2 sentence summary: what you do, what you’re good at, and what you’re looking for.
-            Example: “MS Analytics student building ML + data products. Interested in data engineering, analytics, and applied AI.”
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn primary" href="#projects">View Projects →</a>
-            <a class="btn" href="mailto:youremail@example.com">Email Me</a>
-            <a class="btn" href="https://www.linkedin.com/in/YOURHANDLE" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn" href="https://github.com/YOURHANDLE" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-
-        <div class="card hero-right">
-          <div class="stat">
-            <div class="label">Focus</div>
-            <div class="value">Analytics + ML</div>
-            <div class="sub">Dashboards, pipelines, models, and automation.</div>
-          </div>
-          <div class="stat">
-            <div class="label">Stack</div>
-            <div class="value">Python • SQL</div>
-            <div class="sub">Add your real tools: Azure, AWS, Power BI, etc.</div>
-          </div>
-          <div class="stat">
-            <div class="label">Open to</div>
-            <div class="value">New roles</div>
-            <div class="sub">Data scientist / analyst / engineer (edit this).</div>
-          </div>
-        </div>
-      </div>
+        <!-- Put resume.pdf in the same folder as this HTML file -->
+        <a class="btn primary" href="resume.pdf" download>Resume</a>
+      </nav>
     </div>
   </header>
 
-  <!-- WHAT I DO -->
-  <section id="what-i-do" data-section>
-    <div class="wrap">
-      <div class="section-head">
+  <main>
+    <!-- About -->
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        Mock text: I’m Surya Venkatraman. I build data-driven products and analytics solutions, turning messy
+        data into clear decisions. I like shipping practical tools, automating workflows, and presenting results
+        in a way that makes sense to real people.
+      </p>
+      <p class="muted">
+        Replace this with your real bio later. Keep it 3–5 lines max.
+      </p>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Project One</h3>
+          <p class="muted">
+            Mock description: Built a dashboard that reduced reporting time from days to minutes by automating data
+            cleaning, modeling, and visualization.
+          </p>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Power BI</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Project Two</h3>
+          <p class="muted">
+            Mock description: Created an ML prototype that classifies customer issues and routes them to the right team,
+            improving triage speed and consistency.
+          </p>
+          <div class="chips">
+            <span class="chip">Machine Learning</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">APIs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span class="chip">Python</span>
+        <span class="chip">SQL</span>
+        <span class="chip">Power BI</span>
+        <span class="chip">Excel</span>
+        <span class="chip">Data Modeling</span>
+        <span class="chip">ETL / Data Pipelines</span>
+        <span class="chip">Machine Learning</span>
+      </div>
+      <p class="muted" style="margin-top:12px;">
+        Keep this short and scannable.
+      </p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="muted">Mock form (this won’t send anywhere yet without a backend).</p>
+
+      <form>
         <div>
-          <h2>What I Do</h2>
-          <p>3–6 bullets of your strongest value. Keep it outcomes-first.</p>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" />
         </div>
-      </div>
 
-      <div class="grid-3">
-        <div class="tile">
-          <h3>Data Products</h3>
-          <p>Build dashboards & tools that make decisions easier and faster.</p>
-        </div>
-        <div class="tile">
-          <h3>Automation</h3>
-          <p>Write scripts/pipelines that cut repetitive work and reduce errors.</p>
-        </div>
-        <div class="tile">
-          <h3>Applied ML</h3>
-          <p>Prototype models, evaluate impact, and ship practical solutions.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" data-section>
-    <div class="wrap">
-      <div class="section-head">
         <div>
-          <h2>Featured Projects</h2>
-          <p>Pick 3–5. Each: what it is, what tech, what impact, links.</p>
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="tile project">
-          <div class="meta">
-            <span class="pill">Python</span>
-            <span class="pill">SQL</span>
-            <span class="pill">ETL</span>
-          </div>
-          <h3>Project Title #1</h3>
-          <p>One sentence: what it does + why it matters. Add a measurable result if you can.</p>
-          <div>
-            <a href="https://github.com/YOURHANDLE/REPO" target="_blank" rel="noopener">GitHub Repo →</a>
-          </div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" />
         </div>
 
-        <div class="tile project">
-          <div class="meta">
-            <span class="pill">Power BI</span>
-            <span class="pill">Analytics</span>
-          </div>
-          <h3>Project Title #2</h3>
-          <p>One sentence: what it does + why it matters. Mention dataset / audience.</p>
-          <div>
-            <a href="https://your-demo-link.com" target="_blank" rel="noopener">Live Demo →</a>
-          </div>
-        </div>
-
-        <div class="tile project">
-          <div class="meta">
-            <span class="pill">ML</span>
-            <span class="pill">NLP</span>
-          </div>
-          <h3>Project Title #3</h3>
-          <p>One sentence: problem → approach → result. Keep it crisp.</p>
-          <div>
-            <a href="https://github.com/YOURHANDLE/REPO" target="_blank" rel="noopener">Read More →</a>
-          </div>
-        </div>
-
-        <div class="tile project">
-          <div class="meta">
-            <span class="pill">Azure</span>
-            <span class="pill">RAG</span>
-          </div>
-          <h3>Project Title #4</h3>
-          <p>One sentence: what you built + what improved (speed, accuracy, cost, time saved).</p>
-          <div>
-            <a href="https://github.com/YOURHANDLE/REPO" target="_blank" rel="noopener">GitHub Repo →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" data-section>
-    <div class="wrap">
-      <div class="section-head">
         <div>
-          <h2>Skills</h2>
-          <p>Keep it believable. No laundry list — show what you actually use.</p>
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="skills">
-          <span class="skill">Python</span>
-          <span class="skill">SQL</span>
-          <span class="skill">R</span>
-          <span class="skill">Power BI</span>
-          <span class="skill">Pandas</span>
-          <span class="skill">scikit-learn</span>
-          <span class="skill">Azure</span>
-          <span class="skill">Git</span>
-          <span class="skill">Docker</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" data-section>
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <h2>About</h2>
-          <p>Short story + credibility. 6–10 lines max.</p>
-        </div>
-      </div>
-
-      <div class="tile">
-        <p style="margin:0; color: var(--muted); font-size: 15px;">
-          Write 1–2 paragraphs: what you’re studying/doing, what you enjoy building, and what roles you want.
-          Add 1–2 concrete highlights (internship, big project, impact, etc.). Keep it simple and human.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" data-section>
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <h2>Contact</h2>
-          <p>Make it easy for someone to reach you in 10 seconds.</p>
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="tile">
-          <h3 style="margin-top:0">Email</h3>
-          <p style="color:var(--muted); margin-top:0">Fastest way to reach me.</p>
-          <a class="btn primary" href="mailto:youremail@example.com">youremail@example.com</a>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write your message..."></textarea>
         </div>
 
-        <div class="tile">
-          <h3 style="margin-top:0">Links</h3>
-          <p style="color:var(--muted); margin-top:0">GitHub, LinkedIn, and resume.</p>
-          <div style="display:flex; gap:10px; flex-wrap:wrap">
-            <a class="btn" href="https://github.com/YOURHANDLE" target="_blank" rel="noopener">GitHub</a>
-            <a class="btn" href="https://www.linkedin.com/in/YOURHANDLE" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn primary" href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noopener">Resume</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <button class="btn primary" type="button" onclick="alert('Hook this up later (Formspree / Netlify Forms / backend).')">
+          Send
+        </button>
+      </form>
+    </section>
+  </main>
 
   <footer>
-    <div class="wrap">
-      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
-        <div>© <span id="year"></span> Your Name</div>
-        <div>Built with plain HTML/CSS/JS • Hosted on GitHub Pages</div>
-      </div>
-    </div>
+    © <span id="year"></span> Surya Venkatraman
   </footer>
 
   <script>
-    // Footer year
+    // tiny, non-glitchy script just for the footer year
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    menuBtn.addEventListener("click", () => {
-      const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
-      menuBtn.setAttribute("aria-expanded", String(!isOpen));
-      mobileMenu.hidden = isOpen;
-    });
-
-    // Close mobile menu when clicking a link
-    mobileMenu.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", () => {
-        menuBtn.setAttribute("aria-expanded", "false");
-        mobileMenu.hidden = true;
-      });
-    });
-
-    // Active link highlighting (stable, non-glitchy)
-    const sections = [...document.querySelectorAll("[data-section]")];
-
-    const allNavLinks = [
-      ...document.querySelectorAll("#desktopLinks a[data-link]"),
-      ...document.querySelectorAll("#mobileMenu a[data-link]")
-    ];
-
-    function setActive(id){
-      allNavLinks.forEach(a => {
-        a.classList.toggle("active", a.getAttribute("data-link") === id);
-      });
-    }
-
-    // Choose a window inside the viewport where a section counts as "active".
-    // Using a middle band prevents the "jumping backward" effect.
-    const observer = new IntersectionObserver((entries) => {
-      // Find entries that are intersecting; pick the one with greatest intersection ratio
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a,b) => b.intersectionRatio - a.intersectionRatio);
-
-      if (visible.length > 0) {
-        setActive(visible[0].target.id);
-      }
-    }, {
-      root: null,
-      threshold: [0.15, 0.25, 0.35, 0.5, 0.65],
-      rootMargin: "-35% 0px -55% 0px"
-      // rootMargin creates a "band" centered in the viewport:
-      // active changes only when a section's content enters that band.
-    });
-
-    sections.forEach(sec => observer.observe(sec));
-
-    // On load, default active to first section (What I Do)
-    window.addEventListener("load", () => setActive("what-i-do"));
   </script>
 </body>
 </html>
