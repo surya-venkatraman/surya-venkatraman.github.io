@@ -209,123 +209,123 @@
   </footer>
 
   <script>
-    // Footer year
-    document.getElementById('y').textContent = new Date().getFullYear();
+  // Footer year
+  document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Mobile nav
-    document.getElementById('mobile-nav')?.addEventListener('change', (e) => {
-      const href = e.target.value;
-      if (href) location.hash = href;
+  // Mobile nav
+  document.getElementById('mobile-nav')?.addEventListener('change', (e) => {
+    const href = e.target.value;
+    if (href) location.hash = href;
+  });
+
+  const header = document.querySelector('header');
+  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+
+  // Default active link when you're above all tracked sections
+  const defaultId = navLinks[0]?.getAttribute('href')?.slice(1) || null;
+
+  // Only track sections that exist in the nav
+  const trackedIds = navLinks
+    .map(a => a.getAttribute('href'))
+    .filter(h => h && h.startsWith('#'))
+    .map(h => h.slice(1));
+
+  const sections = trackedIds
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  let currentActiveId = null;
+  let cachedTops = [];
+  let ticking = false;
+
+  function headerHeight() {
+    return Math.ceil(header?.getBoundingClientRect().height || 90);
+  }
+
+  function setActive(id) {
+    if (!id || id === currentActiveId) return;
+    currentActiveId = id;
+    navLinks.forEach(a => {
+      a.classList.toggle('active-link', a.getAttribute('href') === `#${id}`);
     });
+  }
 
-    const header = document.querySelector('header');
-    const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+  function recacheSectionTops() {
+    // Cache absolute page Y positions of each section top
+    cachedTops = sections.map(s => ({
+      id: s.id,
+      top: s.getBoundingClientRect().top + window.scrollY
+    }));
+    // Ensure increasing order
+    cachedTops.sort((a, b) => a.top - b.top);
+  }
 
-    // Default active link when user is above all tracked sections (hero area)
-    const defaultId = navLinks[0]?.getAttribute('href')?.slice(1) || null;
+  function computeActiveFromScroll() {
+    const line = window.scrollY + headerHeight() + 12; // the "decision line"
 
-    // Only observe sections that are present in the nav
-    const trackedIds = new Set(
-      navLinks
-        .map(a => a.getAttribute('href'))
-        .filter(h => h && h.startsWith('#'))
-        .map(h => h.slice(1))
-    );
-
-    const sections = Array.from(document.querySelectorAll('section[id]'))
-      .filter(s => trackedIds.has(s.id));
-
-    let currentActiveId = null;
-
-    function headerHeight() {
-      return Math.ceil(header?.getBoundingClientRect().height || 90);
+    // Find the last section whose top is above the line
+    let active = defaultId;
+    for (let i = 0; i < cachedTops.length; i++) {
+      if (cachedTops[i].top <= line) active = cachedTops[i].id;
+      else break;
     }
+    setActive(active);
+  }
 
-    function setActive(id) {
-      if (!id) return;
-      if (id === currentActiveId) return;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      computeActiveFromScroll();
+      ticking = false;
+    });
+  }
 
-      currentActiveId = id;
-      navLinks.forEach(a => {
-        a.classList.toggle('active-link', a.getAttribute('href') === `#${id}`);
-      });
-    }
+  // Init
+  recacheSectionTops();
+  computeActiveFromScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
 
-    function initActiveFromScroll() {
-      const cutoff = headerHeight() + 8;
+  // Recompute on resize / font load changes
+  window.addEventListener('resize', () => {
+    recacheSectionTops();
+    computeActiveFromScroll();
+  });
 
-      // last tracked section whose top is above cutoff
-      let best = null;
-      for (const s of sections) {
-        if (s.getBoundingClientRect().top <= cutoff) best = s.id;
-        else break;
+  // If images load late and shift layout, recache after load too
+  window.addEventListener('load', () => {
+    recacheSectionTops();
+    computeActiveFromScroll();
+  });
+
+  // Contact form (your original)
+  (function () {
+    const form = document.getElementById('contact-form');
+    const ok = document.getElementById('form-success');
+    const err = document.getElementById('form-error');
+    if (!form) return;
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      ok.classList.add('hidden');
+      err.classList.add('hidden');
+
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data
+        });
+        if (res.ok) { form.reset(); ok.classList.remove('hidden'); }
+        else { err.classList.remove('hidden'); }
+      } catch {
+        err.classList.remove('hidden');
       }
-
-      // if above all tracked sections, force defaultId
-      setActive(best || defaultId);
-    }
-
-    let observer;
-
-    function setupObserver() {
-      observer?.disconnect();
-
-      const hh = headerHeight();
-
-      observer = new IntersectionObserver((entries) => {
-        const cutoff = hh + 8;
-
-        const candidates = entries
-          .filter(e => e.isIntersecting)
-          .map(e => ({ id: e.target.id, top: e.target.getBoundingClientRect().top }))
-          .sort((a, b) => Math.abs(a.top - cutoff) - Math.abs(b.top - cutoff));
-
-        if (candidates.length) setActive(candidates[0].id);
-        else initActiveFromScroll(); // never leave "no active link"
-      }, {
-        root: null,
-        rootMargin: `-${hh}px 0px -55% 0px`,
-        threshold: [0.01, 0.1, 0.25, 0.5, 0.75]
-      });
-
-      sections.forEach(s => observer.observe(s));
-    }
-
-    setupObserver();
-    initActiveFromScroll();
-
-    window.addEventListener('resize', () => {
-      setupObserver();
-      initActiveFromScroll();
     });
+  })();
+</script>
 
-    // Contact form
-    (function () {
-      const form = document.getElementById('contact-form');
-      const ok = document.getElementById('form-success');
-      const err = document.getElementById('form-error');
-      if (!form) return;
-
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        ok.classList.add('hidden');
-        err.classList.add('hidden');
-
-        const data = new FormData(form);
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: data
-          });
-          if (res.ok) { form.reset(); ok.classList.remove('hidden'); }
-          else { err.classList.remove('hidden'); }
-        } catch {
-          err.classList.remove('hidden');
-        }
-      });
-    })();
-  </script>
 
 </body>
 </html>
