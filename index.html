@@ -197,59 +197,139 @@
   </footer>
 
   <script>
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
+  // ---------- Footer year ----------
+  document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Mobile nav
-    document.getElementById('mobile-nav')?.addEventListener('change', (e) => {
-      const href = e.target.value;
-      if (href) location.hash = href;
+  // ---------- Mobile nav ----------
+  document.getElementById('mobile-nav')?.addEventListener('change', (e) => {
+    const href = e.target.value;
+    if (href) location.hash = href;
+  });
+
+  // ---------- Active link on scroll (fixed) ----------
+  const header = document.querySelector('header');
+  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+
+  // Only track sections that actually exist in the desktop nav
+  const trackedIds = new Set(
+    navLinks
+      .map(a => a.getAttribute('href'))
+      .filter(h => h && h.startsWith('#'))
+      .map(h => h.slice(1))
+  );
+
+  const sections = Array.from(document.querySelectorAll('section[id]'))
+    .filter(s => trackedIds.has(s.id));
+
+  let currentActiveId = null;
+
+  function setActive(id) {
+    if (!id || id === currentActiveId) return;
+
+    const existsInNav = navLinks.some(a => a.getAttribute('href') === `#${id}`);
+    if (!existsInNav) return; // don't clear highlight if we don't have a matching nav link
+
+    currentActiveId = id;
+    navLinks.forEach(a => {
+      a.classList.toggle('active-link', a.getAttribute('href') === `#${id}`);
+    });
+  }
+
+  // Dynamic header height -> stable across breakpoints
+  function headerHeight() {
+    return Math.ceil(header?.getBoundingClientRect().height || 90);
+  }
+
+  // Pick the "best" visible section in a stable way: the one closest to the top
+  function pickBestVisible(entries) {
+    const topCutoff = headerHeight() + 8; // small buffer under header
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .map(e => {
+        const top = e.target.getBoundingClientRect().top;
+        return { id: e.target.id, top };
+      })
+      // prefer sections whose top is closest to (but not above) the header line
+      .sort((a, b) => {
+        const aDist = Math.abs(a.top - topCutoff);
+        const bDist = Math.abs(b.top - topCutoff);
+        return aDist - bDist;
+      });
+
+    return visible[0]?.id || null;
+  }
+
+  let observer;
+
+  function setupObserver() {
+    observer?.disconnect();
+
+    const hh = headerHeight();
+
+    observer = new IntersectionObserver((entries) => {
+      const best = pickBestVisible(entries);
+      if (best) setActive(best);
+    }, {
+      root: null,
+      // Push the "active" window down below the fixed header and bias toward top half
+      rootMargin: `-${hh}px 0px -55% 0px`,
+      threshold: [0.01, 0.1, 0.25, 0.5, 0.75]
     });
 
-    // Highlight nav link based on scroll
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+    sections.forEach(s => observer.observe(s));
+  }
 
-    function activateLink(id) {
-      navLinks.forEach(link => {
-        link.classList.remove('active-link');
-        if (link.getAttribute('href') === '#' + id) {
-          link.classList.add('active-link');
-        }
-      });
+  // Initialize active state on load (handles refresh mid-page)
+  function initActiveFromScroll() {
+    const hh = headerHeight();
+    const topCutoff = hh + 8;
+
+    // find last section whose top is above cutoff, else first section
+    let best = sections[0]?.id || null;
+    for (const s of sections) {
+      if (s.getBoundingClientRect().top <= topCutoff) best = s.id;
+      else break;
     }
+    if (best) setActive(best);
+  }
 
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) activateLink(visible.target.id);
-    }, { root: null, rootMargin: '0px 0px -60% 0px', threshold: [0.25, 0.5, 0.75] });
+  setupObserver();
+  initActiveFromScroll();
 
-    sections.forEach(section => observer.observe(section));
+  // Recompute on resize because header height can change
+  window.addEventListener('resize', () => {
+    setupObserver();
+    initActiveFromScroll();
+  });
 
-    // Contact form
-    (function () {
-      const form = document.getElementById('contact-form');
-      const ok = document.getElementById('form-success');
-      const err = document.getElementById('form-error');
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        ok.classList.add('hidden');
-        err.classList.add('hidden');
-        const data = new FormData(form);
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: data
-          });
-          if (res.ok) { form.reset(); ok.classList.remove('hidden'); }
-          else { err.classList.remove('hidden'); }
-        } catch { err.classList.remove('hidden'); }
-      });
-    })();
-  </script>
+  // ---------- Contact form ----------
+  (function () {
+    const form = document.getElementById('contact-form');
+    const ok = document.getElementById('form-success');
+    const err = document.getElementById('form-error');
+    if (!form) return;
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      ok.classList.add('hidden');
+      err.classList.add('hidden');
+
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data
+        });
+        if (res.ok) { form.reset(); ok.classList.remove('hidden'); }
+        else { err.classList.remove('hidden'); }
+      } catch {
+        err.classList.remove('hidden');
+      }
+    });
+  })();
+</script>
+
 
 </body>
 </html>
