@@ -287,33 +287,25 @@
   </footer>
 
   <script>
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // ✅ Scrollspy highlight (stable + non-glitchy)
     document.addEventListener("DOMContentLoaded", () => {
       const header = document.querySelector("header");
-      const navLinks = Array.from(document.querySelectorAll('.navlinks a[href^="#"]'))
-        .filter(a => a.getAttribute("href") !== "#");
-
-      const linkById = new Map();
-      navLinks.forEach(a => {
-        const id = a.getAttribute("href").slice(1);
-        linkById.set(id, a);
-      });
-
-      const sections = Array.from(linkById.keys())
-        .map(id => document.getElementById(id))
-        .filter(Boolean);
-
+      const navLinks = Array.from(document.querySelectorAll('.navlinks a[href^="#"]'));
+      const ids = navLinks.map(a => a.getAttribute("href").slice(1));
+      const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+    
       if (!sections.length) return;
-
+    
       let activeId = null;
-
+      let ticking = false;
+    
+      function headerHeight() {
+        return header ? Math.ceil(header.getBoundingClientRect().height) : 0;
+      }
+    
       function setActive(id) {
         if (!id || id === activeId) return;
         activeId = id;
-
+    
         navLinks.forEach(a => {
           const aId = a.getAttribute("href").slice(1);
           const on = aId === id;
@@ -321,60 +313,42 @@
           a.setAttribute("aria-current", on ? "true" : "false");
         });
       }
-
-      function getHeaderHeight() {
-        return header ? Math.ceil(header.getBoundingClientRect().height) : 0;
-      }
-
-      // Build observer with correct rootMargin based on header height
-      let observer = null;
-
-      function buildObserver() {
-        if (observer) observer.disconnect();
-
-        const topOffset = getHeaderHeight() + 8;  // line just under header
-        const bottomCut = Math.round(window.innerHeight * 0.55); // shrink viewport from bottom
-
-        observer = new IntersectionObserver((entries) => {
-          const visible = entries.filter(e => e.isIntersecting);
-          if (!visible.length) return;
-
-          const topLine = topOffset;
-
-          // Pick the section that best "owns" the top area
-          const scored = visible.map(e => {
-            const rect = e.target.getBoundingClientRect();
-            return {
-              id: e.target.id,
-              ratio: e.intersectionRatio,
-              dist: Math.abs(rect.top - topLine)
-            };
-          });
-
-          scored.sort((a, b) => (b.ratio - a.ratio) || (a.dist - b.dist));
-          setActive(scored[0].id);
-        }, {
-          root: null,
-          rootMargin: `-${topOffset}px 0px -${bottomCut}px 0px`,
-          threshold: [0, 0.1, 0.25, 0.5, 0.75]
-        });
-
-        sections.forEach(s => observer.observe(s));
-
-        // Initialize active immediately based on current scroll position:
-        // choose the first section whose top is below the header line, else last.
-        const topLine = topOffset;
+    
+      function computeActive() {
+        // A line just under the sticky header. If a section's top is above this line,
+        // we consider it "entered".
+        const line = headerHeight() + 12;
+    
+        // Pick the LAST section whose top is <= line.
+        // This is stable and will not bounce when multiple sections are visible.
         let current = sections[0].id;
+    
         for (const s of sections) {
-          if (s.getBoundingClientRect().top - topLine <= 1) current = s.id;
+          const top = s.getBoundingClientRect().top;
+          if (top <= line) current = s.id;
+          else break; // sections are in order; once one isn't reached, the rest aren't either
         }
+    
         setActive(current);
       }
-
-      buildObserver();
-      window.addEventListener("resize", buildObserver);
-
-      // Also set active on click (instant feedback)
+    
+      function onScrollOrResize() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          computeActive();
+          ticking = false;
+        });
+      }
+    
+      // Initial set
+      computeActive();
+    
+      // Update on scroll/resize
+      window.addEventListener("scroll", onScrollOrResize, { passive: true });
+      window.addEventListener("resize", onScrollOrResize);
+    
+      // Instant feedback on click (optional but feels good)
       navLinks.forEach(a => {
         a.addEventListener("click", () => {
           const id = a.getAttribute("href").slice(1);
@@ -383,5 +357,6 @@
       });
     });
   </script>
+
 </body>
 </html>
