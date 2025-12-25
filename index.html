@@ -6,10 +6,12 @@
   <title>Meet Surya!</title>
   <meta name="description" content="Data scientist focused on ML for business impact: NLP, analytics engineering, and decision optimization." />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
   <style>
     :root { scroll-behavior: smooth; }
     section { scroll-margin-top: 90px; }
     body { padding-top: 90px; }
+
     .active-link {
       background-color: #111827;
       color: white !important;
@@ -31,12 +33,12 @@
         </div>
       </div>
 
-      <!-- Right -->
+      <!-- Right (Desktop) -->
       <nav class="hidden md:flex items-center gap-4 text-sm">
-        <a href="#aboutme"  class="nav-link px-2 py-1 rounded hover:bg-gray-100">About</a>
         <a href="#value"    class="nav-link px-2 py-1 rounded hover:bg-gray-100">What I Do</a>
         <a href="#projects" class="nav-link px-2 py-1 rounded hover:bg-gray-100">Projects</a>
         <a href="#skills"   class="nav-link px-2 py-1 rounded hover:bg-gray-100">Skills</a>
+        <a href="#about"    class="nav-link px-2 py-1 rounded hover:bg-gray-100">About</a>
         <a href="#contact"  class="nav-link px-2 py-1 rounded hover:bg-gray-100">Contact</a>
         <a href="surya_resume.pdf" class="px-3 py-1 rounded bg-gray-900 text-white hover:bg-gray-800">Resume</a>
       </nav>
@@ -44,18 +46,18 @@
       <!-- Mobile dropdown -->
       <div class="md:hidden">
         <select id="mobile-nav" class="text-sm border rounded px-2 py-1 bg-white">
-          <option value="#aboutme">About</option>
           <option value="#value">What I Do</option>
           <option value="#projects">Projects</option>
           <option value="#skills">Skills</option>
+          <option value="#about">About</option>
           <option value="#contact">Contact</option>
         </select>
       </div>
     </div>
   </header>
 
-  <!-- About -->
-  <section id="aboutme" class="bg-white py-10">
+  <!-- Hero / Top intro (NOT in nav tracking) -->
+  <section id="hero" class="bg-white py-10">
     <div class="max-w-4xl mx-auto px-6">
       <div class="flex items-center space-x-5">
         <img src="headshot.jpeg" alt="Surya Venkatraman" class="w-20 h-20 rounded-full object-cover shadow" />
@@ -105,6 +107,7 @@
             <a class="text-sm underline" href="https://github.com/your-username/rlhf-triage">Code</a>
           </div>
         </article>
+
         <article class="p-5 bg-gray-50 rounded-2xl shadow">
           <h3 class="font-semibold">Congressional Campaign Contribution Impact</h3>
           <p class="mt-2 text-sm">
@@ -124,20 +127,29 @@
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">Skills</h2>
       <div class="mt-3 grid md:grid-cols-3 gap-4 text-sm">
-        <div><h4 class="font-semibold">Modeling</h4><p>Tree-based, linear/GLM, time series, NLP, uplift/causal basics</p></div>
-        <div><h4 class="font-semibold">Data</h4><p>SQL, dbt basics, Pandas/PySpark, data quality</p></div>
-        <div><h4 class="font-semibold">Ops</h4><p>AWS/Azure, CI/CD, container-friendly code</p></div>
+        <div>
+          <h4 class="font-semibold">Modeling</h4>
+          <p>Tree-based, linear/GLM, time series, NLP, uplift/causal basics</p>
+        </div>
+        <div>
+          <h4 class="font-semibold">Data</h4>
+          <p>SQL, dbt basics, Pandas/PySpark, data quality</p>
+        </div>
+        <div>
+          <h4 class="font-semibold">Ops</h4>
+          <p>AWS/Azure, CI/CD, container-friendly code</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- About -->
+  <!-- About (THIS is the one in nav) -->
   <section id="about" class="bg-white py-10">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-2xl font-semibold">About</h2>
       <p class="mt-3 text-sm leading-relaxed">
-        M.S. Analytics (Georgia Tech, ’25). B.A. Applied Statistics (UVA, ’24).  
-        Seeking DS/ML roles where prototypes become durable products yes.
+        M.S. Analytics (Georgia Tech, ’25). B.A. Applied Statistics (UVA, ’24).
+        Seeking DS/ML roles where prototypes become durable products.
       </p>
     </div>
   </section>
@@ -197,139 +209,123 @@
   </footer>
 
   <script>
-  // ---------- Footer year ----------
-  document.getElementById('y').textContent = new Date().getFullYear();
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-  // ---------- Mobile nav ----------
-  document.getElementById('mobile-nav')?.addEventListener('change', (e) => {
-    const href = e.target.value;
-    if (href) location.hash = href;
-  });
-
-  // ---------- Active link on scroll (fixed) ----------
-  const header = document.querySelector('header');
-  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
-
-  // Only track sections that actually exist in the desktop nav
-  const trackedIds = new Set(
-    navLinks
-      .map(a => a.getAttribute('href'))
-      .filter(h => h && h.startsWith('#'))
-      .map(h => h.slice(1))
-  );
-
-  const sections = Array.from(document.querySelectorAll('section[id]'))
-    .filter(s => trackedIds.has(s.id));
-
-  let currentActiveId = null;
-
-  function setActive(id) {
-    if (!id || id === currentActiveId) return;
-
-    const existsInNav = navLinks.some(a => a.getAttribute('href') === `#${id}`);
-    if (!existsInNav) return; // don't clear highlight if we don't have a matching nav link
-
-    currentActiveId = id;
-    navLinks.forEach(a => {
-      a.classList.toggle('active-link', a.getAttribute('href') === `#${id}`);
+    // Mobile nav
+    document.getElementById('mobile-nav')?.addEventListener('change', (e) => {
+      const href = e.target.value;
+      if (href) location.hash = href;
     });
-  }
 
-  // Dynamic header height -> stable across breakpoints
-  function headerHeight() {
-    return Math.ceil(header?.getBoundingClientRect().height || 90);
-  }
+    const header = document.querySelector('header');
+    const navLinks = Array.from(document.querySelectorAll('.nav-link'));
 
-  // Pick the "best" visible section in a stable way: the one closest to the top
-  function pickBestVisible(entries) {
-    const topCutoff = headerHeight() + 8; // small buffer under header
-    const visible = entries
-      .filter(e => e.isIntersecting)
-      .map(e => {
-        const top = e.target.getBoundingClientRect().top;
-        return { id: e.target.id, top };
-      })
-      // prefer sections whose top is closest to (but not above) the header line
-      .sort((a, b) => {
-        const aDist = Math.abs(a.top - topCutoff);
-        const bDist = Math.abs(b.top - topCutoff);
-        return aDist - bDist;
+    // Default active link when user is above all tracked sections (hero area)
+    const defaultId = navLinks[0]?.getAttribute('href')?.slice(1) || null;
+
+    // Only observe sections that are present in the nav
+    const trackedIds = new Set(
+      navLinks
+        .map(a => a.getAttribute('href'))
+        .filter(h => h && h.startsWith('#'))
+        .map(h => h.slice(1))
+    );
+
+    const sections = Array.from(document.querySelectorAll('section[id]'))
+      .filter(s => trackedIds.has(s.id));
+
+    let currentActiveId = null;
+
+    function headerHeight() {
+      return Math.ceil(header?.getBoundingClientRect().height || 90);
+    }
+
+    function setActive(id) {
+      if (!id) return;
+      if (id === currentActiveId) return;
+
+      currentActiveId = id;
+      navLinks.forEach(a => {
+        a.classList.toggle('active-link', a.getAttribute('href') === `#${id}`);
+      });
+    }
+
+    function initActiveFromScroll() {
+      const cutoff = headerHeight() + 8;
+
+      // last tracked section whose top is above cutoff
+      let best = null;
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top <= cutoff) best = s.id;
+        else break;
+      }
+
+      // if above all tracked sections, force defaultId
+      setActive(best || defaultId);
+    }
+
+    let observer;
+
+    function setupObserver() {
+      observer?.disconnect();
+
+      const hh = headerHeight();
+
+      observer = new IntersectionObserver((entries) => {
+        const cutoff = hh + 8;
+
+        const candidates = entries
+          .filter(e => e.isIntersecting)
+          .map(e => ({ id: e.target.id, top: e.target.getBoundingClientRect().top }))
+          .sort((a, b) => Math.abs(a.top - cutoff) - Math.abs(b.top - cutoff));
+
+        if (candidates.length) setActive(candidates[0].id);
+        else initActiveFromScroll(); // never leave "no active link"
+      }, {
+        root: null,
+        rootMargin: `-${hh}px 0px -55% 0px`,
+        threshold: [0.01, 0.1, 0.25, 0.5, 0.75]
       });
 
-    return visible[0]?.id || null;
-  }
-
-  let observer;
-
-  function setupObserver() {
-    observer?.disconnect();
-
-    const hh = headerHeight();
-
-    observer = new IntersectionObserver((entries) => {
-      const best = pickBestVisible(entries);
-      if (best) setActive(best);
-    }, {
-      root: null,
-      // Push the "active" window down below the fixed header and bias toward top half
-      rootMargin: `-${hh}px 0px -55% 0px`,
-      threshold: [0.01, 0.1, 0.25, 0.5, 0.75]
-    });
-
-    sections.forEach(s => observer.observe(s));
-  }
-
-  // Initialize active state on load (handles refresh mid-page)
-  function initActiveFromScroll() {
-    const hh = headerHeight();
-    const topCutoff = hh + 8;
-
-    // find last section whose top is above cutoff, else first section
-    let best = sections[0]?.id || null;
-    for (const s of sections) {
-      if (s.getBoundingClientRect().top <= topCutoff) best = s.id;
-      else break;
+      sections.forEach(s => observer.observe(s));
     }
-    if (best) setActive(best);
-  }
 
-  setupObserver();
-  initActiveFromScroll();
-
-  // Recompute on resize because header height can change
-  window.addEventListener('resize', () => {
     setupObserver();
     initActiveFromScroll();
-  });
 
-  // ---------- Contact form ----------
-  (function () {
-    const form = document.getElementById('contact-form');
-    const ok = document.getElementById('form-success');
-    const err = document.getElementById('form-error');
-    if (!form) return;
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      ok.classList.add('hidden');
-      err.classList.add('hidden');
-
-      const data = new FormData(form);
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: data
-        });
-        if (res.ok) { form.reset(); ok.classList.remove('hidden'); }
-        else { err.classList.remove('hidden'); }
-      } catch {
-        err.classList.remove('hidden');
-      }
+    window.addEventListener('resize', () => {
+      setupObserver();
+      initActiveFromScroll();
     });
-  })();
-</script>
 
+    // Contact form
+    (function () {
+      const form = document.getElementById('contact-form');
+      const ok = document.getElementById('form-success');
+      const err = document.getElementById('form-error');
+      if (!form) return;
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        ok.classList.add('hidden');
+        err.classList.add('hidden');
+
+        const data = new FormData(form);
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: data
+          });
+          if (res.ok) { form.reset(); ok.classList.remove('hidden'); }
+          else { err.classList.remove('hidden'); }
+        } catch {
+          err.classList.remove('hidden');
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
