@@ -11,6 +11,8 @@
       --text:#e5e7eb;
       --muted:#94a3b8;
       --border:rgba(255,255,255,0.10);
+      --link:#93c5fd;
+      --linkHover:#bfdbfe;
       --shadow:0 10px 30px rgba(0,0,0,0.35);
       --radius:16px;
     }
@@ -128,18 +130,19 @@
       border:1px solid var(--border);
     }
 
-    /* ===== Actions Row ===== */
-    .actions{
-      margin-top:14px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
+    /* ===== Repo Link ===== */
+    .repo-link{
+      margin-top:12px;
+      font-size:13px;
     }
 
-    .learn-more{
-      font-size:13px;
-      color:var(--muted);
+    .repo-link a{
+      color:var(--link);
+      text-decoration:underline;
+    }
+
+    .repo-link a:hover{
+      color:var(--linkHover);
     }
 
     /* ===== Skills ===== */
@@ -197,9 +200,10 @@
         <span class="chip">ML</span>
         <span class="chip">Fairness</span>
       </div>
-      <div class="actions">
-        <a class="btn" href="https://github.com/yourusername/compas" target="_blank">GitHub Repo</a>
-        <span class="learn-more">Click here to learn more about the project</span>
+      <div class="repo-link">
+        <a href="https://github.com/yourusername/compas" target="_blank" rel="noopener">
+          Click here for the GitHub repo
+        </a>
       </div>
     </div>
 
@@ -211,9 +215,10 @@
         <span class="chip">Pandas</span>
         <span class="chip">Stats</span>
       </div>
-      <div class="actions">
-        <a class="btn" href="https://github.com/yourusername/campaigns" target="_blank">GitHub Repo</a>
-        <span class="learn-more">Click here to learn more about the project</span>
+      <div class="repo-link">
+        <a href="https://github.com/yourusername/campaigns" target="_blank" rel="noopener">
+          Click here for the GitHub repo
+        </a>
       </div>
     </div>
 
@@ -225,9 +230,10 @@
         <span class="chip">Python</span>
         <span class="chip">RAG</span>
       </div>
-      <div class="actions">
-        <a class="btn" href="https://github.com/yourusername/chatbot" target="_blank">GitHub Repo</a>
-        <span class="learn-more">Click here to learn more about the project</span>
+      <div class="repo-link">
+        <a href="https://github.com/yourusername/chatbot" target="_blank" rel="noopener">
+          Click here for the GitHub repo
+        </a>
       </div>
     </div>
 
@@ -239,9 +245,10 @@
         <span class="chip">NLP</span>
         <span class="chip">AI</span>
       </div>
-      <div class="actions">
-        <a class="btn" href="https://github.com/yourusername/syllabi" target="_blank">GitHub Repo</a>
-        <span class="learn-more">Click here to learn more about the project</span>
+      <div class="repo-link">
+        <a href="https://github.com/yourusername/syllabi" target="_blank" rel="noopener">
+          Click here for the GitHub repo
+        </a>
       </div>
     </div>
 
