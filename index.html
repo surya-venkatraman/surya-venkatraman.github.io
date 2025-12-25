@@ -8,9 +8,13 @@
     :root{
       --bg:#0b0f19;
       --panel:#111827;
+      --panel2:#0f172a;
       --text:#e5e7eb;
       --muted:#94a3b8;
       --border:rgba(255,255,255,0.10);
+      --link:#e5e7eb;
+      --linkHover:#ffffff;
+      --chip:#1f2937;
       --shadow: 0 10px 30px rgba(0,0,0,0.35);
       --radius: 16px;
     }
@@ -18,7 +22,7 @@
     html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background: radial-gradient(1200px 600px at 20% 0%, rgba(59,130,246,0.18), transparent 60%),
                   radial-gradient(900px 500px at 90% 20%, rgba(236,72,153,0.14), transparent 55%),
                   var(--bg);
@@ -61,7 +65,6 @@
     }
     .navlinks::-webkit-scrollbar{ height:8px; }
     .navlinks::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.18); border-radius:999px; }
-
     .btn{
       display:inline-flex;
       align-items:center;
@@ -69,7 +72,7 @@
       padding:10px 12px;
       border:1px solid var(--border);
       background: rgba(17, 24, 39, 0.7);
-      color: #e5e7eb;
+      color: var(--link);
       text-decoration:none;
       border-radius: 999px;
       white-space:nowrap;
@@ -80,6 +83,7 @@
     .btn:hover{
       background: rgba(31, 41, 55, 0.9);
       border-color: rgba(255,255,255,0.18);
+      color: var(--linkHover);
     }
     .btn:active{ transform: translateY(1px); }
 
@@ -90,13 +94,6 @@
     .btn.primary:hover{
       background: rgba(59,130,246,0.26);
       border-color: rgba(59,130,246,0.55);
-    }
-
-    /* ✅ Active nav button (highlight) */
-    .btn.active{
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.40);
-      box-shadow: 0 0 0 4px rgba(255,255,255,0.08);
     }
 
     main{
@@ -112,13 +109,19 @@
       padding: 22px;
       box-shadow: var(--shadow);
       margin: 18px 0;
-      scroll-margin-top: 86px; /* prevents header covering anchors */
     }
 
-    h2{ margin: 0 0 10px 0; font-size: 20px; }
-    p{ margin: 10px 0; }
+    /* Prevent the sticky header from covering anchor targets */
+    section{ scroll-margin-top: 86px; }
+
+    h2{
+      margin: 0 0 10px 0;
+      font-size: 20px;
+    }
+    p{ margin: 10px 0; color: var(--text); }
     .muted{ color: var(--muted); }
 
+    /* Project cards */
     .grid{
       display:grid;
       grid-template-columns: 1fr;
@@ -127,7 +130,6 @@
     @media (min-width: 780px){
       .grid{ grid-template-columns: 1fr 1fr; }
     }
-
     .card{
       background: rgba(15, 23, 42, 0.65);
       border: 1px solid var(--border);
@@ -135,7 +137,6 @@
       padding: 16px;
     }
     .card h3{ margin: 0 0 8px 0; font-size: 16px; }
-
     .chips{
       display:flex;
       flex-wrap:wrap;
@@ -144,18 +145,21 @@
     }
     .chip{
       font-size: 12px;
+      color: var(--text);
       background: rgba(31, 41, 55, 0.8);
       border: 1px solid rgba(255,255,255,0.10);
       padding: 6px 10px;
       border-radius: 999px;
     }
 
+    /* Skills list */
     .skills{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
     }
 
+    /* Contact form */
     form{
       display:grid;
       gap: 10px;
@@ -187,6 +191,7 @@
 </head>
 
 <body>
+  <!-- Top banner -->
   <header>
     <div class="nav">
       <div class="brand">Surya Venkatraman</div>
@@ -196,21 +201,28 @@
         <a class="btn" href="#projects">Projects</a>
         <a class="btn" href="#skills">Skills</a>
         <a class="btn" href="#contact">Contact</a>
+
+        <!-- Put resume.pdf in the same folder as this HTML file -->
         <a class="btn primary" href="resume.pdf" download>Resume</a>
       </nav>
     </div>
   </header>
 
   <main>
+    <!-- About -->
     <section id="about">
       <h2>About</h2>
       <p>
-        Mock text: I’m Surya Venkatraman. I build data-driven products and analytics solutions, turning messy data into
-        clear decisions.
+        Mock text: I’m Surya Venkatraman. I build data-driven products and analytics solutions, turning messy
+        data into clear decisions. I like shipping practical tools, automating workflows, and presenting results
+        in a way that makes sense to real people.
       </p>
-      <p class="muted">Replace this with your real bio later. Keep it 3–5 lines max.</p>
+      <p class="muted">
+        Replace this with your real bio later. Keep it 3–5 lines max.
+      </p>
     </section>
 
+    <!-- Projects -->
     <section id="projects">
       <h2>Projects</h2>
       <div class="grid">
@@ -218,7 +230,7 @@
           <h3>Project One</h3>
           <p class="muted">
             Mock description: Built a dashboard that reduced reporting time from days to minutes by automating data
-            cleaning and visualization.
+            cleaning, modeling, and visualization.
           </p>
           <div class="chips">
             <span class="chip">Python</span>
@@ -230,7 +242,8 @@
         <div class="card">
           <h3>Project Two</h3>
           <p class="muted">
-            Mock description: Created an ML prototype that classifies customer issues and routes them to the right team.
+            Mock description: Created an ML prototype that classifies customer issues and routes them to the right team,
+            improving triage speed and consistency.
           </p>
           <div class="chips">
             <span class="chip">Machine Learning</span>
@@ -241,6 +254,7 @@
       </div>
     </section>
 
+    <!-- Skills -->
     <section id="skills">
       <h2>Skills</h2>
       <div class="skills">
@@ -252,11 +266,15 @@
         <span class="chip">ETL / Data Pipelines</span>
         <span class="chip">Machine Learning</span>
       </div>
+      <p class="muted" style="margin-top:12px;">
+        Keep this short and scannable.
+      </p>
     </section>
 
+    <!-- Contact -->
     <section id="contact">
       <h2>Contact</h2>
-      <p class="muted">Mock form (won’t send anywhere yet without a backend).</p>
+      <p class="muted">Mock form (this won’t send anywhere yet without a backend).</p>
 
       <form>
         <div>
@@ -274,8 +292,7 @@
           <textarea id="message" name="message" placeholder="Write your message..."></textarea>
         </div>
 
-        <button class="btn primary" type="button"
-          onclick="alert('Hook this up later (Formspree / Netlify Forms / backend).')">
+        <button class="btn primary" type="button" onclick="alert('Hook this up later (Formspree / Netlify Forms / backend).')">
           Send
         </button>
       </form>
@@ -287,76 +304,8 @@
   </footer>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const header = document.querySelector("header");
-      const navLinks = Array.from(document.querySelectorAll('.navlinks a[href^="#"]'));
-      const ids = navLinks.map(a => a.getAttribute("href").slice(1));
-      const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
-    
-      if (!sections.length) return;
-    
-      let activeId = null;
-      let ticking = false;
-    
-      function headerHeight() {
-        return header ? Math.ceil(header.getBoundingClientRect().height) : 0;
-      }
-    
-      function setActive(id) {
-        if (!id || id === activeId) return;
-        activeId = id;
-    
-        navLinks.forEach(a => {
-          const aId = a.getAttribute("href").slice(1);
-          const on = aId === id;
-          a.classList.toggle("active", on);
-          a.setAttribute("aria-current", on ? "true" : "false");
-        });
-      }
-    
-      function computeActive() {
-        // A line just under the sticky header. If a section's top is above this line,
-        // we consider it "entered".
-        const line = headerHeight() + 12;
-    
-        // Pick the LAST section whose top is <= line.
-        // This is stable and will not bounce when multiple sections are visible.
-        let current = sections[0].id;
-    
-        for (const s of sections) {
-          const top = s.getBoundingClientRect().top;
-          if (top <= line) current = s.id;
-          else break; // sections are in order; once one isn't reached, the rest aren't either
-        }
-    
-        setActive(current);
-      }
-    
-      function onScrollOrResize() {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-          computeActive();
-          ticking = false;
-        });
-      }
-    
-      // Initial set
-      computeActive();
-    
-      // Update on scroll/resize
-      window.addEventListener("scroll", onScrollOrResize, { passive: true });
-      window.addEventListener("resize", onScrollOrResize);
-    
-      // Instant feedback on click (optional but feels good)
-      navLinks.forEach(a => {
-        a.addEventListener("click", () => {
-          const id = a.getAttribute("href").slice(1);
-          setActive(id);
-        });
-      });
-    });
+    // tiny, non-glitchy script just for the footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
