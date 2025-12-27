@@ -199,9 +199,8 @@
       color:var(--muted);
     }
 
-    .form-status.success{
-      color:#86efac;
-    }
+    .form-status.success{ color:#86efac; }
+    .form-status.error{ color:#fca5a5; }
 
     /* ===== Footer ===== */
     footer{
@@ -239,7 +238,6 @@
   </p>
 
   <div class="grid" style="margin-top:14px;">
-    <!-- Left: quick profile -->
     <div class="card">
       <h3 style="margin:0 0 6px 0;">Currently Providing Value at:</h3>
       <p style="margin:0;">
@@ -256,7 +254,6 @@
       </p>
     </div>
 
-    <!-- Right: education (separate) -->
     <div class="card">
       <h3 style="margin:0 0 10px 0;">Education</h3>
 
@@ -350,73 +347,143 @@
 <section id="skills">
   <h2>Skills</h2>
 
-  <!-- Your SVG tree stays the same -->
+  <!-- FIXED: Leaf spacing + leaf pills (no overlap), and lines align to pill centers -->
   <svg viewBox="0 0 900 520" width="100%" height="auto" aria-label="Skills Tree" role="img">
+    <!-- ===== Lines (trunk + branches) ===== -->
     <g stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round">
+      <!-- trunk -->
       <line x1="450" y1="70" x2="450" y2="140" />
+
+      <!-- main branches -->
       <line x1="450" y1="140" x2="180" y2="220" />
       <line x1="450" y1="140" x2="360" y2="220" />
       <line x1="450" y1="140" x2="540" y2="220" />
       <line x1="450" y1="140" x2="720" y2="220" />
-      <line x1="180" y1="260" x2="120" y2="330" />
-      <line x1="180" y1="260" x2="180" y2="330" />
-      <line x1="180" y1="260" x2="240" y2="330" />
-      <line x1="360" y1="260" x2="300" y2="330" />
-      <line x1="360" y1="260" x2="360" y2="330" />
-      <line x1="360" y1="260" x2="420" y2="330" />
-      <line x1="540" y1="260" x2="480" y2="330" />
-      <line x1="540" y1="260" x2="540" y2="330" />
-      <line x1="540" y1="260" x2="600" y2="330" />
-      <line x1="720" y1="260" x2="660" y2="330" />
-      <line x1="720" y1="260" x2="720" y2="330" />
-      <line x1="720" y1="260" x2="780" y2="330" />
+
+      <!-- down-stems to branch nodes -->
+      <line x1="180" y1="220" x2="180" y2="260" />
+      <line x1="360" y1="220" x2="360" y2="260" />
+      <line x1="540" y1="220" x2="540" y2="260" />
+      <line x1="720" y1="220" x2="720" y2="260" />
+
+      <!-- leaf connectors (aligned to pill centers) -->
+      <!-- Programming -->
+      <line x1="180" y1="260" x2="120" y2="328" />
+      <line x1="180" y1="260" x2="180" y2="328" />
+      <line x1="180" y1="260" x2="240" y2="328" />
+
+      <!-- ML/AI -->
+      <line x1="360" y1="260" x2="300" y2="328" />
+      <line x1="360" y1="260" x2="360" y2="328" />
+      <line x1="360" y1="260" x2="450" y2="328" />
+
+      <!-- Data/Big Data -->
+      <line x1="540" y1="260" x2="485" y2="328" />
+      <line x1="540" y1="260" x2="565" y2="328" />
+      <line x1="540" y1="260" x2="655" y2="328" />
+
+      <!-- Cloud/BI -->
+      <line x1="720" y1="260" x2="650" y2="328" />
+      <line x1="720" y1="260" x2="730" y2="328" />
+      <line x1="720" y1="260" x2="825" y2="328" />
     </g>
 
+    <!-- ===== Node styles ===== -->
     <defs>
       <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
         <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="rgba(0,0,0,0.35)" />
       </filter>
+
+      <style>
+        .leaf-pill { fill:#0b1220; stroke:rgba(255,255,255,0.12); }
+        .leaf-text { fill:#e5e7eb; font-weight:650; }
+      </style>
     </defs>
 
+    <!-- ===== Root node ===== -->
     <g filter="url(#softShadow)">
       <rect x="390" y="30" rx="14" ry="14" width="120" height="46" fill="rgba(15, 23, 42, 0.9)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="450" y="58" text-anchor="middle" fill="#e5e7eb" font-size="15" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">
+      <text x="450" y="58" text-anchor="middle" fill="#e5e7eb" font-size="15"
+        font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">
         Skills
       </text>
     </g>
 
+    <!-- ===== Main branch nodes ===== -->
     <g filter="url(#softShadow)">
+      <!-- Programming -->
       <rect x="105" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="180" y="248" text-anchor="middle" fill="#93c5fd" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Programming</text>
+      <text x="180" y="248" text-anchor="middle" fill="#93c5fd" font-size="14"
+        font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Programming</text>
 
+      <!-- ML / AI -->
       <rect x="285" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="360" y="248" text-anchor="middle" fill="#86efac" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">ML / AI</text>
+      <text x="360" y="248" text-anchor="middle" fill="#86efac" font-size="14"
+        font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">ML / AI</text>
 
+      <!-- Data / Big Data -->
       <rect x="465" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="540" y="248" text-anchor="middle" fill="#fcd34d" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Data / Big Data</text>
+      <text x="540" y="248" text-anchor="middle" fill="#fcd34d" font-size="14"
+        font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Data / Big Data</text>
 
+      <!-- Cloud / BI -->
       <rect x="645" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="720" y="248" text-anchor="middle" fill="#f9a8d4" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Cloud / BI</text>
+      <text x="720" y="248" text-anchor="middle" fill="#f9a8d4" font-size="14"
+        font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Cloud / BI</text>
     </g>
 
-    <g fill="#e5e7eb" font-size="13" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial">
-      <text x="120" y="352" text-anchor="middle">Python</text>
-      <text x="180" y="352" text-anchor="middle">SQL</text>
-      <text x="240" y="352" text-anchor="middle">R</text>
+    <!-- ===== Leaf nodes (pills) ===== -->
+    <g font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="12">
+      <!-- Programming -->
+      <g filter="url(#softShadow)">
+        <rect class="leaf-pill" x="70"  y="330" rx="999" ry="999" width="100" height="34"></rect>
+        <text class="leaf-text" x="120" y="352" text-anchor="middle">Python</text>
 
-      <text x="300" y="352" text-anchor="middle">scikit-learn</text>
-      <text x="360" y="352" text-anchor="middle">PyTorch</text>
-      <text x="420" y="352" text-anchor="middle">TensorFlow</text>
+        <rect class="leaf-pill" x="140" y="330" rx="999" ry="999" width="80" height="34"></rect>
+        <text class="leaf-text" x="180" y="352" text-anchor="middle">SQL</text>
 
-      <text x="480" y="352" text-anchor="middle">Apache Spark</text>
-      <text x="540" y="352" text-anchor="middle">PySpark</text>
-      <text x="600" y="352" text-anchor="middle">Databricks</text>
+        <rect class="leaf-pill" x="210" y="330" rx="999" ry="999" width="60" height="34"></rect>
+        <text class="leaf-text" x="240" y="352" text-anchor="middle">R</text>
+      </g>
 
-      <text x="660" y="352" text-anchor="middle">AWS</text>
-      <text x="720" y="352" text-anchor="middle">Azure</text>
-      <text x="780" y="352" text-anchor="middle">Power BI</text>
+      <!-- ML / AI -->
+      <g filter="url(#softShadow)">
+        <rect class="leaf-pill" x="245" y="330" rx="999" ry="999" width="110" height="34"></rect>
+        <text class="leaf-text" x="300" y="352" text-anchor="middle">scikit-learn</text>
+
+        <rect class="leaf-pill" x="325" y="330" rx="999" ry="999" width="70" height="34"></rect>
+        <text class="leaf-text" x="360" y="352" text-anchor="middle">PyTorch</text>
+
+        <rect class="leaf-pill" x="395" y="330" rx="999" ry="999" width="110" height="34"></rect>
+        <text class="leaf-text" x="450" y="352" text-anchor="middle">TensorFlow</text>
+      </g>
+
+      <!-- Data / Big Data -->
+      <g filter="url(#softShadow)">
+        <rect class="leaf-pill" x="420" y="330" rx="999" ry="999" width="130" height="34"></rect>
+        <text class="leaf-text" x="485" y="352" text-anchor="middle">Apache Spark</text>
+
+        <rect class="leaf-pill" x="520" y="330" rx="999" ry="999" width="90" height="34"></rect>
+        <text class="leaf-text" x="565" y="352" text-anchor="middle">PySpark</text>
+
+        <rect class="leaf-pill" x="600" y="330" rx="999" ry="999" width="110" height="34"></rect>
+        <text class="leaf-text" x="655" y="352" text-anchor="middle">Databricks</text>
+      </g>
+
+      <!-- Cloud / BI -->
+      <g filter="url(#softShadow)">
+        <rect class="leaf-pill" x="615" y="330" rx="999" ry="999" width="70" height="34"></rect>
+        <text class="leaf-text" x="650" y="352" text-anchor="middle">AWS</text>
+
+        <rect class="leaf-pill" x="690" y="330" rx="999" ry="999" width="80" height="34"></rect>
+        <text class="leaf-text" x="730" y="352" text-anchor="middle">Azure</text>
+
+        <rect class="leaf-pill" x="770" y="330" rx="999" ry="999" width="110" height="34"></rect>
+        <text class="leaf-text" x="825" y="352" text-anchor="middle">Power BI</text>
+      </g>
     </g>
 
+    <!-- caption -->
     <text x="450" y="470" text-anchor="middle" fill="rgba(148,163,184,0.95)" font-size="12"
       font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial">
       Skills grouped by domain for quick scanning and depth signaling.
@@ -430,6 +497,67 @@
 
 <section id="contact">
   <h2>Contact</h2>
+  <p class="muted">
+    Send me a message—this form emails submissions to me (no mail app required).
+  </p>
+
+  <!-- IMPORTANT:
+    1) Create a Formspree form and replace the action URL below.
+    2) This avoids the "not secure" warning and works for recruiters.
+  -->
+  <form
+    id="contactForm"
+    class="contact-form"
+    action="https://formspree.io/f/YOUR_FORM_ID"
+    method="POST"
+  >
+    <input type="hidden" name="_subject" value="New message from portfolio site" />
+
+    <div class="field">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Your full name"
+        autocomplete="name"
+        required
+      />
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="you@example.com"
+        autocomplete="email"
+        required
+      />
+    </div>
+
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="5"
+        placeholder="What would you like to talk about?"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Honeypot (spam) -->
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+    <button type="submit" class="btn primary">Send Message</button>
+    <div id="formStatus" class="form-status" aria-live="polite"></div>
+  </form>
+
+  <p class="muted" style="margin-top:12px; font-size:13px;">
+    Note: This works once your site is hosted on HTTPS (GitHub Pages/Netlify/Vercel all do this).
+  </p>
 </section>
 
 </main>
@@ -442,36 +570,34 @@
   // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Contact form (front-end only)
+  // AJAX submit for Formspree (stays on-page, shows success/error)
   const form = document.getElementById("contactForm");
   const statusEl = document.getElementById("formStatus");
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    statusEl.textContent = "Sending...";
+    statusEl.className = "form-status";
 
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      });
 
-    // Basic validation
-    if (!name || !email || !message) {
-      statusEl.textContent = "Please fill out all fields.";
-      statusEl.className = "form-status";
-      return;
+      if (res.ok) {
+        statusEl.textContent = "Sent. I’ll get back to you soon.";
+        statusEl.className = "form-status success";
+        form.reset();
+      } else {
+        statusEl.textContent = "Something went wrong. Try again or email me directly.";
+        statusEl.className = "form-status error";
+      }
+    } catch (err) {
+      statusEl.textContent = "Network error. Try again or email me directly.";
+      statusEl.className = "form-status error";
     }
-
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!emailOk) {
-      statusEl.textContent = "Please enter a valid email.";
-      statusEl.className = "form-status";
-      return;
-    }
-
-    // Simulated success (replace this with Formspree/Netlify/API later)
-    statusEl.textContent = "Message ready to send (backend not connected yet).";
-    statusEl.className = "form-status success";
-
-    form.reset();
   });
 </script>
 
