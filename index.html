@@ -67,6 +67,7 @@
       text-decoration:none;
       font-size:14px;
       white-space:nowrap;
+      cursor:pointer;
     }
 
     .btn.primary{
@@ -145,11 +146,61 @@
       color:var(--linkHover);
     }
 
-    /* ===== Skills ===== */
-    .skills{
+    /* ===== Contact Form ===== */
+    .contact-form{
+      margin-top:16px;
       display:flex;
-      flex-wrap:wrap;
-      gap:10px;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .field label{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .field input,
+    .field textarea{
+      background:#0b1220;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px 14px;
+      color:var(--text);
+      font-size:14px;
+      font-family:inherit;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder{
+      color:#64748b;
+    }
+
+    .field input:focus,
+    .field textarea:focus{
+      outline:none;
+      border-color:rgba(59,130,246,0.6);
+      box-shadow:0 0 0 2px rgba(59,130,246,0.25);
+    }
+
+    .contact-form button{
+      align-self:flex-start;
+      margin-top:6px;
+    }
+
+    .form-status{
+      margin-top:10px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .form-status.success{
+      color:#86efac;
     }
 
     /* ===== Footer ===== */
@@ -197,7 +248,7 @@
         providing accuracy and rigor for over 14M members nationally.
       </p>
 
-      <h3 style="margin:0 0 6px 0;">Previously at:</h3>
+      <h3 style="margin:14px 0 6px 0;">Previously at:</h3>
       <p style="margin:0;">
         P3Fusion<br/>
         Providing end-to-end solutions in AI, workflow automation, and cloud migration
@@ -209,12 +260,12 @@
     <div class="card">
       <h3 style="margin:0 0 10px 0;">Education</h3>
 
-      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
         <div>
           <div style="font-weight:700;">Georgia Institute of Technology</div>
           <div class="muted">MS in Analytics</div>
         </div>
-        <div class="muted" style="white-space:nowrap;">Expected May 2026/div>
+        <div class="muted" style="white-space:nowrap;">Expected May 2026</div>
       </div>
 
       <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
@@ -224,15 +275,9 @@
         </div>
         <div class="muted" style="white-space:nowrap;">May 2024</div>
       </div>
-
-      
-
-  
     </div>
   </div>
 </section>
-
-
 
 <section id="projects">
   <h2>Projects</h2>
@@ -305,47 +350,34 @@
 <section id="skills">
   <h2>Skills</h2>
 
+  <!-- Your SVG tree stays the same -->
   <svg viewBox="0 0 900 520" width="100%" height="auto" aria-label="Skills Tree" role="img">
-    <!-- ===== Lines (trunk + branches) ===== -->
     <g stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round">
-      <!-- trunk -->
       <line x1="450" y1="70" x2="450" y2="140" />
-
-      <!-- main branches -->
       <line x1="450" y1="140" x2="180" y2="220" />
       <line x1="450" y1="140" x2="360" y2="220" />
       <line x1="450" y1="140" x2="540" y2="220" />
       <line x1="450" y1="140" x2="720" y2="220" />
-
-      <!-- Programming leaves -->
       <line x1="180" y1="260" x2="120" y2="330" />
       <line x1="180" y1="260" x2="180" y2="330" />
       <line x1="180" y1="260" x2="240" y2="330" />
-
-      <!-- ML/AI leaves -->
       <line x1="360" y1="260" x2="300" y2="330" />
       <line x1="360" y1="260" x2="360" y2="330" />
       <line x1="360" y1="260" x2="420" y2="330" />
-
-      <!-- Data/Big Data leaves -->
       <line x1="540" y1="260" x2="480" y2="330" />
       <line x1="540" y1="260" x2="540" y2="330" />
       <line x1="540" y1="260" x2="600" y2="330" />
-
-      <!-- Cloud/BI leaves -->
       <line x1="720" y1="260" x2="660" y2="330" />
       <line x1="720" y1="260" x2="720" y2="330" />
       <line x1="720" y1="260" x2="780" y2="330" />
     </g>
 
-    <!-- ===== Node styles ===== -->
     <defs>
       <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
         <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="rgba(0,0,0,0.35)" />
       </filter>
     </defs>
 
-    <!-- ===== Root node ===== -->
     <g filter="url(#softShadow)">
       <rect x="390" y="30" rx="14" ry="14" width="120" height="46" fill="rgba(15, 23, 42, 0.9)" stroke="rgba(255,255,255,0.12)"/>
       <text x="450" y="58" text-anchor="middle" fill="#e5e7eb" font-size="15" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">
@@ -353,57 +385,38 @@
       </text>
     </g>
 
-    <!-- ===== Main branch nodes ===== -->
     <g filter="url(#softShadow)">
-      <!-- Programming -->
       <rect x="105" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="180" y="248" text-anchor="middle" fill="#93c5fd" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">
-        Programming
-      </text>
+      <text x="180" y="248" text-anchor="middle" fill="#93c5fd" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Programming</text>
 
-      <!-- ML / AI -->
       <rect x="285" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="360" y="248" text-anchor="middle" fill="#86efac" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">
-        ML / AI
-      </text>
+      <text x="360" y="248" text-anchor="middle" fill="#86efac" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">ML / AI</text>
 
-      <!-- Data / Big Data -->
       <rect x="465" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="540" y="248" text-anchor="middle" fill="#fcd34d" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">
-        Data / Big Data
-      </text>
+      <text x="540" y="248" text-anchor="middle" fill="#fcd34d" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Data / Big Data</text>
 
-      <!-- Cloud / BI -->
       <rect x="645" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="720" y="248" text-anchor="middle" fill="#f9a8d4" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">
-        Cloud / BI
-      </text>
+      <text x="720" y="248" text-anchor="middle" fill="#f9a8d4" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Cloud / BI</text>
     </g>
 
-    <!-- ===== Leaf labels ===== -->
     <g fill="#e5e7eb" font-size="13" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial">
-      <!-- Programming leaves -->
       <text x="120" y="352" text-anchor="middle">Python</text>
       <text x="180" y="352" text-anchor="middle">SQL</text>
       <text x="240" y="352" text-anchor="middle">R</text>
 
-      <!-- ML/AI leaves -->
       <text x="300" y="352" text-anchor="middle">scikit-learn</text>
       <text x="360" y="352" text-anchor="middle">PyTorch</text>
       <text x="420" y="352" text-anchor="middle">TensorFlow</text>
 
-      <!-- Data/Big Data leaves -->
       <text x="480" y="352" text-anchor="middle">Apache Spark</text>
       <text x="540" y="352" text-anchor="middle">PySpark</text>
       <text x="600" y="352" text-anchor="middle">Databricks</text>
 
-      <!-- Cloud/BI leaves -->
       <text x="660" y="352" text-anchor="middle">AWS</text>
       <text x="720" y="352" text-anchor="middle">Azure</text>
       <text x="780" y="352" text-anchor="middle">Power BI</text>
     </g>
 
-    <!-- Subtle caption -->
     <text x="450" y="470" text-anchor="middle" fill="rgba(148,163,184,0.95)" font-size="12"
       font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial">
       Skills grouped by domain for quick scanning and depth signaling.
@@ -415,12 +428,53 @@
   </p>
 </section>
 
-
-
-
 <section id="contact">
   <h2>Contact</h2>
-  <p class="muted">Add backend later.</p>
+  <p class="muted">Reach out for collaboration, opportunities, or questions.</p>
+
+  <form
+    class="contact-form"
+    action="mailto:youremail@email.com"
+    method="POST"
+    enctype="text/plain"
+    >
+    <div class="field">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="Name"
+        placeholder="Your full name"
+        required
+      />
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="Email"
+        placeholder="you@example.com"
+        required
+      />
+    </div>
+
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea
+        id="message"
+        name="Message"
+        rows="5"
+        placeholder="What would you like to talk about?"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn primary">
+      Send Message
+    </button>
+  </form>
 </section>
 
 </main>
@@ -430,7 +484,40 @@
 </footer>
 
 <script>
+  // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Contact form (front-end only)
+  const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("formStatus");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    // Basic validation
+    if (!name || !email || !message) {
+      statusEl.textContent = "Please fill out all fields.";
+      statusEl.className = "form-status";
+      return;
+    }
+
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailOk) {
+      statusEl.textContent = "Please enter a valid email.";
+      statusEl.className = "form-status";
+      return;
+    }
+
+    // Simulated success (replace this with Formspree/Netlify/API later)
+    statusEl.textContent = "Message ready to send (backend not connected yet).";
+    statusEl.className = "form-status success";
+
+    form.reset();
+  });
 </script>
 
 </body>
