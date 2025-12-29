@@ -347,14 +347,177 @@
 <section id="skills">
   <h2>Skills</h2>
 
-  <!-- GUARANTEED NO OVERLAP: wider leaf lanes + vertical staggering + connectors hit pill centers -->
-  <svg viewBox="0 0 900 560" width="100%" height="auto" aria-label="Skills Tree" role="img">
+  <!-- Your SVG tree stays the same -->
+  <svg viewBox="0 0 900 520" width="100%" height="auto" aria-label="Skills Tree" role="img">
+    <g stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round">
+      <line x1="450" y1="70" x2="450" y2="140" />
+
+      <line x1="450" y1="140" x2="180" y2="220" />
+      <line x1="450" y1="140" x2="360" y2="220" />
+      <line x1="450" y1="140" x2="540" y2="220" />
+      <line x1="450" y1="140" x2="720" y2="220" />
+
+      <line x1="110" y1="260" x2="72" y2="330" />
+      <line x1="110" y1="260" x2="130" y2="330" />
+      <line x1="110" y1="260" x2="190" y2="333" />
+
+      <line x1="330" y1="260" x2="280" y2="360" />
+      <line x1="330" y1="260" x2="340" y2="325" />
+      <line x1="330" y1="260" x2="415" y2="360" />
+
+      <line x1="540" y1="260" x2="480" y2="313" />
+      <line x1="540" y1="260" x2="540" y2="340" />
+      <line x1="540" y1="260" x2="600" y2="312" />
+
+      <line x1="790" y1="260" x2="730" y2="330" />
+      <line x1="790" y1="260" x2="790" y2="330" />
+      <line x1="790" y1="260" x2="850" y2="330" />
+    </g>
+
     <defs>
       <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
         <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="rgba(0,0,0,0.35)" />
       </filter>
+    </defs>
 
-      <style>
-        .node-card { fill: rgba(15, 23, 42, 0.88); stroke: rgba(255,255,255,0.12); }
-        .node-text { fill: #e5e7eb; font-weight: 800; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
-        .lea
+    <g filter="url(#softShadow)">
+      <rect x="390" y="30" rx="14" ry="14" width="120" height="46" fill="rgba(15, 23, 42, 0.9)" stroke="rgba(255,255,255,0.12)"/>
+      <text x="450" y="58" text-anchor="middle" fill="#e5e7eb" font-size="15" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">
+        Skills
+      </text>
+    </g>
+
+    <g filter="url(#softShadow)">
+      <rect x="40" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
+      <text x="115" y="248" text-anchor="middle" fill="#93c5fd" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Programming</text>
+
+      <rect x="260" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
+      <text x="335" y="248" text-anchor="middle" fill="#86efac" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">ML / AI</text>
+
+      <rect x="465" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
+      <text x="540" y="248" text-anchor="middle" fill="#fcd34d" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Data / Big Data</text>
+
+      <rect x="710" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
+      <text x="785" y="248" text-anchor="middle" fill="#f9a8d4" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Cloud / BI</text>
+    </g>
+
+    <g fill="#e5e7eb" font-size="13" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial">
+      <text x="75" y="352" text-anchor="middle">Python</text>
+      <text x="135" y="352" text-anchor="middle">SQL</text>
+      <text x="195" y="352" text-anchor="middle">R</text>
+
+      <text x="280" y="380" text-anchor="middle">scikit-learn</text>
+      <text x="345" y="345" text-anchor="middle">PyTorch</text>
+      <text x="420" y="380" text-anchor="middle">TensorFlow</text>
+
+      <text x="480" y="330" text-anchor="middle">Apache Spark</text>
+      <text x="540" y="360" text-anchor="middle">PySpark</text>
+      <text x="600" y="330" text-anchor="middle">Databricks</text>
+
+      <text x="725" y="352" text-anchor="middle">AWS</text>
+      <text x="787" y="352" text-anchor="middle">Azure</text>
+      <text x="852" y="352" text-anchor="middle">Power BI</text>
+    </g>
+
+  </svg>
+
+</section>
+
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p class="muted">Want submissions to go to your email? Use Formspree (no backend, no overlap, no warnings).</p>
+
+  <!-- Replace YOUR_FORM_ID after creating a Formspree form -->
+  <form
+    id="contactForm"
+    class="contact-form"
+    action="https://formspree.io/f/YOUR_FORM_ID"
+    method="POST"
+  >
+    <input type="hidden" name="_subject" value="New message from portfolio site" />
+
+    <div class="field">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Your full name"
+        autocomplete="name"
+        required
+      />
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="you@example.com"
+        autocomplete="email"
+        required
+      />
+    </div>
+
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="5"
+        placeholder="What would you like to talk about?"
+        required
+      ></textarea>
+    </div>
+
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+    <button type="submit" class="btn primary">Send Message</button>
+    <div id="formStatus" class="form-status" aria-live="polite"></div>
+  </form>
+</section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> Surya Venkatraman
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // AJAX submit for Formspree (stays on page)
+  const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("formStatus");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    statusEl.textContent = "Sending...";
+    statusEl.className = "form-status";
+
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      });
+
+      if (res.ok) {
+        statusEl.textContent = "Sent. I’ll get back to you soon.";
+        statusEl.className = "form-status success";
+        form.reset();
+      } else {
+        statusEl.textContent = "Something went wrong. Try again or email me directly.";
+        statusEl.className = "form-status error";
+      }
+    } catch (err) {
+      statusEl.textContent = "Network error. Try again or email me directly.";
+      statusEl.className = "form-status error";
+    }
+  });
+</script>
+
+</body>
+</html>
