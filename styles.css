@@ -656,8 +656,8 @@ details.coursework[open] .cw-chevron {
 
 .xp-logoWrap {
   /* Fixed logo container on the right */
-  width: 42px;
-  height: 42px;
+  width: 65px;
+  height: 65px;
 
   /* Rounded square */
   border-radius: 12px;
@@ -680,8 +680,8 @@ details.coursework[open] .cw-chevron {
 
 .xp-logo {
   /* Logo image sizing */
-  width: 28px;
-  height: 28px;
+  width: 55px;
+  height: 55px;
 
   /* Keeps logo proportional */
   object-fit: contain;
