@@ -25,14 +25,128 @@
       <section id="about">
         <h2>About</h2>
 
-        <p>
-          I build analytics and AI solutions that turn messy data into clear
-          decisions—automating reporting, improving data quality, and shipping
-          tools people actually use.
-        </p>
+        <div class="grid grid-about" style="margin-top: 14px">
+          <!-- LEFT COLUMN STACK: About + Education -->
+          <div class="about-col">
+            <!-- ABOUT CARD -->
+            <div class="card about-card">
+              <div class="about-top">
+                <div class="about-photoWrap">
+                  <img
+                    class="about-photo"
+                    src="headshot.jpeg"
+                    alt="Surya Venkatraman headshot"
+                  />
+                </div>
 
-        <div class="grid" style="margin-top: 14px">
-          <!-- LEFT: Experience tiles -->
+                <div class="about-meta">
+                  <div class="about-name">Surya Venkatraman</div>
+                  <div class="about-tag muted">
+                    MS Analytics @ Georgia Tech · Data / AI Builder
+                  </div>
+                </div>
+              </div>
+
+              <div class="about-mission">
+                <p class="muted" style="margin: 6">
+                  I build analytics and AI solutions that turn messy data into
+                  clear decisions—automating reporting, improving data quality,
+                  and shipping tools people actually use.
+                </p>
+              </div>
+            </div>
+
+            <!-- EDUCATION -->
+            <div class="card card-edu">
+              <h3 style="margin: 0 0 10px 0">Education</h3>
+
+              <div class="edu-list">
+                <!-- ===== Georgia Tech entry ===== -->
+                <div class="edu-item">
+                  <div class="edu-top">
+                    <div class="edu-left">
+                      <div class="edu-logoWrap">
+                        <img
+                          class="edu-logo"
+                          src="gt_logo.png"
+                          alt="Georgia Tech logo"
+                        />
+                      </div>
+                      <div class="edu-text">
+                        <div class="edu-school">
+                          Georgia Institute of Technology
+                        </div>
+                        <div class="edu-degree">MS in Analytics</div>
+                      </div>
+                    </div>
+                    <div class="edu-date">Expected May 2026</div>
+                  </div>
+
+                  <details class="coursework">
+                    <summary>
+                      <div class="cw-left">
+                        <span class="cw-pill">Relevant coursework</span>
+                      </div>
+                      <span class="cw-chevron">⌄</span>
+                    </summary>
+
+                    <div class="cw-body">
+                      <div class="cw-chips">
+                        <span class="chip">Machine Learning</span>
+                        <span class="chip">Deep Learning</span>
+                        <span class="chip">Data Engineering</span>
+                        <span class="chip">Optimization</span>
+                        <span class="chip">Cloud Analytics</span>
+                        <span class="chip">NLP</span>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+
+                <!-- ===== UVA entry ===== -->
+                <div class="edu-item">
+                  <div class="edu-top">
+                    <div class="edu-left">
+                      <div class="edu-logoWrap">
+                        <img
+                          class="edu-logo"
+                          src="uva_logo.png"
+                          alt="University of Virginia logo"
+                        />
+                      </div>
+                      <div class="edu-text">
+                        <div class="edu-school">University of Virginia</div>
+                        <div class="edu-degree">BA in Statistics</div>
+                      </div>
+                    </div>
+                    <div class="edu-date">May 2024</div>
+                  </div>
+
+                  <details class="coursework">
+                    <summary>
+                      <div class="cw-left">
+                        <span class="cw-pill">Relevant coursework</span>
+                      </div>
+                      <span class="cw-chevron">⌄</span>
+                    </summary>
+
+                    <div class="cw-body">
+                      <div class="cw-chips">
+                        <span class="chip">Probability</span>
+                        <span class="chip">Mathematical Statistics</span>
+                        <span class="chip">Regression</span>
+                        <span class="chip">Experimental Design</span>
+                        <span class="chip">Data Mining</span>
+                        <span class="chip">Linear Algebra</span>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Impact Snapshot -->
           <div class="card">
             <h3 style="margin: 0 0 10px 0">Impact Snapshot</h3>
 
@@ -48,7 +162,6 @@
                     </div>
                   </div>
 
-                  <!-- LOGO SLOT (replace file name) -->
                   <div class="xp-logoWrap" title="Navy Federal Credit Union">
                     <img
                       class="xp-logo"
@@ -91,7 +204,6 @@
                     </div>
                   </div>
 
-                  <!-- LOGO SLOT (replace file name) -->
                   <div class="xp-logoWrap" title="P3Fusion">
                     <img
                       class="xp-logo"
@@ -122,97 +234,6 @@
                   <span class="chip">LLMs</span>
                   <span class="chip">Cloud</span>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- RIGHT: Education -->
-          <div class="card card-edu">
-            <h3 style="margin: 0 0 10px 0">Education</h3>
-
-            <div class="edu-list">
-              <!-- ===== Georgia Tech entry ===== -->
-              <div class="edu-item">
-                <div class="edu-top">
-                  <div class="edu-left">
-                    <div class="edu-logoWrap">
-                      <img
-                        class="edu-logo"
-                        src="gt_logo.png"
-                        alt="Georgia Tech logo"
-                      />
-                    </div>
-                    <div class="edu-text">
-                      <div class="edu-school">
-                        Georgia Institute of Technology
-                      </div>
-                      <div class="edu-degree">MS in Analytics</div>
-                    </div>
-                  </div>
-                  <div class="edu-date">Expected May 2026</div>
-                </div>
-
-                <details class="coursework">
-                  <summary>
-                    <div class="cw-left">
-                      <span class="cw-pill">Relevant coursework</span>
-                    </div>
-                    <span class="cw-chevron">⌄</span>
-                  </summary>
-
-                  <div class="cw-body">
-                    <div class="cw-chips">
-                      <!-- EDIT THESE -->
-                      <span class="chip">Machine Learning</span>
-                      <span class="chip">Deep Learning</span>
-                      <span class="chip">Data Engineering</span>
-                      <span class="chip">Optimization</span>
-                      <span class="chip">Cloud Analytics</span>
-                      <span class="chip">NLP</span>
-                    </div>
-                  </div>
-                </details>
-              </div>
-
-              <!-- ===== UVA entry ===== -->
-              <div class="edu-item">
-                <div class="edu-top">
-                  <div class="edu-left">
-                    <div class="edu-logoWrap">
-                      <img
-                        class="edu-logo"
-                        src="uva_logo.png"
-                        alt="University of Virginia logo"
-                      />
-                    </div>
-                    <div class="edu-text">
-                      <div class="edu-school">University of Virginia</div>
-                      <div class="edu-degree">BA in Statistics</div>
-                    </div>
-                  </div>
-                  <div class="edu-date">May 2024</div>
-                </div>
-
-                <details class="coursework">
-                  <summary>
-                    <div class="cw-left">
-                      <span class="cw-pill">Relevant coursework</span>
-                    </div>
-                    <span class="cw-chevron">⌄</span>
-                  </summary>
-
-                  <div class="cw-body">
-                    <div class="cw-chips">
-                      <!-- EDIT THESE -->
-                      <span class="chip">Probability</span>
-                      <span class="chip">Mathematical Statistics</span>
-                      <span class="chip">Regression</span>
-                      <span class="chip">Experimental Design</span>
-                      <span class="chip">Data Mining</span>
-                      <span class="chip">Linear Algebra</span>
-                    </div>
-                  </div>
-                </details>
               </div>
             </div>
           </div>
@@ -313,7 +334,7 @@
 
       <section id="skills">
         <h2>Skills</h2>
-        <!-- Keeping your current SVG as-is -->
+
         <svg
           viewBox="0 0 900 520"
           width="100%"
@@ -321,6 +342,7 @@
           aria-label="Skills Tree"
           role="img"
         >
+          <!-- Branch lines -->
           <g
             stroke="rgba(255,255,255,0.18)"
             stroke-width="2"
@@ -344,6 +366,8 @@
             <line x1="790" y1="260" x2="790" y2="330" />
             <line x1="790" y1="260" x2="850" y2="330" />
           </g>
+
+          <!-- Shadow filter -->
           <defs>
             <filter
               id="softShadow"
@@ -360,6 +384,8 @@
               />
             </filter>
           </defs>
+
+          <!-- Root node -->
           <g filter="url(#softShadow)">
             <rect
               x="390"
@@ -383,6 +409,8 @@
               Skills
             </text>
           </g>
+
+          <!-- Main branches -->
           <g filter="url(#softShadow)">
             <rect
               x="40"
@@ -405,6 +433,7 @@
             >
               Programming
             </text>
+
             <rect
               x="260"
               y="220"
@@ -426,6 +455,7 @@
             >
               ML / AI
             </text>
+
             <rect
               x="465"
               y="220"
@@ -447,6 +477,7 @@
             >
               Data / Big Data
             </text>
+
             <rect
               x="710"
               y="220"
@@ -469,23 +500,360 @@
               Cloud / BI
             </text>
           </g>
+
+          <!-- Leaves + tooltips (ZERO JS) -->
           <g
             fill="#e5e7eb"
             font-size="13"
             font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
           >
-            <text x="75" y="352" text-anchor="middle">Python</text>
-            <text x="135" y="352" text-anchor="middle">SQL</text>
-            <text x="195" y="352" text-anchor="middle">R</text>
-            <text x="280" y="380" text-anchor="middle">scikit-learn</text>
-            <text x="345" y="345" text-anchor="middle">PyTorch</text>
-            <text x="420" y="380" text-anchor="middle">TensorFlow</text>
-            <text x="480" y="330" text-anchor="middle">Apache Spark</text>
-            <text x="540" y="360" text-anchor="middle">PySpark</text>
-            <text x="600" y="330" text-anchor="middle">Databricks</text>
-            <text x="725" y="352" text-anchor="middle">AWS</text>
-            <text x="787" y="352" text-anchor="middle">Azure</text>
-            <text x="852" y="352" text-anchor="middle">Power BI</text>
+            <!-- Python -->
+            <g class="skill-leaf" tabindex="0">
+              <text x="75" y="352" text-anchor="middle">Python</text>
+              <g class="skill-tooltip">
+                <rect
+                  x="5"
+                  y="295"
+                  rx="10"
+                  ry="10"
+                  width="260"
+                  height="56"
+                  fill="rgba(2, 6, 23, 0.95)"
+                  stroke="rgba(255,255,255,0.14)"
+                />
+                <text
+                  x="16"
+                  y="318"
+                  font-size="11"
+                  fill="#e5e7eb"
+                  font-weight="700"
+                >
+                  Python
+                </text>
+                <text x="16" y="336" font-size="11" fill="#94a3b8">
+                  NFCU automation + ETL scripts · RAG prototypes
+                </text>
+              </g>
+            </g>
+
+            <!-- SQL -->
+            <g class="skill-leaf" tabindex="0">
+              <text x="135" y="352" text-anchor="middle">SQL</text>
+              <g class="skill-tooltip">
+                <rect
+                  x="70"
+                  y="295"
+                  rx="10"
+                  ry="10"
+                  width="260"
+                  height="56"
+                  fill="rgba(2, 6, 23, 0.95)"
+                  stroke="rgba(255,255,255,0.14)"
+                />
+                <text
+                  x="81"
+                  y="318"
+                  font-size="11"
+                  fill="#e5e7eb"
+                  font-weight="700"
+                >
+                  SQL
+                </text>
+                <text x="81" y="336" font-size="11" fill="#94a3b8">
+                  Data quality checks · reporting queries · analytics
+                </text>
+              </g>
+            </g>
+
+            <!-- R -->
+            <g class="skill-leaf" tabindex="0">
+              <text x="195" y="352" text-anchor="middle">R</text>
+              <g class="skill-tooltip">
+                <rect
+                  x="120"
+                  y="295"
+                  rx="10"
+                  ry="10"
+                  width="250"
+                  height="56"
+                  fill="rgba(2, 6, 23, 0.95)"
+                  stroke="rgba(255,255,255,0.14)"
+                />
+                <text
+                  x="131"
+                  y="318"
+                  font-size="11"
+                  fill="#e5e7eb"
+                  font-weight="700"
+                >
+                  R
+                </text>
+                <text x="131" y="336" font-size="11" fill="#94a3b8">
+                  Statistics coursework · modeling + analysis
+                </text>
+              </g>
+            </g>
+
+            <!-- scikit-learn -->
+            <g class="skill-leaf" tabindex="0">
+              <text x="280" y="380" text-anchor="middle">scikit-learn</text>
+              <g class="skill-tooltip">
+                <rect
+                  x="185"
+                  y="405"
+                  rx="10"
+                  ry="10"
+                  width="290"
+                  height="56"
+                  fill="rgba(2, 6, 23, 0.95)"
+                  stroke="rgba(255,255,255,0.14)"
+                />
+                <text
+                  x="196"
+                  y="428"
+                  font-size="11"
+                  fill="#e5e7eb"
+                  font-weight="700"
+                >
+                  scikit-learn
+                </text>
+                <text x="196" y="446" font-size="11" fill="#94a3b8">
+                  Classical ML pipelines · evaluation + tuning
+                </text>
+              </g>
+            </g>
+
+            <!-- PyTorch -->
+            <g class="skill-leaf" tabindex="0">
+              <text x="345" y="345" text-anchor="middle">PyTorch</text>
+              <g class="skill-tooltip">
+                <rect
+                  x="260"
+                  y="280"
+                  rx="10"
+                  ry="10"
+                  width="290"
+                  height="56"
+                  fill="rgba(2, 6, 23, 0.95)"
+                  stroke="rgba(255,255,255,0.14)"
+                />
+                <text
+                  x="271"
+                  y="303"
+                  font-size="11"
+                  fill="#e5e7eb"
+                  font-weight="700"
+                >
+                  PyTorch
+                </text>
+                <text x="271" y="321" font-size="11" fill="#94a3b8">
+                  Deep learning coursework · CNN implementation
+                </text>
+              </g>
+            </g>
+
+            <!-- TensorFlow -->
+            <g class="skill-leaf" tabindex="0">
+              <text x="420" y="380" text-anchor="middle">TensorFlow</text>
+              <g class="skill-tooltip">
+                <rect
+                  x="340"
+                  y="405"
+                  rx="10"
+                  ry="10"
+                  width="300"
+                  height="56"
+                  fill="rgba(2, 6, 23, 0.95)"
+                  stroke="rgba(255,255,255,0.14)"
+                />
+                <text
+                  x="351"
+                  y="428"
+                  font-size="11"
+                  fill="#e5e7eb"
+                  font-weight="700"
+                >
+                  TensorFlow
+                </text>
+                <text x="351" y="446" font-size="11" fill="#94a3b8">
+                  Model prototyping · deep learning experiments
+                </text>
+              </g>
+            </g>
+
+            <!-- Apache Spark -->
+            <g class="skill-leaf" tabindex="0">
+              <text x="480" y="330" text-anchor="middle">Apache Spark</text>
+              <g class="skill-tooltip">
+                <rect
+                  x="400"
+                  y="260"
+                  rx="10"
+                  ry="10"
+                  width="320"
+                  height="56"
+                  fill="rgba(2, 6, 23, 0.95)"
+                  stroke="rgba(255,255,255,0.14)"
+                />
+                <text
+                  x="411"
+                  y="283"
+                  font-size="11"
+                  fill="#e5e7eb"
+                  font-weight="700"
+                >
+                  Apache Spark
+                </text>
+                <text x="411" y="301" font-size="11" fill="#94a3b8">
+                  Distributed processing · ETL at scale
+                </text>
+              </g>
+            </g>
+
+            <!-- PySpark -->
+            <g class="skill-leaf" tabindex="0">
+              <text x="540" y="360" text-anchor="middle">PySpark</text>
+              <g class="skill-tooltip">
+                <rect
+                  x="460"
+                  y="385"
+                  rx="10"
+                  ry="10"
+                  width="300"
+                  height="56"
+                  fill="rgba(2, 6, 23, 0.95)"
+                  stroke="rgba(255,255,255,0.14)"
+                />
+                <text
+                  x="471"
+                  y="408"
+                  font-size="11"
+                  fill="#e5e7eb"
+                  font-weight="700"
+                >
+                  PySpark
+                </text>
+                <text x="471" y="426" font-size="11" fill="#94a3b8">
+                  Databricks ETL pipelines · transformations
+                </text>
+              </g>
+            </g>
+
+            <!-- Databricks -->
+            <g class="skill-leaf" tabindex="0">
+              <text x="600" y="330" text-anchor="middle">Databricks</text>
+              <g class="skill-tooltip">
+                <rect
+                  x="520"
+                  y="260"
+                  rx="10"
+                  ry="10"
+                  width="300"
+                  height="56"
+                  fill="rgba(2, 6, 23, 0.95)"
+                  stroke="rgba(255,255,255,0.14)"
+                />
+                <text
+                  x="531"
+                  y="283"
+                  font-size="11"
+                  fill="#e5e7eb"
+                  font-weight="700"
+                >
+                  Databricks
+                </text>
+                <text x="531" y="301" font-size="11" fill="#94a3b8">
+                  Pipelines + notebooks · big data workflows
+                </text>
+              </g>
+            </g>
+
+            <!-- AWS -->
+            <g class="skill-leaf" tabindex="0">
+              <text x="725" y="352" text-anchor="middle">AWS</text>
+              <g class="skill-tooltip">
+                <rect
+                  x="640"
+                  y="295"
+                  rx="10"
+                  ry="10"
+                  width="285"
+                  height="56"
+                  fill="rgba(2, 6, 23, 0.95)"
+                  stroke="rgba(255,255,255,0.14)"
+                />
+                <text
+                  x="651"
+                  y="318"
+                  font-size="11"
+                  fill="#e5e7eb"
+                  font-weight="700"
+                >
+                  AWS
+                </text>
+                <text x="651" y="336" font-size="11" fill="#94a3b8">
+                  Client automation + LLM prototypes · cloud work
+                </text>
+              </g>
+            </g>
+
+            <!-- Azure -->
+            <g class="skill-leaf" tabindex="0">
+              <text x="787" y="352" text-anchor="middle">Azure</text>
+              <g class="skill-tooltip">
+                <rect
+                  x="700"
+                  y="295"
+                  rx="10"
+                  ry="10"
+                  width="290"
+                  height="56"
+                  fill="rgba(2, 6, 23, 0.95)"
+                  stroke="rgba(255,255,255,0.14)"
+                />
+                <text
+                  x="711"
+                  y="318"
+                  font-size="11"
+                  fill="#e5e7eb"
+                  font-weight="700"
+                >
+                  Azure
+                </text>
+                <text x="711" y="336" font-size="11" fill="#94a3b8">
+                  Enterprise tooling · workflows + analytics
+                </text>
+              </g>
+            </g>
+
+            <!-- Power BI -->
+            <g class="skill-leaf" tabindex="0">
+              <text x="852" y="352" text-anchor="middle">Power BI</text>
+              <g class="skill-tooltip">
+                <rect
+                  x="735"
+                  y="380"
+                  rx="10"
+                  ry="10"
+                  width="310"
+                  height="56"
+                  fill="rgba(2, 6, 23, 0.95)"
+                  stroke="rgba(255,255,255,0.14)"
+                />
+                <text
+                  x="746"
+                  y="403"
+                  font-size="11"
+                  fill="#e5e7eb"
+                  font-weight="700"
+                >
+                  Power BI
+                </text>
+                <text x="746" y="421" font-size="11" fill="#94a3b8">
+                  Stakeholder dashboards · mobile + Q&amp;A
+                </text>
+              </g>
+            </g>
           </g>
         </svg>
       </section>
