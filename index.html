@@ -1,523 +1,560 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Surya Venkatraman</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Surya Venkatraman</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-  <style>
-    :root{
-      --bg:#0b0f19;
-      --text:#e5e7eb;
-      --muted:#94a3b8;
-      --border:rgba(255,255,255,0.10);
-      --link:#93c5fd;
-      --linkHover:#bfdbfe;
-      --shadow:0 10px 30px rgba(0,0,0,0.35);
-      --radius:16px;
-    }
+  <body>
+    <header>
+      <div class="nav">
+        <div class="brand">Surya Venkatraman</div>
+        <nav class="navlinks">
+          <a class="btn" href="#about">About</a>
+          <a class="btn" href="#projects">Projects</a>
+          <a class="btn" href="#skills">Skills</a>
+          <a class="btn" href="#contact">Contact</a>
+          <a class="btn primary" href="resume.pdf" download>Resume</a>
+        </nav>
+      </div>
+    </header>
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
+    <main>
+      <section id="about">
+        <h2>About</h2>
 
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: var(--bg);
-      color:var(--text);
-    }
+        <p>
+          I build analytics and AI solutions that turn messy data into clear
+          decisions—automating reporting, improving data quality, and shipping
+          tools people actually use.
+        </p>
 
-    /* ===== Header ===== */
-    header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background: rgba(15,23,42,0.9);
-      border-bottom:1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
+        <div class="grid" style="margin-top: 14px">
+          <!-- LEFT: Experience tiles -->
+          <div class="card">
+            <h3 style="margin: 0 0 10px 0">Impact Snapshot</h3>
 
-    .nav{
-      max-width:980px;
-      margin:0 auto;
-      padding:12px 16px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
+            <div class="xp">
+              <!-- CURRENT -->
+              <div class="xp-card">
+                <div class="xp-head">
+                  <div>
+                    <div class="xp-title">Navy Federal Credit Union</div>
+                    <div class="xp-sub">
+                      Data Governance Analyst Intern · Savings &amp; Membership
+                      · 14M members
+                    </div>
+                  </div>
 
-    .brand{
-      font-weight:700;
-      white-space:nowrap;
-    }
+                  <!-- LOGO SLOT (replace file name) -->
+                  <div class="xp-logoWrap" title="Navy Federal Credit Union">
+                    <img
+                      class="xp-logo"
+                      src="nfcu_logo.png"
+                      alt="Navy Federal Credit Union logo"
+                    />
+                  </div>
+                </div>
 
-    .navlinks{
-      margin-left:auto;
-      display:flex;
-      gap:10px;
-      overflow-x:auto;
-    }
+                <ul class="xp-bullets">
+                  <li>
+                    <b>Automated</b> reporting workflows → cut turnaround from
+                    <b>X days</b> to <b>Y minutes</b>
+                  </li>
+                  <li>
+                    <b>Improved data quality</b> checks across <b>N</b> tables →
+                    reduced defects by <b>X%</b>
+                  </li>
+                  <li>
+                    <b>Shipped</b> Power BI experience used by
+                    <b>N</b> stakeholders (mobile + Q&amp;A)
+                  </li>
+                </ul>
 
-    .btn{
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:#111827;
-      color:var(--text);
-      text-decoration:none;
-      font-size:14px;
-      white-space:nowrap;
-      cursor:pointer;
-    }
+                <div class="chips">
+                  <span class="chip">Python</span>
+                  <span class="chip">SQL</span>
+                  <span class="chip">Power BI</span>
+                  <span class="chip">Azure</span>
+                </div>
+              </div>
 
-    .btn.primary{
-      background:rgba(59,130,246,0.25);
-      border-color:rgba(59,130,246,0.45);
-    }
+              <!-- PREVIOUS -->
+              <div class="xp-card">
+                <div class="xp-head">
+                  <div>
+                    <div class="xp-title">P3Fusion</div>
+                    <div class="xp-sub">
+                      AI / Automation Consultant · 11+ clients annually
+                    </div>
+                  </div>
 
-    /* ===== Layout ===== */
-    main{
-      max-width:980px;
-      margin:0 auto;
-      padding:28px 16px 80px;
-    }
+                  <!-- LOGO SLOT (replace file name) -->
+                  <div class="xp-logoWrap" title="P3Fusion">
+                    <img
+                      class="xp-logo"
+                      src="p3fusion_logo.png"
+                      alt="P3Fusion logo"
+                    />
+                  </div>
+                </div>
 
-    section{
-      background:#111827;
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:22px;
-      margin:18px 0;
-      box-shadow:var(--shadow);
-      scroll-margin-top:90px;
-    }
+                <ul class="xp-bullets">
+                  <li>
+                    Delivered end-to-end <b>AI + workflow automation</b> →
+                    improved ops throughput by <b>X%</b>
+                  </li>
+                  <li>
+                    Built cloud migration enablement for <b>N</b> stakeholders
+                    across multiple clients
+                  </li>
+                  <li>
+                    Shipped production-ready tools with clear handoffs and
+                    documentation
+                  </li>
+                </ul>
 
-    h2{ margin:0 0 10px; }
-    p{ margin:10px 0; }
-    .muted{ color:var(--muted); }
+                <div class="chips">
+                  <span class="chip">AWS</span>
+                  <span class="chip">Automation</span>
+                  <span class="chip">LLMs</span>
+                  <span class="chip">Cloud</span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    /* ===== Projects Grid ===== */
-    .grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:14px;
-    }
+          <!-- RIGHT: Education -->
+          <div class="card card-edu">
+            <h3 style="margin: 0 0 10px 0">Education</h3>
 
-    @media (min-width:780px){
-      .grid{ grid-template-columns:1fr 1fr; }
-    }
+            <div class="edu-list">
+              <!-- ===== Georgia Tech entry ===== -->
+              <div class="edu-item">
+                <div class="edu-top">
+                  <div class="edu-left">
+                    <div class="edu-logoWrap">
+                      <img
+                        class="edu-logo"
+                        src="gt_logo.png"
+                        alt="Georgia Tech logo"
+                      />
+                    </div>
+                    <div class="edu-text">
+                      <div class="edu-school">
+                        Georgia Institute of Technology
+                      </div>
+                      <div class="edu-degree">MS in Analytics</div>
+                    </div>
+                  </div>
+                  <div class="edu-date">Expected May 2026</div>
+                </div>
 
-    .card{
-      background:#0f172a;
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:16px;
-    }
+                <details class="coursework">
+                  <summary>
+                    <div class="cw-left">
+                      <span class="cw-pill">Relevant coursework</span>
+                    </div>
+                    <span class="cw-chevron">⌄</span>
+                  </summary>
 
-    .card h3{ margin:0 0 8px; }
+                  <div class="cw-body">
+                    <div class="cw-chips">
+                      <!-- EDIT THESE -->
+                      <span class="chip">Machine Learning</span>
+                      <span class="chip">Deep Learning</span>
+                      <span class="chip">Data Engineering</span>
+                      <span class="chip">Optimization</span>
+                      <span class="chip">Cloud Analytics</span>
+                      <span class="chip">NLP</span>
+                    </div>
+                  </div>
+                </details>
+              </div>
 
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:10px;
-    }
+              <!-- ===== UVA entry ===== -->
+              <div class="edu-item">
+                <div class="edu-top">
+                  <div class="edu-left">
+                    <div class="edu-logoWrap">
+                      <img
+                        class="edu-logo"
+                        src="uva_logo.png"
+                        alt="University of Virginia logo"
+                      />
+                    </div>
+                    <div class="edu-text">
+                      <div class="edu-school">University of Virginia</div>
+                      <div class="edu-degree">BA in Statistics</div>
+                    </div>
+                  </div>
+                  <div class="edu-date">May 2024</div>
+                </div>
 
-    .chip{
-      font-size:12px;
-      background:#1f2937;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-    }
+                <details class="coursework">
+                  <summary>
+                    <div class="cw-left">
+                      <span class="cw-pill">Relevant coursework</span>
+                    </div>
+                    <span class="cw-chevron">⌄</span>
+                  </summary>
 
-    /* ===== Repo Link ===== */
-    .repo-link{
-      margin-top:12px;
-      font-size:13px;
-    }
-
-    .repo-link a{
-      color:var(--link);
-      text-decoration:underline;
-    }
-
-    .repo-link a:hover{
-      color:var(--linkHover);
-    }
-
-    /* ===== Contact Form ===== */
-    .contact-form{
-      margin-top:16px;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-    }
-
-    .field label{
-      font-size:13px;
-      color:var(--muted);
-    }
-
-    .field input,
-    .field textarea{
-      background:#0b1220;
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:12px 14px;
-      color:var(--text);
-      font-size:14px;
-      font-family:inherit;
-    }
-
-    .field input::placeholder,
-    .field textarea::placeholder{
-      color:#64748b;
-    }
-
-    .field input:focus,
-    .field textarea:focus{
-      outline:none;
-      border-color:rgba(59,130,246,0.6);
-      box-shadow:0 0 0 2px rgba(59,130,246,0.25);
-    }
-
-    .contact-form button{
-      align-self:flex-start;
-      margin-top:6px;
-    }
-
-    .form-status{
-      margin-top:10px;
-      font-size:13px;
-      color:var(--muted);
-    }
-
-    .form-status.success{ color:#86efac; }
-    .form-status.error{ color:#fca5a5; }
-
-    /* ===== Footer ===== */
-    footer{
-      text-align:center;
-      color:var(--muted);
-      font-size:13px;
-      padding:30px 16px;
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <div class="nav">
-    <div class="brand">Surya Venkatraman</div>
-    <nav class="navlinks">
-      <a class="btn" href="#about">About</a>
-      <a class="btn" href="#projects">Projects</a>
-      <a class="btn" href="#skills">Skills</a>
-      <a class="btn" href="#contact">Contact</a>
-      <a class="btn primary" href="resume.pdf" download>Resume</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-<section id="about">
-  <h2>About</h2>
-
-  <p>
-    I build analytics and AI solutions that turn messy data into clear decisions—automating reporting,
-    improving data quality, and shipping tools people actually use.
-  </p>
-
-  <div class="grid" style="margin-top:14px;">
-    <div class="card">
-      <h3 style="margin:0 0 6px 0;">Currently Providing Value at:</h3>
-      <p style="margin:0;">
-        Navy Federal Credit Union<br/>
-        Providing insights and data insights to the Savings & Membership Department,
-        providing accuracy and rigor for over 14M members nationally.
-      </p>
-
-      <h3 style="margin:14px 0 6px 0;">Previously at:</h3>
-      <p style="margin:0;">
-        P3Fusion<br/>
-        Providing end-to-end solutions in AI, workflow automation, and cloud migration
-        to 11+ clients annually.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3 style="margin:0 0 10px 0;">Education</h3>
-
-      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
-        <div>
-          <div style="font-weight:700;">Georgia Institute of Technology</div>
-          <div class="muted">MS in Analytics</div>
+                  <div class="cw-body">
+                    <div class="cw-chips">
+                      <!-- EDIT THESE -->
+                      <span class="chip">Probability</span>
+                      <span class="chip">Mathematical Statistics</span>
+                      <span class="chip">Regression</span>
+                      <span class="chip">Experimental Design</span>
+                      <span class="chip">Data Mining</span>
+                      <span class="chip">Linear Algebra</span>
+                    </div>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="muted" style="white-space:nowrap;">Expected May 2026</div>
-      </div>
+      </section>
 
-      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-        <div>
-          <div style="font-weight:700;">University of Virginia</div>
-          <div class="muted">BA in Statistics</div>
+      <section id="projects">
+        <h2>Projects</h2>
+
+        <div class="grid">
+          <div class="card">
+            <h3>COMPAS Recidivism Model</h3>
+            <p class="muted">
+              Analyzed fairness and predictive tradeoffs in recidivism risk
+              models.
+            </p>
+            <div class="chips">
+              <span class="chip">Python</span>
+              <span class="chip">ML</span>
+              <span class="chip">Fairness</span>
+            </div>
+            <div class="repo-link">
+              <a
+                href="https://github.com/yourusername/compas"
+                target="_blank"
+                rel="noopener"
+              >
+                Click here for the GitHub repo
+              </a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Campaign Contributions Analysis</h3>
+            <p class="muted">
+              Explored relationships between donations and congressional
+              outcomes.
+            </p>
+            <div class="chips">
+              <span class="chip">Python</span>
+              <span class="chip">Pandas</span>
+              <span class="chip">Stats</span>
+            </div>
+            <div class="repo-link">
+              <a
+                href="https://github.com/yourusername/campaigns"
+                target="_blank"
+                rel="noopener"
+              >
+                Click here for the GitHub repo
+              </a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Enterprise Chatbot</h3>
+            <p class="muted">
+              Built an internal RAG chatbot for enterprise documentation.
+            </p>
+            <div class="chips">
+              <span class="chip">LLMs</span>
+              <span class="chip">Python</span>
+              <span class="chip">RAG</span>
+            </div>
+            <div class="repo-link">
+              <a
+                href="https://github.com/yourusername/chatbot"
+                target="_blank"
+                rel="noopener"
+              >
+                Click here for the GitHub repo
+              </a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>AI Syllabi Roadmap</h3>
+            <p class="muted">
+              Generated structured learning plans from course syllabi using AI.
+            </p>
+            <div class="chips">
+              <span class="chip">Python</span>
+              <span class="chip">NLP</span>
+              <span class="chip">AI</span>
+            </div>
+            <div class="repo-link">
+              <a
+                href="https://github.com/yourusername/syllabi"
+                target="_blank"
+                rel="noopener"
+              >
+                Click here for the GitHub repo
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="muted" style="white-space:nowrap;">May 2024</div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<section id="projects">
-  <h2>Projects</h2>
+      <section id="skills">
+        <h2>Skills</h2>
+        <!-- Keeping your current SVG as-is -->
+        <svg
+          viewBox="0 0 900 520"
+          width="100%"
+          height="auto"
+          aria-label="Skills Tree"
+          role="img"
+        >
+          <g
+            stroke="rgba(255,255,255,0.18)"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <line x1="450" y1="70" x2="450" y2="140" />
+            <line x1="450" y1="140" x2="180" y2="220" />
+            <line x1="450" y1="140" x2="360" y2="220" />
+            <line x1="450" y1="140" x2="540" y2="220" />
+            <line x1="450" y1="140" x2="720" y2="220" />
+            <line x1="110" y1="260" x2="72" y2="330" />
+            <line x1="110" y1="260" x2="130" y2="330" />
+            <line x1="110" y1="260" x2="190" y2="333" />
+            <line x1="330" y1="260" x2="280" y2="360" />
+            <line x1="330" y1="260" x2="340" y2="325" />
+            <line x1="330" y1="260" x2="415" y2="360" />
+            <line x1="540" y1="260" x2="480" y2="313" />
+            <line x1="540" y1="260" x2="540" y2="340" />
+            <line x1="540" y1="260" x2="600" y2="312" />
+            <line x1="790" y1="260" x2="730" y2="330" />
+            <line x1="790" y1="260" x2="790" y2="330" />
+            <line x1="790" y1="260" x2="850" y2="330" />
+          </g>
+          <defs>
+            <filter
+              id="softShadow"
+              x="-20%"
+              y="-20%"
+              width="140%"
+              height="140%"
+            >
+              <feDropShadow
+                dx="0"
+                dy="8"
+                stdDeviation="10"
+                flood-color="rgba(0,0,0,0.35)"
+              />
+            </filter>
+          </defs>
+          <g filter="url(#softShadow)">
+            <rect
+              x="390"
+              y="30"
+              rx="14"
+              ry="14"
+              width="120"
+              height="46"
+              fill="rgba(15, 23, 42, 0.9)"
+              stroke="rgba(255,255,255,0.12)"
+            />
+            <text
+              x="450"
+              y="58"
+              text-anchor="middle"
+              fill="#e5e7eb"
+              font-size="15"
+              font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              font-weight="700"
+            >
+              Skills
+            </text>
+          </g>
+          <g filter="url(#softShadow)">
+            <rect
+              x="40"
+              y="220"
+              rx="14"
+              ry="14"
+              width="150"
+              height="46"
+              fill="rgba(15, 23, 42, 0.85)"
+              stroke="rgba(255,255,255,0.12)"
+            />
+            <text
+              x="115"
+              y="248"
+              text-anchor="middle"
+              fill="#93c5fd"
+              font-size="14"
+              font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              font-weight="700"
+            >
+              Programming
+            </text>
+            <rect
+              x="260"
+              y="220"
+              rx="14"
+              ry="14"
+              width="150"
+              height="46"
+              fill="rgba(15, 23, 42, 0.85)"
+              stroke="rgba(255,255,255,0.12)"
+            />
+            <text
+              x="335"
+              y="248"
+              text-anchor="middle"
+              fill="#86efac"
+              font-size="14"
+              font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              font-weight="700"
+            >
+              ML / AI
+            </text>
+            <rect
+              x="465"
+              y="220"
+              rx="14"
+              ry="14"
+              width="150"
+              height="46"
+              fill="rgba(15, 23, 42, 0.85)"
+              stroke="rgba(255,255,255,0.12)"
+            />
+            <text
+              x="540"
+              y="248"
+              text-anchor="middle"
+              fill="#fcd34d"
+              font-size="14"
+              font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              font-weight="700"
+            >
+              Data / Big Data
+            </text>
+            <rect
+              x="710"
+              y="220"
+              rx="14"
+              ry="14"
+              width="150"
+              height="46"
+              fill="rgba(15, 23, 42, 0.85)"
+              stroke="rgba(255,255,255,0.12)"
+            />
+            <text
+              x="785"
+              y="248"
+              text-anchor="middle"
+              fill="#f9a8d4"
+              font-size="14"
+              font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              font-weight="700"
+            >
+              Cloud / BI
+            </text>
+          </g>
+          <g
+            fill="#e5e7eb"
+            font-size="13"
+            font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+          >
+            <text x="75" y="352" text-anchor="middle">Python</text>
+            <text x="135" y="352" text-anchor="middle">SQL</text>
+            <text x="195" y="352" text-anchor="middle">R</text>
+            <text x="280" y="380" text-anchor="middle">scikit-learn</text>
+            <text x="345" y="345" text-anchor="middle">PyTorch</text>
+            <text x="420" y="380" text-anchor="middle">TensorFlow</text>
+            <text x="480" y="330" text-anchor="middle">Apache Spark</text>
+            <text x="540" y="360" text-anchor="middle">PySpark</text>
+            <text x="600" y="330" text-anchor="middle">Databricks</text>
+            <text x="725" y="352" text-anchor="middle">AWS</text>
+            <text x="787" y="352" text-anchor="middle">Azure</text>
+            <text x="852" y="352" text-anchor="middle">Power BI</text>
+          </g>
+        </svg>
+      </section>
 
-  <div class="grid">
+      <section id="contact">
+        <h2>Contact</h2>
 
-    <div class="card">
-      <h3>COMPAS Recidivism Model</h3>
-      <p class="muted">Analyzed fairness and predictive tradeoffs in recidivism risk models.</p>
-      <div class="chips">
-        <span class="chip">Python</span>
-        <span class="chip">ML</span>
-        <span class="chip">Fairness</span>
-      </div>
-      <div class="repo-link">
-        <a href="https://github.com/yourusername/compas" target="_blank" rel="noopener">
-          Click here for the GitHub repo
-        </a>
-      </div>
-    </div>
+        <form
+          id="contactForm"
+          class="contact-form"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+        >
+          <input
+            type="hidden"
+            name="_subject"
+            value="New message from portfolio site"
+          />
 
-    <div class="card">
-      <h3>Campaign Contributions Analysis</h3>
-      <p class="muted">Explored relationships between donations and congressional outcomes.</p>
-      <div class="chips">
-        <span class="chip">Python</span>
-        <span class="chip">Pandas</span>
-        <span class="chip">Stats</span>
-      </div>
-      <div class="repo-link">
-        <a href="https://github.com/yourusername/campaigns" target="_blank" rel="noopener">
-          Click here for the GitHub repo
-        </a>
-      </div>
-    </div>
+          <div class="field">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your full name"
+              autocomplete="name"
+              required
+            />
+          </div>
 
-    <div class="card">
-      <h3>Enterprise Chatbot</h3>
-      <p class="muted">Built an internal RAG chatbot for enterprise documentation.</p>
-      <div class="chips">
-        <span class="chip">LLMs</span>
-        <span class="chip">Python</span>
-        <span class="chip">RAG</span>
-      </div>
-      <div class="repo-link">
-        <a href="https://github.com/yourusername/chatbot" target="_blank" rel="noopener">
-          Click here for the GitHub repo
-        </a>
-      </div>
-    </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
 
-    <div class="card">
-      <h3>AI Syllabi Roadmap</h3>
-      <p class="muted">Generated structured learning plans from course syllabi using AI.</p>
-      <div class="chips">
-        <span class="chip">Python</span>
-        <span class="chip">NLP</span>
-        <span class="chip">AI</span>
-      </div>
-      <div class="repo-link">
-        <a href="https://github.com/yourusername/syllabi" target="_blank" rel="noopener">
-          Click here for the GitHub repo
-        </a>
-      </div>
-    </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="What would you like to talk about?"
+              required
+            ></textarea>
+          </div>
 
-  </div>
-</section>
+          <input
+            type="text"
+            name="_gotcha"
+            style="display: none"
+            tabindex="-1"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn primary">Send Message</button>
+          <div id="formStatus" class="form-status" aria-live="polite"></div>
+        </form>
+      </section>
+    </main>
 
-<section id="skills">
-  <h2>Skills</h2>
+    <footer>© <span id="year"></span> Surya Venkatraman</footer>
 
-  <!-- Your SVG tree stays the same -->
-  <svg viewBox="0 0 900 520" width="100%" height="auto" aria-label="Skills Tree" role="img">
-    <g stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round">
-      <line x1="450" y1="70" x2="450" y2="140" />
-
-      <line x1="450" y1="140" x2="180" y2="220" />
-      <line x1="450" y1="140" x2="360" y2="220" />
-      <line x1="450" y1="140" x2="540" y2="220" />
-      <line x1="450" y1="140" x2="720" y2="220" />
-
-      <line x1="110" y1="260" x2="72" y2="330" />
-      <line x1="110" y1="260" x2="130" y2="330" />
-      <line x1="110" y1="260" x2="190" y2="333" />
-
-      <line x1="330" y1="260" x2="280" y2="360" />
-      <line x1="330" y1="260" x2="340" y2="325" />
-      <line x1="330" y1="260" x2="415" y2="360" />
-
-      <line x1="540" y1="260" x2="480" y2="313" />
-      <line x1="540" y1="260" x2="540" y2="340" />
-      <line x1="540" y1="260" x2="600" y2="312" />
-
-      <line x1="790" y1="260" x2="730" y2="330" />
-      <line x1="790" y1="260" x2="790" y2="330" />
-      <line x1="790" y1="260" x2="850" y2="330" />
-    </g>
-
-    <defs>
-      <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="rgba(0,0,0,0.35)" />
-      </filter>
-    </defs>
-
-    <g filter="url(#softShadow)">
-      <rect x="390" y="30" rx="14" ry="14" width="120" height="46" fill="rgba(15, 23, 42, 0.9)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="450" y="58" text-anchor="middle" fill="#e5e7eb" font-size="15" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">
-        Skills
-      </text>
-    </g>
-
-    <g filter="url(#softShadow)">
-      <rect x="40" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="115" y="248" text-anchor="middle" fill="#93c5fd" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Programming</text>
-
-      <rect x="260" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="335" y="248" text-anchor="middle" fill="#86efac" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">ML / AI</text>
-
-      <rect x="465" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="540" y="248" text-anchor="middle" fill="#fcd34d" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Data / Big Data</text>
-
-      <rect x="710" y="220" rx="14" ry="14" width="150" height="46" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)"/>
-      <text x="785" y="248" text-anchor="middle" fill="#f9a8d4" font-size="14" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-weight="700">Cloud / BI</text>
-    </g>
-
-    <g fill="#e5e7eb" font-size="13" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial">
-      <text x="75" y="352" text-anchor="middle">Python</text>
-      <text x="135" y="352" text-anchor="middle">SQL</text>
-      <text x="195" y="352" text-anchor="middle">R</text>
-
-      <text x="280" y="380" text-anchor="middle">scikit-learn</text>
-      <text x="345" y="345" text-anchor="middle">PyTorch</text>
-      <text x="420" y="380" text-anchor="middle">TensorFlow</text>
-
-      <text x="480" y="330" text-anchor="middle">Apache Spark</text>
-      <text x="540" y="360" text-anchor="middle">PySpark</text>
-      <text x="600" y="330" text-anchor="middle">Databricks</text>
-
-      <text x="725" y="352" text-anchor="middle">AWS</text>
-      <text x="787" y="352" text-anchor="middle">Azure</text>
-      <text x="852" y="352" text-anchor="middle">Power BI</text>
-    </g>
-
-  </svg>
-
-</section>
-
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p class="muted">Want submissions to go to your email? Use Formspree (no backend, no overlap, no warnings).</p>
-
-  <!-- Replace YOUR_FORM_ID after creating a Formspree form -->
-  <form
-    id="contactForm"
-    class="contact-form"
-    action="https://formspree.io/f/YOUR_FORM_ID"
-    method="POST"
-  >
-    <input type="hidden" name="_subject" value="New message from portfolio site" />
-
-    <div class="field">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="Your full name"
-        autocomplete="name"
-        required
-      />
-    </div>
-
-    <div class="field">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="you@example.com"
-        autocomplete="email"
-        required
-      />
-    </div>
-
-    <div class="field">
-      <label for="message">Message</label>
-      <textarea
-        id="message"
-        name="message"
-        rows="5"
-        placeholder="What would you like to talk about?"
-        required
-      ></textarea>
-    </div>
-
-    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
-    <button type="submit" class="btn primary">Send Message</button>
-    <div id="formStatus" class="form-status" aria-live="polite"></div>
-  </form>
-</section>
-
-</main>
-
-<footer>
-  © <span id="year"></span> Surya Venkatraman
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  // AJAX submit for Formspree (stays on page)
-  const form = document.getElementById("contactForm");
-  const statusEl = document.getElementById("formStatus");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    statusEl.textContent = "Sending...";
-    statusEl.className = "form-status";
-
-    try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { "Accept": "application/json" }
-      });
-
-      if (res.ok) {
-        statusEl.textContent = "Sent. I’ll get back to you soon.";
-        statusEl.className = "form-status success";
-        form.reset();
-      } else {
-        statusEl.textContent = "Something went wrong. Try again or email me directly.";
-        statusEl.className = "form-status error";
-      }
-    } catch (err) {
-      statusEl.textContent = "Network error. Try again or email me directly.";
-      statusEl.className = "form-status error";
-    }
-  });
-</script>
-
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
