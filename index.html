@@ -25,7 +25,7 @@
       <section id="about">
         <h2>About</h2>
 
-        <div class="grid grid-about" style="margin-top: 14px">
+        <div class="about-grid" style="margin-top: 14px">
           <!-- LEFT COLUMN STACK: About + Education -->
           <div class="about-col">
             <!-- ABOUT CARD -->
@@ -72,25 +72,28 @@
                         <div class="edu-degree">MS in Analytics</div>
                       </div>
                     </div>
-                    <div class="edu-date">Expected May 2026</div>
+                    <div class="edu-date">May 2026</div>
                   </div>
 
                   <details class="coursework">
                     <summary>
                       <div class="cw-left">
-                        <span class="cw-pill">Relevant coursework</span>
+                        <span class="cw-label">Relevant coursework</span>
                       </div>
-                      <span class="cw-chevron">⌄</span>
+                      <span class="cw-chevron"></span>
                     </summary>
 
                     <div class="cw-body">
                       <div class="cw-chips">
-                        <span class="chip">Machine Learning</span>
+                        <span class="chip"
+                          >Business Fundamentals for Analytics</span
+                        >
+
                         <span class="chip">Deep Learning</span>
-                        <span class="chip">Data Engineering</span>
-                        <span class="chip">Optimization</span>
-                        <span class="chip">Cloud Analytics</span>
-                        <span class="chip">NLP</span>
+                        <span class="chip">Regression Analysis</span>
+                        <span class="chip">Financial Modeling</span>
+                        <span class="chip">Artificial Intelligence</span>
+                        <span class="chip">Simulations</span>
                       </div>
                     </div>
                   </details>
@@ -118,19 +121,22 @@
                   <details class="coursework">
                     <summary>
                       <div class="cw-left">
-                        <span class="cw-pill">Relevant coursework</span>
+                        <span class="cw-label">Relevant coursework</span>
                       </div>
-                      <span class="cw-chevron">⌄</span>
+                      <span class="cw-chevron"></span>
                     </summary>
 
                     <div class="cw-body">
                       <div class="cw-chips">
-                        <span class="chip">Probability</span>
-                        <span class="chip">Mathematical Statistics</span>
-                        <span class="chip">Regression</span>
-                        <span class="chip">Experimental Design</span>
-                        <span class="chip">Data Mining</span>
+                        <span class="chip">Statistical Machine Learning</span>
+                        <span class="chip"
+                          >Data Visualization and Analytics</span
+                        >
+                        <span class="chip">Regression Analysis</span>
+                        <span class="chip">Software Development</span>
+                        <span class="chip">Data Structures and Algorithms</span>
                         <span class="chip">Linear Algebra</span>
+                        <span class="chip">Discrete Mathematics</span>
                       </div>
                     </div>
                   </details>
@@ -179,12 +185,27 @@
                   </li>
                 </ul>
 
-                <div class="chips">
-                  <span class="chip">Python</span>
-                  <span class="chip">SQL</span>
-                  <span class="chip">Power BI</span>
-                  <span class="chip">Azure</span>
-                </div>
+                <details class="tech">
+                  <summary>
+                    <span class="tech-label">Tech Stack</span>
+                    <span class="tech-chevron"></span>
+                  </summary>
+
+                  <div class="tech-body">
+                    <div class="chips">
+                      <span class="chip"
+                        >Python & SQL (Automation Scripts)</span
+                      >
+                      <span class="chip">Power BI (Augmented Analytics)</span>
+                      <span class="chip"
+                        >Azure AI Foundry (Agentic Workflows)</span
+                      >
+                      <span class="chip">Databricks (Distributed Queries)</span>
+                      <span class="chip">LLMs & RAG (Production)</span>
+                      <span class="chip">Data Quality Engineering</span>
+                    </div>
+                  </div>
+                </details>
               </div>
 
               <!-- PREVIOUS -->
@@ -222,12 +243,21 @@
                   </li>
                 </ul>
 
-                <div class="chips">
-                  <span class="chip">AWS</span>
-                  <span class="chip">Automation</span>
-                  <span class="chip">LLMs</span>
-                  <span class="chip">Cloud</span>
-                </div>
+                <details class="tech">
+                  <summary>
+                    <span class="tech-label">Tech Stack</span>
+                    <span class="tech-chevron" aria-hidden="true"></span>
+                  </summary>
+
+                  <div class="tech-body">
+                    <div class="chips">
+                      <span class="chip">AWS (Lambda, S3, Step Functions)</span>
+                      <span class="chip">AI Automation Pipelines</span>
+                      <span class="chip">LLMs & RAG (Prod)</span>
+                      <span class="chip">Cloud Architecture</span>
+                    </div>
+                  </div>
+                </details>
               </div>
             </div>
           </div>
@@ -246,8 +276,8 @@
             </p>
             <div class="chips">
               <span class="chip">Python</span>
-              <span class="chip">ML</span>
-              <span class="chip">Fairness</span>
+              <span class="chip">scikit-learn</span>
+              <span class="chip">ML Fairness</span>
             </div>
             <div class="repo-link">
               <a
@@ -267,9 +297,9 @@
               outcomes.
             </p>
             <div class="chips">
-              <span class="chip">Python</span>
-              <span class="chip">Pandas</span>
-              <span class="chip">Stats</span>
+              <span class="chip">R Language</span>
+              <span class="chip">Statistical Modeling</span>
+              <span class="chip">Professional reporting</span>
             </div>
             <div class="repo-link">
               <a
@@ -288,9 +318,9 @@
               Built an internal RAG chatbot for enterprise documentation.
             </p>
             <div class="chips">
-              <span class="chip">LLMs</span>
               <span class="chip">Python</span>
-              <span class="chip">RAG</span>
+              <span class="chip">RAG Pipelines</span>
+              <span class="chip">AWS (Bedrock, Lambda, Kendra)</span>
             </div>
             <div class="repo-link">
               <a
@@ -311,7 +341,7 @@
             <div class="chips">
               <span class="chip">Python</span>
               <span class="chip">NLP</span>
-              <span class="chip">AI</span>
+              <span class="chip">Azure AI Foundry</span>
             </div>
             <div class="repo-link">
               <a

@@ -2,26 +2,13 @@
    THEME TOKENS (CSS VARIABLES)
    ========================= */
 :root {
-  /* Page background color */
   --bg: #0b0f19;
-
-  /* Default text color */
   --text: #e5e7eb;
-
-  /* Muted / secondary text (subtitles, metadata) */
   --muted: #94a3b8;
-
-  /* Standard border color used across cards/buttons */
   --border: rgba(255, 255, 255, 0.1);
-
-  /* Link color + hover color */
   --link: #93c5fd;
   --linkHover: #bfdbfe;
-
-  /* Shared shadow for “elevated” surfaces */
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-
-  /* Shared corner rounding */
   --radius: 16px;
 }
 
@@ -29,23 +16,16 @@
    GLOBAL BASELINE RESETS
    ========================= */
 * {
-  /* Makes padding/border included in element width/height (prevents layout surprises) */
   box-sizing: border-box;
 }
 
 html {
-  /* Smooth scrolling when clicking anchor links (#about, #projects, etc.) */
   scroll-behavior: smooth;
 }
 
 body {
-  /* Removes default browser margin */
   margin: 0;
-
-  /* Sets a clean system font stack */
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-
-  /* Applies global theme colors */
   background: var(--bg);
   color: var(--text);
 }
@@ -54,97 +34,49 @@ body {
    HEADER / TOP NAV
    ========================= */
 header {
-  /* Keeps the header visible while scrolling */
   position: sticky;
-
-  /* Stick to top of viewport */
   top: 0;
-
-  /* Ensures it stays above cards/sections */
   z-index: 1000;
-
-  /* Semi-transparent background (lets background show slightly through) */
   background: rgba(15, 23, 42, 0.9);
-
-  /* Divider line under header */
   border-bottom: 1px solid var(--border);
-
-  /* Blurs whatever is behind header (glass effect) */
   backdrop-filter: blur(10px);
 }
 
 .nav {
-  /* Centers content + caps width so it doesn’t stretch too wide */
   max-width: 980px;
   margin: 0 auto;
-
-  /* Inner spacing around nav bar */
   padding: 12px 16px;
-
-  /* Layout: brand left, links right */
   display: flex;
   align-items: center;
-
-  /* Space between brand and links */
   gap: 12px;
 }
 
 .brand {
-  /* Makes your name stand out */
   font-weight: 700;
-
-  /* Prevents the name from wrapping onto a second line */
   white-space: nowrap;
 }
 
 .navlinks {
-  /* Pushes the links to the far right */
   margin-left: auto;
-
-  /* Horizontal row of buttons */
   display: flex;
-
-  /* Spacing between nav buttons */
   gap: 10px;
-
-  /* Allows horizontal scrolling if links overflow (mobile) */
   overflow-x: auto;
 }
 
 .btn {
-  /* Button sizing */
   padding: 10px 14px;
-
-  /* Fully pill-shaped buttons */
   border-radius: 999px;
-
-  /* Soft outline border */
   border: 1px solid var(--border);
-
-  /* Dark button background */
   background: #111827;
-
-  /* Text color */
   color: var(--text);
-
-  /* Removes default link underline */
   text-decoration: none;
-
-  /* Button text size */
   font-size: 14px;
-
-  /* Prevents text from wrapping inside the button */
   white-space: nowrap;
-
-  /* Shows pointer cursor on hover */
   cursor: pointer;
 }
 
 .btn.primary {
-  /* “Primary” highlight state (used for Resume) */
   background: rgba(59, 130, 246, 0.25);
-
-  /* Slightly stronger border for emphasis */
   border-color: rgba(59, 130, 246, 0.45);
 }
 
@@ -152,140 +84,114 @@ header {
    PAGE LAYOUT / SECTIONS
    ========================= */
 main {
-  /* Centers content and keeps it consistent with nav width */
   max-width: 980px;
   margin: 0 auto;
-
-  /* Page padding: top, sides, and extra bottom spacing */
   padding: 28px 16px 80px;
 }
 
 section {
-  /* Section panel background */
   background: #111827;
-
-  /* Section outline */
   border: 1px solid var(--border);
-
-  /* Rounded corners */
   border-radius: var(--radius);
-
-  /* Inner spacing */
   padding: 22px;
-
-  /* Vertical spacing between sections */
   margin: 18px 0;
-
-  /* Drop shadow for depth */
   box-shadow: var(--shadow);
-
-  /* Fixes anchor link jumping (so header doesn’t cover section title) */
   scroll-margin-top: 90px;
 }
 
 h2 {
-  /* Tightens spacing above/below headings */
   margin: 0 0 10px;
 }
 
+section > h2 {
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
 p {
-  /* Normal paragraph spacing */
   margin: 10px 0;
 }
 
 .muted {
-  /* Utility class for secondary text */
   color: var(--muted);
 }
 
 /* =========================
-   GRID SYSTEM (Projects + About split column)
+   GRID SYSTEM (Projects, etc.)
    ========================= */
 .grid {
-  /* Creates grid layout */
   display: grid;
-
-  /* Default: single column (mobile first) */
   grid-template-columns: 1fr;
-
-  /* Spacing between grid items */
   gap: 14px;
-
   align-items: start;
 }
 
 @media (min-width: 780px) {
   .grid {
-    /* On wider screens: 2 columns */
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* =========================
+   ABOUT GRID (ONLY About section)
+   ========================= */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* mobile */
+  gap: 14px;
+  align-items: start;
+}
+
+@media (min-width: 780px) {
+  .about-grid {
+    grid-template-columns: 360px 1fr; /* left narrower, right wider */
+  }
+}
+
+.about-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 /* =========================
    GENERIC CARD
    ========================= */
 .card {
-  /* Card background */
   background: #0f172a;
-
-  /* Card border */
   border: 1px solid var(--border);
-
-  /* Rounded corners */
   border-radius: 14px;
-
-  /* Inner spacing */
   padding: 16px;
 }
 
-/* Education card is a special case: tighter spacing */
-.card-edu {
-  /* Shrinks overall padding to reduce “elongated” feel */
-  padding: 12px; /* default was 16px */
-}
-
-/* Also tighten each education row inside the education card */
-.card-edu .edu-item {
-  /* Less padding per school row -> less height overall */
-  padding: 10px; /* default was 12px */
-}
-
 .card h3 {
-  /* Tight heading spacing in cards */
   margin: 0 0 8px;
+}
+
+/* Education card tighter */
+.card-edu {
+  padding: 12px;
+}
+
+.card-edu .edu-item {
+  padding: 10px;
 }
 
 /* =========================
    CHIP TAGS (skills pills)
    ========================= */
 .chips {
-  /* Row layout for chips */
   display: flex;
-
-  /* Allows chips to wrap to the next line */
   flex-wrap: wrap;
-
-  /* Spacing between chips */
   gap: 8px;
-
-  /* Space above chip row */
   margin-top: 10px;
 }
 
 .chip {
-  /* Smaller, badge-like text */
   font-size: 12px;
-
-  /* Chip background */
   background: #1f2937;
-
-  /* Inner padding (controls chip height) */
   padding: 6px 10px;
-
-  /* Pill shape */
   border-radius: 999px;
-
-  /* Thin border for definition */
   border: 1px solid var(--border);
 }
 
@@ -293,23 +199,16 @@ p {
    PROJECT REPO LINK AREA
    ========================= */
 .repo-link {
-  /* Space between chips and link */
   margin-top: 12px;
-
-  /* Slightly smaller than body text */
   font-size: 13px;
 }
 
 .repo-link a {
-  /* Link color token */
   color: var(--link);
-
-  /* Underline to clearly indicate it’s clickable */
   text-decoration: underline;
 }
 
 .repo-link a:hover {
-  /* Lighter color on hover for interaction feedback */
   color: var(--linkHover);
 }
 
@@ -317,288 +216,142 @@ p {
    EDUCATION CARD STRUCTURE
    ========================= */
 .edu-list {
-  /* Stacks multiple school entries vertically */
   display: flex;
   flex-direction: column;
-
-  /* Space between GT and UVA rows */
   gap: 14px;
 }
 
 .edu-item {
-  /* Each school row is a vertical stack (top row + dropdown) */
   display: flex;
   flex-direction: column;
-
-  /* Space between the “top row” and the coursework dropdown */
   gap: 10px;
-
-  /* Inner spacing for each school row */
   padding: 12px;
-
-  /* Rounded corners */
   border-radius: 14px;
-
-  /* Subtle border (lighter than card border) */
   border: 1px solid rgba(255, 255, 255, 0.08);
-
-  /* Slightly different background to separate rows from the card */
   background: #0b1220;
 }
 
+/* Vertical stack: School -> Degree -> Date (ALL SCHOOLS) */
 .edu-top {
-  /* Top row: logo+text left, date right */
   display: flex;
-
-  /* Vertically aligns logo/text and date */
-  align-items: center;
-
-  /* Pushes date to the right */
-  justify-content: space-between;
-
-  /* Space between left cluster and date */
-  gap: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
 }
 
 .edu-left {
-  /* Left cluster: logo + school text */
   display: flex;
   align-items: center;
   gap: 12px;
-
-  /* Allows text to shrink properly (needed for ellipsis) */
   min-width: 0;
 }
 
 .edu-logoWrap {
-  /* Fixed square logo container */
   width: 42px;
   height: 42px;
-
-  /* Rounded square */
   border-radius: 12px;
-
-  /* Background behind logo */
   background: #0f172a;
-
-  /* Border around the logo container */
   border: 1px solid var(--border);
-
-  /* Centers logo inside container */
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* Prevents it from shrinking in flex layouts */
   flex: 0 0 auto;
 }
 
 .edu-logo {
-  /* Actual logo image size inside the container */
   width: 28px;
   height: 28px;
-
-  /* Keeps logo from stretching weirdly */
   object-fit: contain;
-
-  /* Slightly boosts logo color intensity */
   filter: saturate(1.1);
 }
 
 .edu-text {
-  /* Allow this to be the “shrinking” element in ellipsis scenario */
   min-width: 0;
 }
 
 .edu-school {
-  /* Bold school name */
   font-weight: 800;
-
-  /* Slightly tighter line height */
   line-height: 1.15;
-
-  /* Prevent wrap */
   white-space: nowrap;
-
-  /* If too long, hide overflow */
   overflow: hidden;
-
-  /* Show “...” when truncated */
   text-overflow: ellipsis;
 }
 
 .edu-degree {
-  /* Small spacing below school name */
-  margin-top: 3px;
-
-  /* Muted color for degree */
+  margin-top: 2px;
   color: var(--muted);
-
-  /* Smaller text */
   font-size: 13px;
-
-  /* Prevent wrap */
   white-space: nowrap;
-
-  /* Ellipsis behavior */
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .edu-date {
-  /* Muted metadata text */
+  margin-left: 54px; /* aligns under text, not under logo */
   color: var(--muted);
-
-  /* Small text */
   font-size: 13px;
-
-  /* Prevents date from wrapping (keeps it clean on right) */
   white-space: nowrap;
-
-  /* Prevents date from shrinking */
-  flex: 0 0 auto;
 }
 
 /* =========================
    COURSEWORK DROPDOWN (details/summary)
    ========================= */
 details.coursework {
-  /* Outline around the dropdown area */
   border: 1px solid rgba(255, 255, 255, 0.08);
-
-  /* Rounded dropdown container */
   border-radius: 12px;
-
-  /* Background separate from edu-item background */
   background: #0f172a;
-
-  /* Inner padding of the dropdown container */
   padding: 10px 12px;
 }
 
+/* Center summary group (label + caret) */
 details.coursework summary {
-  /* Removes default bullet styling on summary */
   list-style: none;
-
-  /* Makes the whole summary feel clickable */
   cursor: pointer;
-
-  /* Layout: label left, chevron right */
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  /* Space between label and chevron */
-  gap: 10px;
-
-  /* Muted because it’s secondary UI */
-  color: var(--muted);
-
-  /* Smaller UI text */
-  font-size: 13px;
-
-  /* Prevents selecting text while clicking */
+  justify-content: center;
+  gap: 8px;
   user-select: none;
+  color: var(--muted);
+  font-size: 13px;
 }
 
-/* Removes the default disclosure triangle icon in Chrome/Safari */
 details.coursework summary::-webkit-details-marker {
   display: none;
 }
 
 .cw-left {
-  /* Container for the “Relevant coursework” pill */
   display: flex;
   align-items: center;
   gap: 8px;
-
-  /* Allows truncation if needed */
   min-width: 0;
 }
 
+/* Keep your pill label (still centered as a group) */
 .cw-pill {
-  /* Inline pill styling for “Relevant coursework” */
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
-  /* Controls pill height */
   padding: 6px 10px;
-
-  /* Pill shape */
   border-radius: 999px;
-
-  /* Subtle border */
   border: 1px solid rgba(255, 255, 255, 0.1);
-
-  /* Dark background */
   background: #0b1220;
-
-  /* Text color */
   color: var(--text);
-
-  /* UI font size */
   font-size: 13px;
-
-  /* Don’t wrap */
   white-space: nowrap;
-
-  /* Prevent shrinking */
   flex: 0 0 auto;
-}
-
-.cw-chevron {
-  /* Fixed size circle button */
-  width: 22px;
-  height: 22px;
-
-  /* Centers the chevron symbol */
-  display: grid;
-  place-items: center;
-
-  /* Circle shape */
-  border-radius: 999px;
-
-  /* Border + background */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #0b1220;
-
-  /* Text color + size */
-  color: var(--text);
-  font-size: 12px;
-
-  /* Prevent shrinking */
-  flex: 0 0 auto;
-
-  /* Smooth rotate when opening/closing */
-  transition: transform 160ms ease;
-}
-
-/* When the details is open, rotate the chevron 180° */
-details.coursework[open] .cw-chevron {
-  transform: rotate(180deg);
 }
 
 .cw-body {
-  /* Space between summary row and chips */
   padding-top: 10px;
-
-  /* Muted details text */
   color: var(--muted);
-
-  /* Smaller text */
   font-size: 13px;
 }
 
 .cw-chips {
-  /* Space above chip row */
   margin-top: 10px;
-
-  /* Wrap chip row */
   display: flex;
   flex-wrap: wrap;
-
-  /* Spacing between chips */
   gap: 8px;
 }
 
@@ -606,206 +359,242 @@ details.coursework[open] .cw-chevron {
    EXPERIENCE TILES (Impact Snapshot)
    ========================= */
 .xp {
-  /* Stacks experience cards vertically */
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
 .xp-card {
-  /* Tile background */
-  background: #0f172a;
-
-  /* Tile border */
+  background: #0b1220;
   border: 1px solid rgba(255, 255, 255, 0.1);
-
-  /* Rounded corners */
   border-radius: 14px;
-
-  /* Inner padding */
   padding: 16px;
 }
 
 .xp-head {
-  /* Row layout: title/subtitle left, logo right */
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-
-  /* Space between the two columns */
   gap: 12px;
-
-  /* Space below header row */
   margin-bottom: 10px;
 }
 
 .xp-title {
-  /* Bold employer name */
   font-weight: 800;
 }
 
 .xp-sub {
-  /* Muted role description */
   color: var(--muted);
   font-size: 13px;
   margin-top: 2px;
-
-  /* Tighter lines for compactness */
   line-height: 1.25;
 }
 
 .xp-logoWrap {
-  /* Fixed logo container on the right */
   width: 65px;
   height: 65px;
-
-  /* Rounded square */
   border-radius: 12px;
-
-  /* Background + border */
   background: #0b1220;
   border: 1px solid rgba(255, 255, 255, 0.1);
-
-  /* Centers logo */
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* Prevent shrinking */
   flex: 0 0 auto;
-
-  /* Prevent logo overflow */
   overflow: hidden;
 }
 
 .xp-logo {
-  /* Logo image sizing */
   width: 55px;
   height: 55px;
-
-  /* Keeps logo proportional */
   object-fit: contain;
-
-  /* Slight saturation boost */
   filter: saturate(1.1);
 }
 
 .xp-bullets {
-  /* Bullet list indentation + spacing */
   margin: 10px 0 12px 18px;
   padding: 0;
 }
 
 .xp-bullets li {
-  /* Space between bullet items */
   margin: 8px 0;
-
-  /* Muted bullet text */
   color: var(--muted);
-
-  /* Small text */
   font-size: 13px;
 }
 
 .xp-bullets b {
-  /* Highlighted words inside bullets */
   color: var(--text);
   font-weight: 700;
+}
+
+/* =========================
+   TECH DROPDOWN (Experience)
+   ========================= */
+details.tech {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: #0f172a;
+  padding: 10px 12px;
+  margin-top: 10px;
+}
+
+/* Center summary group (label + caret) */
+details.tech summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+details.tech summary::-webkit-details-marker {
+  display: none;
+}
+
+.tech-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0f172a;
+  color: var(--text);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.tech-body {
+  padding-top: 10px;
+}
+
+/* =========================
+   MODERN CENTERED "V" CARET
+   (applies to both coursework + tech)
+   ========================= */
+.cw-chevron,
+.tech-chevron {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+/* two strokes to form a symmetric V */
+.cw-chevron::before,
+.cw-chevron::after,
+.tech-chevron::before,
+.tech-chevron::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  width: 7px;
+  height: 2px;
+  background: var(--muted);
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+/* left stroke */
+.cw-chevron::before,
+.tech-chevron::before {
+  left: 4px;
+  transform: rotate(45deg);
+}
+
+/* right stroke */
+.cw-chevron::after,
+.tech-chevron::after {
+  right: 4px;
+  transform: rotate(-45deg);
+}
+
+/* open state -> caret up */
+details.coursework[open] .cw-chevron::before,
+details.tech[open] .tech-chevron::before {
+  transform: rotate(-45deg);
+  background: var(--text);
+}
+
+details.coursework[open] .cw-chevron::after,
+details.tech[open] .tech-chevron::after {
+  transform: rotate(45deg);
+  background: var(--text);
+}
+
+/* hover polish */
+details.coursework summary:hover,
+details.tech summary:hover {
+  color: var(--text);
+}
+
+details.coursework summary:hover .cw-chevron::before,
+details.coursework summary:hover .cw-chevron::after,
+details.tech summary:hover .tech-chevron::before,
+details.tech summary:hover .tech-chevron::after {
+  background: var(--text);
 }
 
 /* =========================
    CONTACT FORM
    ========================= */
 .contact-form {
-  /* Space above the form */
   margin-top: 16px;
-
-  /* Vertical stacking */
   display: flex;
   flex-direction: column;
-
-  /* Space between fields */
   gap: 14px;
 }
 
 .field {
-  /* Each field stacks label and input */
   display: flex;
   flex-direction: column;
-
-  /* Space between label and input */
   gap: 6px;
 }
 
 .field label {
-  /* Label styling */
   font-size: 13px;
   color: var(--muted);
 }
 
 .field input,
 .field textarea {
-  /* Input background */
   background: #0b1220;
-
-  /* Border consistent with theme */
   border: 1px solid var(--border);
-
-  /* Rounded corners */
   border-radius: 12px;
-
-  /* Input padding controls height */
   padding: 12px 14px;
-
-  /* Text color */
   color: var(--text);
-
-  /* Input font size */
   font-size: 14px;
-
-  /* Match site font */
   font-family: inherit;
 }
 
 .field input::placeholder,
 .field textarea::placeholder {
-  /* Placeholder tone */
   color: #64748b;
 }
 
 .field input:focus,
 .field textarea:focus {
-  /* Removes browser default outline */
   outline: none;
-
-  /* Blue focus border */
   border-color: rgba(59, 130, 246, 0.6);
-
-  /* Soft focus glow */
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
 }
 
 .contact-form button {
-  /* Keeps button aligned left instead of stretching full width */
   align-self: flex-start;
-
-  /* Slight spacing above status text */
   margin-top: 6px;
 }
 
-/* Status message under the submit button */
 .form-status {
   margin-top: 10px;
   font-size: 13px;
   color: var(--muted);
 }
 
-/* Success state text color */
 .form-status.success {
   color: #86efac;
 }
 
-/* Error state text color */
 .form-status.error {
   color: #fca5a5;
 }
@@ -814,53 +603,34 @@ details.coursework[open] .cw-chevron {
    FOOTER
    ========================= */
 footer {
-  /* Center footer text */
   text-align: center;
-
-  /* Muted footer color */
   color: var(--muted);
-
-  /* Small text */
   font-size: 13px;
-
-  /* Spacing around footer */
   padding: 30px 16px;
 }
 
-/* ===== SVG Skill Tooltips (zero JS) ===== */
+/* =========================
+   SVG Skill Tooltips (zero JS)
+   ========================= */
 .skill-leaf {
-  cursor: help; /* shows the user there's info */
-  outline: none; /* no ugly focus outline from browser */
+  cursor: help;
+  outline: none;
 }
 
 .skill-tooltip {
-  pointer-events: none; /* tooltip doesn't "steal" hover */
-  opacity: 0; /* hidden by default */
+  pointer-events: none;
+  opacity: 0;
   transition: opacity 120ms ease;
 }
 
-/* show tooltip on hover + keyboard focus */
 .skill-leaf:hover .skill-tooltip,
 .skill-leaf:focus-within .skill-tooltip {
   opacity: 1;
 }
-.grid-about {
-  grid-template-columns: 1fr;
-}
 
-@media (min-width: 780px) {
-  .grid-about {
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
-}
-
-.about-col {
-  display: flex;
-  flex-direction: column;
-  gap: 14px; /* match grid gap */
-}
-/* === About headshot: snug circular avatar === */
+/* =========================
+   ABOUT headshot: snug circular avatar
+   ========================= */
 .about-top {
   display: flex;
   align-items: center;
@@ -868,18 +638,18 @@ footer {
 }
 
 .about-photoWrap {
-  width: 48px; /* tweak: 40–56 */
+  width: 48px;
   height: 48px;
-  border-radius: 999px; /* perfect circle */
-  overflow: hidden; /* crop image to circle */
+  border-radius: 999px;
+  overflow: hidden;
   border: 1px solid var(--border);
   background: #0b1220;
-  flex: 0 0 48px; /* prevents flex stretch */
+  flex: 0 0 48px;
 }
 
 .about-photo {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fills circle without distortion */
-  display: block; /* removes inline-image baseline gap */
+  object-fit: cover;
+  display: block;
 }
