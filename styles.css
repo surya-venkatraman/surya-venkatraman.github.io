@@ -25,7 +25,12 @@ html {
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial;
   background: var(--bg);
   color: var(--text);
 }
@@ -41,7 +46,11 @@ header {
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(10px);
 }
-
+.brand {
+  font-size: 18px; /* try 18–20px */
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
 .nav {
   max-width: 980px;
   margin: 0 auto;
@@ -78,6 +87,18 @@ header {
 .btn.primary {
   background: rgba(59, 130, 246, 0.25);
   border-color: rgba(59, 130, 246, 0.45);
+}
+
+/* GitHub nav button */
+.github-btn {
+  background: rgba(255, 255, 255, 0.218);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* optional hover polish */
+.github-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* =========================
@@ -171,6 +192,11 @@ p {
 /* Education card tighter */
 .card-edu {
   padding: 12px;
+}
+
+.card-edu h3,
+.card > h3 {
+  text-align: center;
 }
 
 .card-edu .edu-item {
@@ -493,7 +519,9 @@ details.tech summary::-webkit-details-marker {
   width: 7px;
   height: 2px;
   background: var(--muted);
-  transition: transform 160ms ease, background 160ms ease;
+  transition:
+    transform 160ms ease,
+    background 160ms ease;
 }
 
 /* left stroke */
@@ -624,7 +652,7 @@ footer {
 }
 
 .skill-leaf:hover .skill-tooltip,
-.skill-leaf:focus-within .skill-tooltip {
+.skill-leaf:focus-visiblein .skill-tooltip {
   opacity: 1;
 }
 
@@ -638,13 +666,13 @@ footer {
 }
 
 .about-photoWrap {
-  width: 48px;
-  height: 48px;
+  width: 100px;
+  height: 100px;
+  flex: 0 0 72px;
   border-radius: 999px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: #0b1220;
-  flex: 0 0 48px;
 }
 
 .about-photo {
@@ -652,4 +680,126 @@ footer {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* =========================
+   ABOUT inline layout (photo + text)
+   ========================= */
+.about-inline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.about-mission {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* slightly larger, more intentional avatar */
+.about-photoWrap {
+  width: 112px;
+  height: 112px;
+  flex: 0 0 112px;
+}
+
+/* FORCE headshot image size */
+.about-photo {
+  width: 112px !important;
+  height: 112px !important;
+  object-fit: cover;
+  border-radius: 999px;
+}
+
+/* === Skills: fixed info panel (no JS) === */
+/* =========================
+   Fixed skill panel logic
+   ========================= */
+
+/* Hide all panels by default */
+#panel-layer .skill-panel {
+  opacity: 0;
+}
+
+/* Default hint panel when nothing hovered */
+#panel-layer .skill-panel.default {
+  opacity: 1;
+}
+
+/* When any leaf is hovered/focused: hide default */
+#leaves:has(.skill-leaf:hover) ~ #panel-layer .skill-panel.default,
+#leaves:has(.skill-leaf:focus-visible) ~ #panel-layer .skill-panel.default {
+  opacity: 0;
+}
+
+/* Show the right panel based on hovered leaf */
+#leaves:has(.leaf-python:hover) ~ #panel-layer #panel-python,
+#leaves:has(.leaf-python:focus-visible) ~ #panel-layer #panel-python {
+  opacity: 1;
+}
+
+#leaves:has(.leaf-sql:hover) ~ #panel-layer #panel-sql,
+#leaves:has(.leaf-sql:focus-visible) ~ #panel-layer #panel-sql {
+  opacity: 1;
+}
+
+#leaves:has(.leaf-swe:hover) ~ #panel-layer #panel-swe,
+#leaves:has(.leaf-swe:focus-visible) ~ #panel-layer #panel-swe {
+  opacity: 1;
+}
+
+#leaves:has(.leaf-modeling:hover) ~ #panel-layer #panel-modeling,
+#leaves:has(.leaf-modeling:focus-visible) ~ #panel-layer #panel-modeling {
+  opacity: 1;
+}
+
+#leaves:has(.leaf-llmsrag:hover) ~ #panel-layer #panel-llmsrag,
+#leaves:has(.leaf-llmsrag:focus-visible) ~ #panel-layer #panel-llmsrag {
+  opacity: 1;
+}
+
+#leaves:has(.leaf-mlfairness:hover) ~ #panel-layer #panel-mlfairness,
+#leaves:has(.leaf-mlfairness:focus-visible) ~ #panel-layer #panel-mlfairness {
+  opacity: 1;
+}
+
+#leaves:has(.leaf-databricks:hover) ~ #panel-layer #panel-databricks,
+#leaves:has(.leaf-databricks:focus-visible) ~ #panel-layer #panel-databricks {
+  opacity: 1;
+}
+
+#leaves:has(.leaf-modelrisk:hover) ~ #panel-layer #panel-modelrisk,
+#leaves:has(.leaf-modelrisk:focus-visible) ~ #panel-layer #panel-modelrisk {
+  opacity: 1;
+}
+
+#leaves:has(.leaf-awsazure:hover) ~ #panel-layer #panel-awsazure,
+#leaves:has(.leaf-awsazure:focus-visible) ~ #panel-layer #panel-awsazure {
+  opacity: 1;
+}
+
+#leaves:has(.leaf-bias:hover) ~ #panel-layer #panel-bias,
+#leaves:has(.leaf-bias:focus-visible) ~ #panel-layer #panel-bias {
+  opacity: 1;
+}
+
+#leaves:has(.leaf-powerbi:hover) ~ #panel-layer #panel-powerbi,
+#leaves:has(.leaf-powerbi:focus-visible) ~ #panel-layer #panel-powerbi {
+  opacity: 1;
+}
+
+#leaves:has(.leaf-dq:hover) ~ #panel-layer #panel-dq,
+#leaves:has(.leaf-dq:focus-visible) ~ #panel-layer #panel-dq {
+  opacity: 1;
+}
+
+/* Center panel text */
+#panel-layer text {
+  text-anchor: middle;
+}
+.contact-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -16,6 +16,14 @@
           <a class="btn" href="#projects">Projects</a>
           <a class="btn" href="#skills">Skills</a>
           <a class="btn" href="#contact">Contact</a>
+          <a
+            class="btn github-btn"
+            href="https://github.com/surya-venkatraman"
+            target="_blank"
+            rel="noopener"
+          >
+            GitHub
+          </a>
           <a class="btn primary" href="surya_resume.pdf" download>Resume</a>
         </nav>
       </div>
@@ -23,14 +31,14 @@
 
     <main>
       <section id="about">
-        <h2>About</h2>
+        <h2>About Me</h2>
 
         <div class="about-grid" style="margin-top: 14px">
           <!-- LEFT COLUMN STACK: About + Education -->
           <div class="about-col">
             <!-- ABOUT CARD -->
             <div class="card about-card">
-              <div class="about-top">
+              <div class="about-inline">
                 <div class="about-photoWrap">
                   <img
                     class="about-photo"
@@ -38,13 +46,11 @@
                     alt="Surya Venkatraman headshot"
                   />
                 </div>
-              </div>
 
-              <div class="about-mission">
-                <p class="muted" style="margin: 6">
-                  I build analytics and AI solutions that turn messy data into
-                  clear decisions—automating reporting, improving data quality,
-                  and shipping tools people actually use.
+                <p class="about-mission muted">
+                  Welcome! I build analytics and AI solutions that turn messy
+                  data into clear decisions—automating reporting, improving data
+                  quality, and shipping tools people actually use.
                 </p>
               </div>
             </div>
@@ -88,7 +94,6 @@
                         <span class="chip"
                           >Business Fundamentals for Analytics</span
                         >
-
                         <span class="chip">Deep Learning</span>
                         <span class="chip">Regression Analysis</span>
                         <span class="chip">Financial Modeling</span>
@@ -357,7 +362,7 @@
       </section>
 
       <section id="skills">
-        <h2>Skills</h2>
+        <h2>Technical Skills</h2>
 
         <svg
           viewBox="0 0 900 520"
@@ -372,20 +377,27 @@
             stroke-width="2"
             stroke-linecap="round"
           >
+            <!-- First Branches-->
             <line x1="450" y1="70" x2="450" y2="140" />
             <line x1="450" y1="140" x2="180" y2="220" />
             <line x1="450" y1="140" x2="360" y2="220" />
             <line x1="450" y1="140" x2="540" y2="220" />
             <line x1="450" y1="140" x2="720" y2="220" />
-            <line x1="110" y1="260" x2="72" y2="330" />
-            <line x1="110" y1="260" x2="130" y2="330" />
-            <line x1="110" y1="260" x2="190" y2="333" />
-            <line x1="330" y1="260" x2="280" y2="360" />
-            <line x1="330" y1="260" x2="340" y2="325" />
-            <line x1="330" y1="260" x2="415" y2="360" />
-            <line x1="540" y1="260" x2="480" y2="313" />
-            <line x1="540" y1="260" x2="540" y2="340" />
-            <line x1="540" y1="260" x2="600" y2="312" />
+            <!-- Python-->
+            <line x1="110" y1="265" x2="60" y2="320" />
+            <!-- SQL-->
+            <line x1="110" y1="265" x2="110" y2="315" />
+            <!-- First Branches-->
+            <line x1="110" y1="265" x2="170" y2="320" />
+
+            <line x1="310" y1="265" x2="260" y2="310" />
+            <line x1="310" y1="265" x2="310" y2="335" />
+            <line x1="310" y1="265" x2="375" y2="310" />
+
+            <line x1="560" y1="260" x2="500" y2="313" />
+            <line x1="560" y1="260" x2="560" y2="340" />
+            <line x1="560" y1="260" x2="620" y2="312" />
+
             <line x1="790" y1="260" x2="730" y2="330" />
             <line x1="790" y1="260" x2="790" y2="330" />
             <line x1="790" y1="260" x2="850" y2="330" />
@@ -459,7 +471,7 @@
             </text>
 
             <rect
-              x="260"
+              x="240"
               y="220"
               rx="14"
               ry="14"
@@ -469,7 +481,7 @@
               stroke="rgba(255,255,255,0.12)"
             />
             <text
-              x="335"
+              x="313"
               y="248"
               text-anchor="middle"
               fill="#86efac"
@@ -481,7 +493,7 @@
             </text>
 
             <rect
-              x="465"
+              x="485"
               y="220"
               rx="14"
               ry="14"
@@ -491,7 +503,7 @@
               stroke="rgba(255,255,255,0.12)"
             />
             <text
-              x="540"
+              x="560"
               y="248"
               text-anchor="middle"
               fill="#fcd34d"
@@ -499,7 +511,7 @@
               font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
               font-weight="700"
             >
-              Data / Big Data
+              Cloud Data/BI
             </text>
 
             <rect
@@ -521,362 +533,407 @@
               font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
               font-weight="700"
             >
-              Cloud / BI
+              Data Governance
             </text>
           </g>
 
-          <!-- Leaves + tooltips (ZERO JS) -->
+          <!-- Leaves (no inline tooltips anymore) -->
           <g
+            id="leaves"
             fill="#e5e7eb"
             font-size="13"
             font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
           >
-            <!-- Python -->
-            <g class="skill-leaf" tabindex="0">
-              <text x="75" y="352" text-anchor="middle">Python</text>
-              <g class="skill-tooltip">
-                <rect
-                  x="5"
-                  y="295"
-                  rx="10"
-                  ry="10"
-                  width="260"
-                  height="56"
-                  fill="rgba(2, 6, 23, 0.95)"
-                  stroke="rgba(255,255,255,0.14)"
-                />
-                <text
-                  x="16"
-                  y="318"
-                  font-size="11"
-                  fill="#e5e7eb"
-                  font-weight="700"
-                >
-                  Python
-                </text>
-                <text x="16" y="336" font-size="11" fill="#94a3b8">
-                  NFCU automation + ETL scripts · RAG prototypes
-                </text>
-              </g>
+            <g class="skill-leaf leaf-python" tabindex="0">
+              <text x="50" y="338" text-anchor="middle">Python</text>
+            </g>
+
+            <g class="skill-leaf leaf-sql" tabindex="0">
+              <text x="112" y="338" text-anchor="middle">SQL</text>
+            </g>
+
+            <g class="skill-leaf leaf-swe" tabindex="0">
+              <text x="175" y="338" text-anchor="middle">
+                <tspan x="175" dy="0">SWE</tspan>
+              </text>
+            </g>
+
+            <g class="skill-leaf leaf-modeling" tabindex="0">
+              <text x="250" y="327" text-anchor="middle">Modeling</text>
+            </g>
+
+            <g class="skill-leaf leaf-llmsrag" tabindex="0">
+              <text x="315" y="355" text-anchor="middle">LLMS/RAG</text>
+            </g>
+
+            <g class="skill-leaf leaf-mlfairness" tabindex="0">
+              <text x="385" y="330" text-anchor="middle">ML Fairness</text>
+            </g>
+
+            <g class="skill-leaf leaf-databricks" tabindex="0">
+              <text x="500" y="330" text-anchor="middle">Databricks</text>
+            </g>
+
+            <g class="skill-leaf leaf-awsazure" tabindex="0">
+              <text x="560" y="360" text-anchor="middle">AWS/Azure</text>
+            </g>
+
+            <g class="skill-leaf leaf-powerbi" tabindex="0">
+              <text x="620" y="330" text-anchor="middle">PowerBI</text>
+            </g>
+
+            <g class="skill-leaf leaf-bias" tabindex="0">
+              <text x="725" y="352" text-anchor="middle">Bias</text>
+            </g>
+
+            <g class="skill-leaf leaf-modelrisk" tabindex="0">
+              <text x="787" y="352" text-anchor="middle">
+                <tspan x="787" dy="0">Model</tspan>
+                <tspan x="787" dy="1.2em">Risk</tspan>
+              </text>
+            </g>
+
+            <g class="skill-leaf leaf-dq" tabindex="0">
+              <text x="852" y="352" text-anchor="middle">
+                <tspan x="852" dy="0">Data</tspan>
+                <tspan x="852" dy="1.2em">Quality</tspan>
+              </text>
+            </g>
+          </g>
+
+          <!-- Fixed panel layer (always same position) -->
+          <g id="panel-layer">
+            <!-- panel background -->
+            <rect
+              x="190"
+              y="440"
+              rx="14"
+              ry="14"
+              width="520"
+              height="68"
+              fill="rgba(2, 6, 23, 0.95)"
+              stroke="rgba(255,255,255,0.14)"
+            />
+
+            <!-- DEFAULT panel -->
+            <g class="skill-panel default">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                Hover a skill
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                A quick summary will appear here.
+              </text>
+            </g>
+
+            <!-- PYTHON -->
+            <g class="skill-panel" id="panel-python">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                Python
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                NFCU automation + ETL scripts · RAG prototypes
+              </text>
             </g>
 
             <!-- SQL -->
-            <g class="skill-leaf" tabindex="0">
-              <text x="135" y="352" text-anchor="middle">SQL</text>
-              <g class="skill-tooltip">
-                <rect
-                  x="70"
-                  y="295"
-                  rx="10"
-                  ry="10"
-                  width="260"
-                  height="56"
-                  fill="rgba(2, 6, 23, 0.95)"
-                  stroke="rgba(255,255,255,0.14)"
-                />
-                <text
-                  x="81"
-                  y="318"
-                  font-size="11"
-                  fill="#e5e7eb"
-                  font-weight="700"
-                >
-                  SQL
-                </text>
-                <text x="81" y="336" font-size="11" fill="#94a3b8">
-                  Data quality checks · reporting queries · analytics
-                </text>
-              </g>
+            <g class="skill-panel" id="panel-sql">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                SQL
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                Data quality checks · reporting queries · analytics
+              </text>
             </g>
 
-            <!-- R -->
-            <g class="skill-leaf" tabindex="0">
-              <text x="195" y="352" text-anchor="middle">R</text>
-              <g class="skill-tooltip">
-                <rect
-                  x="120"
-                  y="295"
-                  rx="10"
-                  ry="10"
-                  width="250"
-                  height="56"
-                  fill="rgba(2, 6, 23, 0.95)"
-                  stroke="rgba(255,255,255,0.14)"
-                />
-                <text
-                  x="131"
-                  y="318"
-                  font-size="11"
-                  fill="#e5e7eb"
-                  font-weight="700"
-                >
-                  R
-                </text>
-                <text x="131" y="336" font-size="11" fill="#94a3b8">
-                  Statistics coursework · modeling + analysis
-                </text>
-              </g>
+            <!-- SQL -->
+            <g class="skill-panel" id="panel-swe">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                SWE
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                Data quality checks · reporting queries · analytics
+              </text>
             </g>
 
-            <!-- scikit-learn -->
-            <g class="skill-leaf" tabindex="0">
-              <text x="280" y="380" text-anchor="middle">scikit-learn</text>
-              <g class="skill-tooltip">
-                <rect
-                  x="185"
-                  y="405"
-                  rx="10"
-                  ry="10"
-                  width="290"
-                  height="56"
-                  fill="rgba(2, 6, 23, 0.95)"
-                  stroke="rgba(255,255,255,0.14)"
-                />
-                <text
-                  x="196"
-                  y="428"
-                  font-size="11"
-                  fill="#e5e7eb"
-                  font-weight="700"
-                >
-                  scikit-learn
-                </text>
-                <text x="196" y="446" font-size="11" fill="#94a3b8">
-                  Classical ML pipelines · evaluation + tuning
-                </text>
-              </g>
+            <!-- Model -->
+            <g class="skill-panel" id="panel-modeling">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                Modeling
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                Modeling
+              </text>
             </g>
 
-            <!-- PyTorch -->
-            <g class="skill-leaf" tabindex="0">
-              <text x="345" y="345" text-anchor="middle">PyTorch</text>
-              <g class="skill-tooltip">
-                <rect
-                  x="260"
-                  y="280"
-                  rx="10"
-                  ry="10"
-                  width="290"
-                  height="56"
-                  fill="rgba(2, 6, 23, 0.95)"
-                  stroke="rgba(255,255,255,0.14)"
-                />
-                <text
-                  x="271"
-                  y="303"
-                  font-size="11"
-                  fill="#e5e7eb"
-                  font-weight="700"
-                >
-                  PyTorch
-                </text>
-                <text x="271" y="321" font-size="11" fill="#94a3b8">
-                  Deep learning coursework · CNN implementation
-                </text>
-              </g>
+            <!-- LLMs/Rag -->
+            <g class="skill-panel" id="panel-llmsrag">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                LLMs / RAG
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                Classical ML pipelines · evaluation + tuning
+              </text>
             </g>
 
-            <!-- TensorFlow -->
-            <g class="skill-leaf" tabindex="0">
-              <text x="420" y="380" text-anchor="middle">TensorFlow</text>
-              <g class="skill-tooltip">
-                <rect
-                  x="340"
-                  y="405"
-                  rx="10"
-                  ry="10"
-                  width="300"
-                  height="56"
-                  fill="rgba(2, 6, 23, 0.95)"
-                  stroke="rgba(255,255,255,0.14)"
-                />
-                <text
-                  x="351"
-                  y="428"
-                  font-size="11"
-                  fill="#e5e7eb"
-                  font-weight="700"
-                >
-                  TensorFlow
-                </text>
-                <text x="351" y="446" font-size="11" fill="#94a3b8">
-                  Model prototyping · deep learning experiments
-                </text>
-              </g>
-            </g>
-
-            <!-- Apache Spark -->
-            <g class="skill-leaf" tabindex="0">
-              <text x="480" y="330" text-anchor="middle">Apache Spark</text>
-              <g class="skill-tooltip">
-                <rect
-                  x="400"
-                  y="260"
-                  rx="10"
-                  ry="10"
-                  width="320"
-                  height="56"
-                  fill="rgba(2, 6, 23, 0.95)"
-                  stroke="rgba(255,255,255,0.14)"
-                />
-                <text
-                  x="411"
-                  y="283"
-                  font-size="11"
-                  fill="#e5e7eb"
-                  font-weight="700"
-                >
-                  Apache Spark
-                </text>
-                <text x="411" y="301" font-size="11" fill="#94a3b8">
-                  Distributed processing · ETL at scale
-                </text>
-              </g>
-            </g>
-
-            <!-- PySpark -->
-            <g class="skill-leaf" tabindex="0">
-              <text x="540" y="360" text-anchor="middle">PySpark</text>
-              <g class="skill-tooltip">
-                <rect
-                  x="460"
-                  y="385"
-                  rx="10"
-                  ry="10"
-                  width="300"
-                  height="56"
-                  fill="rgba(2, 6, 23, 0.95)"
-                  stroke="rgba(255,255,255,0.14)"
-                />
-                <text
-                  x="471"
-                  y="408"
-                  font-size="11"
-                  fill="#e5e7eb"
-                  font-weight="700"
-                >
-                  PySpark
-                </text>
-                <text x="471" y="426" font-size="11" fill="#94a3b8">
-                  Databricks ETL pipelines · transformations
-                </text>
-              </g>
+            <!-- MLFairness -->
+            <g class="skill-panel" id="panel-mlfairness">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                MlFairness
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                Ml Fairness
+              </text>
             </g>
 
             <!-- Databricks -->
-            <g class="skill-leaf" tabindex="0">
-              <text x="600" y="330" text-anchor="middle">Databricks</text>
-              <g class="skill-tooltip">
-                <rect
-                  x="520"
-                  y="260"
-                  rx="10"
-                  ry="10"
-                  width="300"
-                  height="56"
-                  fill="rgba(2, 6, 23, 0.95)"
-                  stroke="rgba(255,255,255,0.14)"
-                />
-                <text
-                  x="531"
-                  y="283"
-                  font-size="11"
-                  fill="#e5e7eb"
-                  font-weight="700"
-                >
-                  Databricks
-                </text>
-                <text x="531" y="301" font-size="11" fill="#94a3b8">
-                  Pipelines + notebooks · big data workflows
-                </text>
-              </g>
+            <g class="skill-panel" id="panel-databricks">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                databricks
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                Databricks
+              </text>
+            </g>
+
+            <!-- AWS/AZURE -->
+            <g class="skill-panel" id="panel-awsazure">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                aws/azure
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                aws/azure
+              </text>
+            </g>
+
+            <!-- PYSPARK -->
+            <g class="skill-panel" id="panel-pyspark">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                PySpark
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                Databricks ETL pipelines · transformations
+              </text>
             </g>
 
             <!-- AWS -->
-            <g class="skill-leaf" tabindex="0">
-              <text x="725" y="352" text-anchor="middle">AWS</text>
-              <g class="skill-tooltip">
-                <rect
-                  x="640"
-                  y="295"
-                  rx="10"
-                  ry="10"
-                  width="285"
-                  height="56"
-                  fill="rgba(2, 6, 23, 0.95)"
-                  stroke="rgba(255,255,255,0.14)"
-                />
-                <text
-                  x="651"
-                  y="318"
-                  font-size="11"
-                  fill="#e5e7eb"
-                  font-weight="700"
-                >
-                  AWS
-                </text>
-                <text x="651" y="336" font-size="11" fill="#94a3b8">
-                  Client automation + LLM prototypes · cloud work
-                </text>
-              </g>
+            <g class="skill-panel" id="panel-modelrisk">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                model risk
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                model risk
+              </text>
             </g>
 
-            <!-- Azure -->
-            <g class="skill-leaf" tabindex="0">
-              <text x="787" y="352" text-anchor="middle">Azure</text>
-              <g class="skill-tooltip">
-                <rect
-                  x="700"
-                  y="295"
-                  rx="10"
-                  ry="10"
-                  width="290"
-                  height="56"
-                  fill="rgba(2, 6, 23, 0.95)"
-                  stroke="rgba(255,255,255,0.14)"
-                />
-                <text
-                  x="711"
-                  y="318"
-                  font-size="11"
-                  fill="#e5e7eb"
-                  font-weight="700"
-                >
-                  Azure
-                </text>
-                <text x="711" y="336" font-size="11" fill="#94a3b8">
-                  Enterprise tooling · workflows + analytics
-                </text>
-              </g>
+            <!-- AZURE -->
+            <g class="skill-panel" id="panel-bias">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                bias
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                bias
+              </text>
             </g>
 
-            <!-- Power BI -->
-            <g class="skill-leaf" tabindex="0">
-              <text x="852" y="352" text-anchor="middle">Power BI</text>
-              <g class="skill-tooltip">
-                <rect
-                  x="735"
-                  y="380"
-                  rx="10"
-                  ry="10"
-                  width="310"
-                  height="56"
-                  fill="rgba(2, 6, 23, 0.95)"
-                  stroke="rgba(255,255,255,0.14)"
-                />
-                <text
-                  x="746"
-                  y="403"
-                  font-size="11"
-                  fill="#e5e7eb"
-                  font-weight="700"
-                >
-                  Power BI
-                </text>
-                <text x="746" y="421" font-size="11" fill="#94a3b8">
-                  Stakeholder dashboards · mobile + Q&amp;A
-                </text>
-              </g>
+            <!-- POWER BI -->
+            <g class="skill-panel" id="panel-powerbi">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                Power BI
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                Stakeholder dashboards · mobile + Q&amp;A
+              </text>
+            </g>
+
+            <g class="skill-panel" id="panel-dq">
+              <text
+                x="450"
+                y="468"
+                font-size="12"
+                fill="#e5e7eb"
+                font-weight="700"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                dq
+              </text>
+              <text
+                x="450"
+                y="490"
+                font-size="12"
+                fill="#94a3b8"
+                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+              >
+                dq
+              </text>
             </g>
           </g>
         </svg>
@@ -888,7 +945,7 @@
         <form
           id="contactForm"
           class="contact-form"
-          action="https://formspree.io/f/YOUR_FORM_ID"
+          action="https://formspree.io/f/meeelybn"
           method="POST"
         >
           <input
@@ -939,7 +996,22 @@
             tabindex="-1"
             autocomplete="off"
           />
-          <button type="submit" class="btn primary">Send Message</button>
+          <div class="contact-actions">
+            <button type="submit" class="btn primary">Send Message</button>
+            <button type="button" class="btn" id="clearFormBtn">
+              Clear form
+            </button>
+          </div>
+
+          <div id="formStatus" class="form-status" aria-live="polite"></div>
+
+          <p class="muted" style="margin-top: 10px">
+            Or email me directly at
+            <a href="mailto:YOUR_EMAIL@example.com" style="color: var(--link)"
+              >surven02@gmail.com</a
+            >
+          </p>
+
           <div id="formStatus" class="form-status" aria-live="polite"></div>
         </form>
       </section>
