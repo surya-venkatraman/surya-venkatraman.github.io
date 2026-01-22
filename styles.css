@@ -803,3 +803,19 @@ footer {
   align-items: center;
   flex-wrap: wrap;
 }
+/* Storybook wrap container */
+.about-story {
+  /* nothing special needed here */
+}
+
+/* Float + circular text wrap */
+.about-story .about-photo {
+  float: left;
+  width: 112px;
+  height: 112px;
+  margin: 0 14px 8px 0;
+  border-radius: 50%;
+  shape-outside: circle(50%);
+  object-fit: cover;
+  display: block;
+}
